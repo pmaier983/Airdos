@@ -1,9 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import { ThemeWrapper } from './ThemeWrapper'
 import { App } from './App'
 
 ReactDOM.render(
-  <App />,
+  <ThemeWrapper>
+    <App />
+  </ThemeWrapper>,
   document.getElementById('root'),
 )
