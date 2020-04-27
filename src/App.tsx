@@ -1,10 +1,7 @@
 import React from 'react'
 
-const App = () => {
-  console.log('Hello World')
-  return (
-    <div>Hello World this is Airdos</div>
-  )
-}
+import { FeedPage } from './FeedPage'
+
+const App = () => <FeedPage />
 
 export { App }
