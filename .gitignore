@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
+/src/react-app-env.d.ts
 .pnp.js
 
 # testing
