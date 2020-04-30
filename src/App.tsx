@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { FeedPage } from './FeedPage'
+import { LandingPage } from './pages/LandingPage'
 
-const App = () => <FeedPage />
+const App = () => <LandingPage />
 
 export { App }
