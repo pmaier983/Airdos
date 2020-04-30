@@ -1,5 +1,5 @@
-import { theme } from './theme'
+import { basicTheme } from './basicTheme'
 
 export const advancedTheme = {
-  basicBorder: `${theme.borderWidth} ${theme.borderStyle} ${theme.borderColor}`,
+  basicBorder: `${basicTheme.borderWidth} ${basicTheme.borderStyle} ${basicTheme.borderColor}`,
 }

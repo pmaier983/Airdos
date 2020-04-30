@@ -1,9 +1,6 @@
-export const colors = {
-  black: '0 0 0',
-  grey: '220 220 220',
-}
+import { colors } from './colors'
 
-export const theme = {
+export const basicTheme = {
   backgroundColor: '#FFFFFF',
 
   // Borders

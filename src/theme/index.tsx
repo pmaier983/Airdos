@@ -1,6 +1,6 @@
 import _ from 'lodash/fp'
 
-import { theme as basicTheme } from './theme'
+import { basicTheme } from './basicTheme'
 import { advancedTheme } from './advancedTheme'
 
 export const theme = _.merge(basicTheme, advancedTheme)

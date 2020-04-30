@@ -1,0 +1,4 @@
+export const colors = {
+  black: '0 0 0',
+  grey: '220 220 220',
+}
