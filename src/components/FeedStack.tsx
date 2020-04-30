@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { FeedBlock } from './FeedBlock'
+
+import { posts } from '../.dud-data/post'
+
 const FeedContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -12,9 +16,20 @@ const FeedContainer = styled.div`
      0 -${({ theme }) => theme.borderWidth} 0 0 ${({ theme }) => theme.borderColor};
 `
 
+const PaddingRowFeedStack = styled.div`
+  width: 100%;
+  height: 2px;
+  background-color: ${({ theme }) => theme.spacingColor};
+`
+
 const FeedStack = () => (
   <FeedContainer>
-    I am a feed
+    {posts.map((post) => (
+      <>
+        <FeedBlock text={post.text} />
+        <PaddingRowFeedStack />
+      </>
+    ))}
   </FeedContainer>
 )
 

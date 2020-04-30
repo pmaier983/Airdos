@@ -2,6 +2,7 @@ import { colors } from './colors'
 
 export const basicTheme = {
   backgroundColor: '#FFFFFF',
+  spacingColor: `rgb(${colors.grey})`,
 
   // Borders
   borderColor: `rgb(${colors.grey})`,
