@@ -6,8 +6,6 @@ import { FeedBlock } from './FeedBlock'
 import { posts } from '../.dud-data/post'
 
 const FeedContainer = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   box-shadow: 
@@ -25,10 +23,10 @@ const PaddingRowFeedStack = styled.div`
 const FeedStack = () => (
   <FeedContainer>
     {posts.map((post) => (
-      <>
+      <div key={post.text}>
         <FeedBlock text={post.text} />
         <PaddingRowFeedStack />
-      </>
+      </div>
     ))}
   </FeedContainer>
 )
