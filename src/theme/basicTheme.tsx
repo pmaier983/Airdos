@@ -4,12 +4,12 @@ export const basicTheme = {
   backgroundColor: '#FFFFFF',
 
   // Borders
-
   borderColor: `rgb(${colors.grey})`,
   borderStyle: 'solid',
   borderWidth: '1px',
 
-  inputBorderRadius: '20px',
+  normalBorderRadius: '2px',
+  searchBubbleBorderRadius: '20px',
 
   // Fonts
   primaryGlobalFont: 'Red Hat Text',
