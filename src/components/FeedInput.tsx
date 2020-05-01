@@ -15,6 +15,6 @@ const InputBox = styled.textarea`
   }
 `
 
-const FeedInput = () => <InputBox placeholder="hello" />
+const FeedInput = () => <InputBox placeholder="What's piqued your interest lately" />
 
 export { FeedInput }

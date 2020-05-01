@@ -16,6 +16,7 @@ export const basicTheme = {
   primaryGlobalFont: 'Red Hat Text',
   secondaryGlobalFont: 'sans-serif',
   globalFontColor: `rgb(${colors.black})`,
+  highlightedFontColor: `rgb(${colors.red})`,
 
   largeFontSize: '20px',
   mediumFontSize: '16px',

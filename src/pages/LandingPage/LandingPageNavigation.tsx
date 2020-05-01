@@ -3,14 +3,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  // Redirect,
-  // useHistory,
-  // useLocation,
 } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { PaddingRowPage } from './landingPageStyles'
+import { ActiveStyleNavLink } from '../../components/ActiveStyleNavLink'
 
 const Container = styled.div`
   display: flex;
@@ -22,32 +19,22 @@ const RouteContainer = styled.div`
   flex-direction: column;
 `
 
-const FormattedLink = styled(Link)`
-  text-decoration: none;
-  color: ${({ theme }) => (theme.globalFontColor)};
-  font-size: ${({ theme }) => theme.largeFontSize};
-`
-
 const LandingPageNavigation = () => (
   <Container>
     <PaddingRowPage />
     <Router>
       <RouteContainer>
-        <FormattedLink to="/feed">FEED</FormattedLink>
-        <FormattedLink to="/groups">GROUPS</FormattedLink>
-        <FormattedLink to="/messages">MESSAGES</FormattedLink>
-        <FormattedLink to="/library">LIBRARY</FormattedLink>
-        <FormattedLink to="/profile">PROFILE</FormattedLink>
+        <ActiveStyleNavLink to="/feed">FEED</ActiveStyleNavLink>
+        <ActiveStyleNavLink to="/groups">GROUPS</ActiveStyleNavLink>
+        <ActiveStyleNavLink to="/messages">MESSAGES</ActiveStyleNavLink>
+        <ActiveStyleNavLink to="/library">LIBRARY</ActiveStyleNavLink>
+        <ActiveStyleNavLink to="/profile">PROFILE</ActiveStyleNavLink>
         <Switch>
-          <Route path="/public">
-            {/* <PublicPage /> */}
+          <Route path="/" />
+          <Route path="/feed" />
+          <Route path="/groups">
+            <div>groups</div>
           </Route>
-          <Route path="/login">
-            {/* <LoginPage /> */}
-          </Route>
-          {/* <PrivateRoute path="/protected">
-          <ProtectedPage />
-        </PrivateRoute> */}
         </Switch>
       </RouteContainer>
     </Router>
