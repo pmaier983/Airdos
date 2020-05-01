@@ -25,21 +25,18 @@ const PaddingColumnFeedBlock = styled.div`
   height: 100%;
 `
 
-const FeedBlock: React.FC<IFeedBlockProps> = ({ text }) => {
-  console.log('yay')
-  return (
-    <>
-      <PaddingColumnContainer>
-        <PaddingRowFeedBlock />
-        <PaddingRowContainer>
-          <PaddingColumnFeedBlock />
-          {text}
-          <PaddingColumnFeedBlock />
-        </PaddingRowContainer>
-        <PaddingRowFeedBlock />
-      </PaddingColumnContainer>
-    </>
-  )
-}
+const FeedBlock: React.FC<IFeedBlockProps> = ({ text }) => (
+  <>
+    <PaddingColumnContainer>
+      <PaddingRowFeedBlock />
+      <PaddingRowContainer>
+        <PaddingColumnFeedBlock />
+        {text}
+        <PaddingColumnFeedBlock />
+      </PaddingRowContainer>
+      <PaddingRowFeedBlock />
+    </PaddingColumnContainer>
+  </>
+)
 
 export { FeedBlock }

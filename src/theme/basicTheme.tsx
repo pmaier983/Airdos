@@ -18,6 +18,6 @@ export const basicTheme = {
   globalFontColor: `rgb(${colors.black})`,
 
   largeFontSize: '20px',
+  mediumFontSize: '16px',
   normalFontSize: '12px',
-
 }

@@ -15,10 +15,7 @@ const Container = styled.div`
 `
 
 const PaddingContainer = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
-  flex-direction: row;
 `
 
 const PaddingColumnContent = styled.div`
@@ -28,7 +25,7 @@ const PaddingColumnContent = styled.div`
 
 const PaddingRowFeedSeparator = styled.div`
   width: 100%;
-  height: 20px;
+  height: 20px;   
 `
 
 const FeedContainer = styled.div`
@@ -36,22 +33,19 @@ const FeedContainer = styled.div`
   flex-direction: column;
 `
 
-const LandingPageContent = () => {
-  console.log('hello')
-  return (
-    <Container>
-      <PaddingRowPage />
-      <PaddingContainer>
-        <PaddingColumnContent />
-        <FeedContainer>
-          <FeedInput />
-          <PaddingRowFeedSeparator />
-          <FeedStack />
-        </FeedContainer>
-        <PaddingColumnContent />
-      </PaddingContainer>
-    </Container>
-  )
-}
+const LandingPageContent = () => (
+  <Container>
+    <PaddingRowPage />
+    <PaddingContainer>
+      <PaddingColumnContent />
+      <FeedContainer>
+        <FeedInput />
+        <PaddingRowFeedSeparator />
+        <FeedStack />
+      </FeedContainer>
+      <PaddingColumnContent />
+    </PaddingContainer>
+  </Container>
+)
 
 export { LandingPageContent }

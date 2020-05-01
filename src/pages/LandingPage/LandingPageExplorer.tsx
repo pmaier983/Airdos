@@ -9,19 +9,20 @@ const Container = styled.div`
 `
 
 const ExplorerSearch = styled.input`
-  border-radius: ${({ theme }) => theme.searchBubbleBorderRadius}; 
+  border-radius: ${({ theme }) => theme.normalBorderRadius}; 
   height: ${({ theme }) => theme.largeFontSize};
-  outline: none;
+  box-shadow: ${({ theme }) => theme.basicBoxShadow};
+  border: none;
+  :focus {
+    outline: none;
+  }
 `
 
-const LandingPageExplorer = () => {
-  console.log('hi')
-  return (
-    <Container>
-      <PaddingRowPage />
-      <ExplorerSearch />
-    </Container>
-  )
-}
+const LandingPageExplorer = () => (
+  <Container>
+    <PaddingRowPage />
+    <ExplorerSearch placeholder="Explore Airdos" />
+  </Container>
+)
 
 export { LandingPageExplorer }
