@@ -36,12 +36,6 @@ const FeedContainer = styled.div`
   flex-direction: column;
 `
 
-const LoadingIcon = styled.div`
-  display: flex;
-  align-self: center;
-  font-size: ${({ theme }) => theme.mediumFontSize};
-`
-
 const LandingPageContent = () => (
   <Container>
     <PaddingRowPage />
@@ -51,7 +45,6 @@ const LandingPageContent = () => (
         <FeedInput />
         <PaddingRowFeedSeparator />
         <FeedStack />
-        <LoadingIcon>Loading ...</LoadingIcon>
       </FeedContainer>
       <PaddingColumnContent />
     </PaddingContainer>

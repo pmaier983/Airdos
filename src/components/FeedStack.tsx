@@ -20,15 +20,24 @@ const PaddingRowFeedStack = styled.div`
   background-color: ${({ theme }) => theme.spacingColor};
 `
 
+const LoadingIcon = styled.div`
+  display: flex;
+  align-self: center;
+  font-size: ${({ theme }) => theme.mediumFontSize};
+`
+
 const FeedStack = () => (
-  <FeedContainer>
-    {posts.map((post) => (
-      <div key={post.text}>
-        <FeedBlock {...post} />
-        <PaddingRowFeedStack />
-      </div>
-    ))}
-  </FeedContainer>
+  <>
+    <FeedContainer>
+      {posts.map((post) => (
+        <div key={post.text}>
+          <FeedBlock {...post} />
+          <PaddingRowFeedStack />
+        </div>
+      ))}
+    </FeedContainer>
+    <LoadingIcon>Loading ...</LoadingIcon>
+  </>
 )
 
 export { FeedStack }
