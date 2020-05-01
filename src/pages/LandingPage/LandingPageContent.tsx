@@ -16,6 +16,9 @@ const Container = styled.div`
 
 const PaddingContainer = styled.div`
   display: flex;
+  box-shadow: 
+    -${({ theme }) => theme.borderWidth} 0 0 0 ${({ theme }) => theme.borderColor}, 
+     ${({ theme }) => theme.borderWidth} 0 0 0 ${({ theme }) => theme.borderColor};
 `
 
 const PaddingColumnContent = styled.div`

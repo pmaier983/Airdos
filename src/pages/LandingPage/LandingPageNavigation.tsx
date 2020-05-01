@@ -11,12 +11,16 @@ import { ActiveStyleNavLink } from '../../components/ActiveStyleNavLink'
 
 const Container = styled.div`
   display: flex;
+  position: sticky;
   flex-direction: column;
+  height: 100%;
+  top: 0px;
 `
 
 const RouteContainer = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: right;
 `
 
 const LandingPageNavigation = () => (
@@ -30,11 +34,8 @@ const LandingPageNavigation = () => (
         <ActiveStyleNavLink to="/library">LIBRARY</ActiveStyleNavLink>
         <ActiveStyleNavLink to="/profile">PROFILE</ActiveStyleNavLink>
         <Switch>
-          <Route path="/" />
           <Route path="/feed" />
-          <Route path="/groups">
-            <div>groups</div>
-          </Route>
+          <Route path="/groups" />
         </Switch>
       </RouteContainer>
     </Router>

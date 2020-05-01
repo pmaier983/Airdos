@@ -6,9 +6,12 @@ import { LandingPageExplorer } from './LandingPageExplorer'
 import { LandingPageContent } from './LandingPageContent'
 
 const Container = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
   display: flex;
-  width: 100%;
-  height: 100%;
   justify-content: center;
   flex-direction: row;
   background-color: ${({ theme }) => theme.backgroundColor};

@@ -5,7 +5,10 @@ import { PaddingRowPage } from './landingPageStyles'
 
 const Container = styled.div`
   display: flex;
+  position: sticky;
   flex-direction: column;
+  height: 100%;
+  top: 0px;
 `
 
 const ExplorerSearch = styled.input`

@@ -1,8 +1,9 @@
 import { colors } from './colors'
 
 export const basicTheme = {
-  backgroundColor: '#FFFFFF',
+  backgroundColor: `rgb(${colors.white})`,
   spacingColor: `rgb(${colors.grey})`,
+  focusColor: `rgb(${colors.red})`,
 
   // Borders
   borderColor: `rgb(${colors.grey})`,

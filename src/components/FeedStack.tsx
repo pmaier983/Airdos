@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { FeedBlock } from './FeedBlock'
 
-import { posts } from '../.dud-data/post'
+import { posts } from '../dud-data/posts'
 
 const FeedContainer = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ const FeedStack = () => (
   <FeedContainer>
     {posts.map((post) => (
       <div key={post.text}>
-        <FeedBlock text={post.text} />
+        <FeedBlock {...post} />
         <PaddingRowFeedStack />
       </div>
     ))}
