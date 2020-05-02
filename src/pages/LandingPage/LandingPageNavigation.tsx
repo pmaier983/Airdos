@@ -1,9 +1,4 @@
 import React from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom'
 import styled from 'styled-components'
 
 import { PaddingRowPage } from './landingPageStyles'
@@ -26,19 +21,13 @@ const RouteContainer = styled.div`
 const LandingPageNavigation = () => (
   <Container>
     <PaddingRowPage />
-    <Router>
-      <RouteContainer>
-        <ActiveStyleNavLink to="/feed">FEED</ActiveStyleNavLink>
-        <ActiveStyleNavLink to="/groups">GROUPS</ActiveStyleNavLink>
-        <ActiveStyleNavLink to="/messages">MESSAGES</ActiveStyleNavLink>
-        <ActiveStyleNavLink to="/library">LIBRARY</ActiveStyleNavLink>
-        <ActiveStyleNavLink to="/profile">PROFILE</ActiveStyleNavLink>
-        <Switch>
-          <Route path="/feed" />
-          <Route path="/groups" />
-        </Switch>
-      </RouteContainer>
-    </Router>
+    <RouteContainer>
+      <ActiveStyleNavLink to="/feed">FEED</ActiveStyleNavLink>
+      <ActiveStyleNavLink to="/groups">GROUPS</ActiveStyleNavLink>
+      <ActiveStyleNavLink to="/messages">MESSAGES</ActiveStyleNavLink>
+      <ActiveStyleNavLink to="/library">LIBRARY</ActiveStyleNavLink>
+      <ActiveStyleNavLink to="/profile">PROFILE</ActiveStyleNavLink>
+    </RouteContainer>
   </Container>
 )
 
