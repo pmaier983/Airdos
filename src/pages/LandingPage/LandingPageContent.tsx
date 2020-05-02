@@ -1,14 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
+import {
+  Switch,
+  Route,
+} from 'react-router-dom'
 
 import { FeedStack } from '../../components/FeedStack'
-import { FeedInput } from '../../components/FeedInput'
 import { PaddingRowPage } from './landingPageStyles'
 
 const Container = styled.div`
   max-width: 500px;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   box-shadow: 
     -${({ theme }) => theme.borderWidth} 0 0 0 ${({ theme }) => theme.borderColor}, 
      ${({ theme }) => theme.borderWidth} 0 0 0 ${({ theme }) => theme.borderColor};
@@ -26,26 +29,31 @@ const PaddingColumnContent = styled.div`
   width: 15px;
 `
 
-const PaddingRowFeedSeparator = styled.div`
-  width: 100%;
-  height: 20px;   
-`
-
-const FeedContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
 const LandingPageContent = () => (
   <Container>
     <PaddingRowPage />
     <PaddingContainer>
       <PaddingColumnContent />
-      <FeedContainer>
-        <FeedInput />
-        <PaddingRowFeedSeparator />
-        <FeedStack />
-      </FeedContainer>
+      <Switch>
+        <Route exact path="/feed">
+          <FeedStack />
+        </Route>
+        <Route path="/groups">
+          <div>Groups is not yet built</div>
+        </Route>
+        <Route path="/profile">
+          <div>Profile is not yet built</div>
+        </Route>
+        <Route path="/messages">
+          <div>Messages is not yet built</div>
+        </Route>
+        <Route path="/library">
+          <div>Library is not yet built</div>
+        </Route>
+        <Route path="/Profile">
+          <div>Profile is not yet built</div>
+        </Route>
+      </Switch>
       <PaddingColumnContent />
     </PaddingContainer>
   </Container>

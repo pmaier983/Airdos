@@ -2,8 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { FeedBlock } from './FeedBlock'
+import { FeedInput } from './FeedInput'
 
 import { posts } from '../dud-data/posts'
+
+const FeedStackContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 const FeedContainer = styled.div`
   display: flex;
@@ -12,6 +18,11 @@ const FeedContainer = styled.div`
     -${({ theme }) => theme.borderWidth} 0 0 0 ${({ theme }) => theme.borderColor}, 
      ${({ theme }) => theme.borderWidth} 0 0 0 ${({ theme }) => theme.borderColor},
      0 -${({ theme }) => theme.borderWidth} 0 0 ${({ theme }) => theme.borderColor};
+`
+
+const PaddingRowFeedSeparator = styled.div`
+  width: 100%;
+  height: 20px;   
 `
 
 const PaddingRowFeedStack = styled.div`
@@ -27,7 +38,9 @@ const LoadingIcon = styled.div`
 `
 
 const FeedStack = () => (
-  <>
+  <FeedStackContainer>
+    <FeedInput />
+    <PaddingRowFeedSeparator />
     <FeedContainer>
       {posts.map((post) => (
         <div key={post.text}>
@@ -37,7 +50,7 @@ const FeedStack = () => (
       ))}
     </FeedContainer>
     <LoadingIcon>Loading ...</LoadingIcon>
-  </>
+  </FeedStackContainer>
 )
 
 export { FeedStack }

@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom'
 
 import { LandingPage } from './pages/LandingPage'
 
@@ -10,7 +13,9 @@ const FontWrapper = styled.div`
 
 const App = () => (
   <FontWrapper>
-    <LandingPage />
+    <Router>
+      <LandingPage />
+    </Router>
   </FontWrapper>
 )
 
