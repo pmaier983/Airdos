@@ -35,7 +35,11 @@ const LandingPageContent = () => (
     <PaddingContainer>
       <PaddingColumnContent />
       <Switch>
-        <Route exact path="/feed">
+        {/* TODO: Remove this Default Path */}
+        <Route path="/">
+          <FeedStack />
+        </Route>
+        <Route path="/feed">
           <FeedStack />
         </Route>
         <Route path="/groups">
