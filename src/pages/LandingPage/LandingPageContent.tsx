@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {
   Switch,
   Route,
+  Redirect,
 } from 'react-router-dom'
 
 import { FeedStack } from '../../components/FeedStack'
@@ -36,8 +37,8 @@ const LandingPageContent = () => (
       <PaddingColumnContent />
       <Switch>
         {/* TODO: Remove this Default Path */}
-        <Route path="/">
-          <FeedStack />
+        <Route exact path="/">
+          <Redirect to="/feed" />
         </Route>
         <Route path="/feed">
           <FeedStack />
