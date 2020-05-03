@@ -16,6 +16,7 @@ const ExplorerSearch = styled.input`
   height: ${({ theme }) => theme.largeFontSize};
   box-shadow: ${({ theme }) => theme.basicBoxShadow};
   border: none;
+  font-family: inherit;
   :focus {
     outline: none;
   }
