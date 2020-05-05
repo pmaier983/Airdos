@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import { ThemeWrapper } from './ThemeWrapper'
+import { UserProvider } from './contexts/UserProvider'
 import { App } from './App'
 
 if (process.env.NODE_ENV !== 'production') {
@@ -12,7 +13,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 ReactDOM.render(
   <ThemeWrapper>
-    <App />
+    <UserProvider>
+      <App />
+    </UserProvider>
   </ThemeWrapper>,
   document.getElementById('root'),
 )
