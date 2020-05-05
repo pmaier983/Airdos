@@ -32,6 +32,7 @@ const FooterContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `
 
 const LikesContainer = styled.div`
@@ -40,6 +41,7 @@ const LikesContainer = styled.div`
 `
 
 const LikesCount = styled.div`
+  align-self: center;
   cursor: pointer;
 `
 
@@ -79,7 +81,7 @@ const FeedBlock: React.FC<IFeedBlockProps> = ({ text, title }) => {
         <MaterialIcon name="record_voice_over" size="18px" onClick={() => console.log('repost')} />
         <LikesContainer>
           <LikesCount>{likeCount}</LikesCount>
-          <MaterialIcon name={isLiked ? 'favorite' : 'favorite_border'} size="18px" onClick={handleLike} />
+          <MaterialIcon name={isLiked ? 'emoji_objects' : 'emoji_objects_outlined'} size="20px" onClick={handleLike} />
         </LikesContainer>
       </FooterContainer>
     </FeedBlockContainer>

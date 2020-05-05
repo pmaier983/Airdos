@@ -40,7 +40,7 @@ const Icon = styled.i<IconStylingProps>`
   overflow: ${({ overflow }) => overflow};
   font-size: ${({ size }) => size} !important;
   color: ${({ color }) => color}; 
-  width: ${({ width }) => width};
+  width: ${({ width, size }) => width || size};
   &:hover {
     background: ${({ hasHoverEffect, theme }) => hasHoverEffect && theme.focusColor};
     border-radius: 20px;
@@ -54,6 +54,7 @@ const MaterialIcon = forwardRef(
     name, role, onClick, alignSelf, display, ...props
   }: IMaterialIconsProps, buttonRef: React.Ref<any>) => {
     const materialTheme = _.get(_.flow(_.split('_'), _.last, _.toUpper)(name), ICON_THEMES)
+    console.log('the theme', materialTheme)
     return (
       <IconContainer
         role={role || (onClick && 'button')}
