@@ -54,7 +54,6 @@ const MaterialIcon = forwardRef(
     name, role, onClick, alignSelf, display, ...props
   }: IMaterialIconsProps, buttonRef: React.Ref<any>) => {
     const materialTheme = _.get(_.flow(_.split('_'), _.last, _.toUpper)(name), ICON_THEMES)
-    console.log('the theme', materialTheme)
     return (
       <IconContainer
         role={role || (onClick && 'button')}
