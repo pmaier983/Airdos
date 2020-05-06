@@ -4,13 +4,19 @@ export const basicTheme = {
   backgroundColor: `rgb(${colors.white})`,
   spacingColor: `rgb(${colors.grey})`,
   focusColor: `rgb(${colors.red})`,
+  lightFocusColor: `rgb(${colors.red.replace(/ /g, ',')}, 0.3)`,
+  contrastFocusColor: `rgb(${colors.white})`,
+  lightEmphasisColor: `rgb(${colors.grey.replace(/ /g, ',')}, 0.4)`,
 
   // Borders
   borderColor: `rgb(${colors.grey})`,
   borderStyle: 'solid',
-  borderWidth: '1px',
+  normalBorderWidth: '1px',
+  mediumBorderWidth: '3px',
+  largeBorderWidth: '5px',
 
   normalBorderRadius: '2px',
+  largeBorderRadius: '10px',
   searchBubbleBorderRadius: '20px',
 
   // Fonts
