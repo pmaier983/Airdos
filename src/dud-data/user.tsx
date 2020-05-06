@@ -1,3 +1,3 @@
 export const dudUserInfo = {
-  name: 'Gil Birney', firstName: 'Gil', lastName: 'Birney', username: 'GilBirney22',
+  id: '983', name: 'Gil Birney', firstName: 'Gil', lastName: 'Birney', username: 'GilBirney22',
 }

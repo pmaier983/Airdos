@@ -2,26 +2,32 @@ import { useLocalStorage } from './useLocalStorage'
 
 // verify session return userId
 // go to database and get userId using 128 bit session id
-const verifySessionGetUserID = (session: string) => (session ? '123456789abc' : undefined)
+const verifySessionGetUserID = (session: string) => (session === '123456789abc' ? '983' : undefined)
 
-const useSession = () => {
+// eslint-disable-next-line no-unused-vars
+const generateSession = (userId: string) => (userId ? '123456789abc' : undefined)
+
+type useSessionType = () => [
+  undefined | string,
+  (validUserId: string) => void,
+  () => void
+]
+
+const useSession: useSessionType = () => {
   const [session, setSession] = useLocalStorage({ key: 'Session', initialValue: undefined })
 
-  const noSessionReturn = [undefined, setSession, undefined]
+  const establishSession = (validUserId: string) => {
+    // validate userId (maybe?)
+    setSession(generateSession(validUserId))
+  }
 
-  if (!session) {
-    return noSessionReturn
+  const clearSession = () => {
+    setSession(undefined)
   }
 
   const userId = verifySessionGetUserID(session)
 
-  if (!userId) {
-    // clear the fake session
-    setSession(undefined)
-    return noSessionReturn
-  }
-
-  return [userId, setSession, session]
+  return [userId, establishSession, clearSession]
 }
 
 export { useSession }

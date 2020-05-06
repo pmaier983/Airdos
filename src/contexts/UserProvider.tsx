@@ -7,16 +7,19 @@ import { dudUserInfo } from '../dud-data/user'
 
 interface IUserState {
   userInfo?: {
+    id: string,
     name: string,
     firstName: string,
     middleName?: string,
     lastName: string,
     username: string,
-  }
+  },
+  clearSession: () => void,
 }
 
 const initialState: IUserState = {
   userInfo: undefined,
+  clearSession: () => undefined,
 }
 
 interface IAction {
@@ -26,8 +29,9 @@ interface IAction {
 }
 
 export const USER_ACTIONS = {
-  UPDATE_NAME: 'UPDATE_NAME',
-  UPDATE_USERNAME: 'UPDATE_USERNAME',
+  UPDATE_USER_INFO: 'UPDATE_USER_INFO',
+  LOGOUT: 'LOGOUT',
+  LOGIN: 'LOGIN',
 }
 
 type ContextProps = [IUserState, React.Dispatch<IAction>]
@@ -43,12 +47,20 @@ export const useUserContext = () => useContext(UserContext)
 
 const reducer = (state: IUserState, action: IAction) => {
   switch (action.type) {
-    case USER_ACTIONS.UPDATE_NAME:
+    case USER_ACTIONS.UPDATE_USER_INFO:
       // TODO: push to database
-      return { ...state, name: action.payload }
-    case USER_ACTIONS.UPDATE_USERNAME:
-      // TODO: push to database
-      return { ...state, username: action.payload }
+      // TODO: verify all userInfo Items
+      return { ...state, userInfo: action.payload }
+    case USER_ACTIONS.LOGIN:
+      // query username Password
+      if (action.payload.username === 'gil') {
+        action.payload.onSuccess()
+        return { ...state, userInfo: dudUserInfo }
+      }
+      action.payload.onFailure()
+      return state
+    case USER_ACTIONS.LOGOUT:
+      return initialState
     default:
       console.error('The Reducer Doesn\'t handle this type')
       return state
@@ -56,10 +68,10 @@ const reducer = (state: IUserState, action: IAction) => {
 }
 
 const UserProvider: React.FC = ({ children }) => {
-  const [userId] = useSession()
+  const [userId,, clearSession] = useSession()
   // query database to get userInfo
   const userInfo = userId ? { userInfo: dudUserInfo } : { userInfo: undefined }
-  const reducedState = useReducer(reducer, userInfo)
+  const reducedState = useReducer(reducer, { userInfo, clearSession })
   return (
     <UserContext.Provider value={reducedState}>
       {children}
