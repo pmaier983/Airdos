@@ -14,20 +14,16 @@ type useSessionType = () => [
 ]
 
 const useSession: useSessionType = () => {
-  const [session, setSession] = useLocalStorage({ key: 'Session', initialValue: undefined })
+  const [session, setSession, removeSession] = useLocalStorage({ key: 'Session', initialValue: undefined })
 
   const establishSession = (validUserId: string) => {
     // validate userId (maybe?)
     setSession(generateSession(validUserId))
   }
 
-  const clearSession = () => {
-    setSession(undefined)
-  }
-
   const userId = verifySessionGetUserID(session)
 
-  return [userId, establishSession, clearSession]
+  return [userId, establishSession, removeSession]
 }
 
 export { useSession }

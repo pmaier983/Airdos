@@ -39,7 +39,17 @@ const useLocalStorage = ({ key, initialValue }: IuseLocalStorageProps) => {
     }
   }
 
-  return [storedValue, setValue]
+  const removeKeyValue = () => {
+    try {
+      // Try to remove a key from localStorage
+      window.localStorage.removeItem(key)
+    } catch (error) {
+      // A more advanced implementation would handle the error case
+      console.log(error)
+    }
+  }
+
+  return [storedValue, setValue, removeKeyValue]
 }
 
 export { useLocalStorage }
