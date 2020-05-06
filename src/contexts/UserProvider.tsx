@@ -60,6 +60,7 @@ const reducer = (state: IUserState, action: IAction) => {
       action.payload.onFailure()
       return state
     case USER_ACTIONS.LOGOUT:
+      state.clearSession()
       return initialState
     default:
       console.error('The Reducer Doesn\'t handle this type')
@@ -70,7 +71,7 @@ const reducer = (state: IUserState, action: IAction) => {
 const UserProvider: React.FC = ({ children }) => {
   const [userId,, clearSession] = useSession()
   // query database to get userInfo
-  const userInfo = userId ? { userInfo: dudUserInfo } : { userInfo: undefined }
+  const userInfo = userId ? { ...dudUserInfo } : undefined
   const reducedState = useReducer(reducer, { userInfo, clearSession })
   return (
     <UserContext.Provider value={reducedState}>
