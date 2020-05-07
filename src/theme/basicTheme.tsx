@@ -26,6 +26,7 @@ export const basicTheme = {
   highlightedFontColor: `rgb(${colors.red})`,
 
   largeFontSize: '20px',
+  mediumLargeFontSize: '18px',
   mediumFontSize: '16px',
   normalFontSize: '12px',
 }

@@ -5,15 +5,18 @@ import { useSession } from '../hooks'
 
 import { dudUserInfo } from '../dud-data/user'
 
+export interface IUserInfo {
+  id: string,
+  name: string,
+  firstName: string,
+  middleName?: string,
+  lastName: string,
+  username: string,
+  collegeName?: string,
+}
+
 interface IUserState {
-  userInfo?: {
-    id: string,
-    name: string,
-    firstName: string,
-    middleName?: string,
-    lastName: string,
-    username: string,
-  },
+  userInfo?: IUserInfo,
   clearSession: () => void,
 }
 

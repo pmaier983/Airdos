@@ -6,6 +6,7 @@ import {
 import { PrivateRoute } from '../../components/PrivateRoute'
 import { IPageRoutes } from '../../Routes'
 import { FeedStack } from '../../components/FeedStack'
+import { ProfilePage } from '../ProfilePage'
 
 const DummyComponent = () => <div>This Route is not built yet</div>
 
@@ -22,7 +23,7 @@ const landingPageRoutes: IPageRoutes[] = [
   },
   {
     path: '/profile',
-    Component: DummyComponent,
+    Component: ProfilePage,
     Router: PrivateRoute,
 
   },
