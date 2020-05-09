@@ -143,7 +143,7 @@ const LoginPage = () => {
     <Container onSubmit={handleSubmit(onSubmit)}>
       <LoginContainer>
         <CloseContainer>
-          <MaterialIcon name="close" onClick={() => history.push('/')} />
+          <MaterialIcon name="close" onClick={() => history.goBack()} />
         </CloseContainer>
         <SegmentContainer>
           <LoginTitleMessage>
