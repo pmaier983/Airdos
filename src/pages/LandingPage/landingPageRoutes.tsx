@@ -24,7 +24,7 @@ const landingPageRoutes: IPageRoutes[] = [
   {
     path: '/profile',
     Component: ProfilePage,
-    Router: PrivateRoute,
+    Router: Route,
   },
   {
     path: '/messages',

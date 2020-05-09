@@ -1,21 +1,35 @@
 import React from 'react'
+import _ from 'lodash/fp'
 import {
-  Redirect,
+  useLocation,
 } from 'react-router-dom'
 
-import { useUserContext } from '../../contexts/UserProvider'
 import { ProfilePageUserInfo } from './ProfilePageUserInfo'
+import { ProfilePageNotFound } from './ProfilePageNotFound'
+
+import { usersInfo } from '../../dud-data/users'
+
+// The username is the path after /profile
+const getUrlUsername = (path: string) => {
+  const splitPath = path.split('/')
+  const profileIndex = _.findIndex((pathSegment) => pathSegment === 'profile', splitPath)
+  return splitPath[profileIndex + 1]
+}
 
 const ProfilePage = () => {
-  const [{ userInfo }] =useUserContext()
+  const location = useLocation()
+  const usernameFromPath = getUrlUsername(location.pathname)
 
-  if (!userInfo) {
-    return <Redirect to="/" />
+  // query database for user
+  const user = _.find(({ username }) => username === usernameFromPath, usersInfo)
+
+  if (!user) {
+    return <ProfilePageNotFound />
   }
 
   return (
     <>
-      <ProfilePageUserInfo {...userInfo} />
+      <ProfilePageUserInfo {...user} />
 
     </>
   )

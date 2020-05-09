@@ -83,7 +83,7 @@ const LandingPageNavigation = () => {
         <LinkContainer>
           <MaterialIcon name="person" />
           <PaddingLinkColumn />
-          <ActiveStyleNavLink to="/profile">PROFILE</ActiveStyleNavLink>
+          <ActiveStyleNavLink to={`/profile/${userInfo?.username}`}>PROFILE</ActiveStyleNavLink>
         </LinkContainer>
       </RouteContainer>
       {userInfo
