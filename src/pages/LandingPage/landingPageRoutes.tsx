@@ -25,7 +25,6 @@ const landingPageRoutes: IPageRoutes[] = [
     path: '/profile',
     Component: ProfilePage,
     Router: PrivateRoute,
-
   },
   {
     path: '/messages',
@@ -35,12 +34,6 @@ const landingPageRoutes: IPageRoutes[] = [
   },
   {
     path: '/library',
-    Component: DummyComponent,
-    Router: PrivateRoute,
-
-  },
-  {
-    path: '/profile',
     Component: DummyComponent,
     Router: PrivateRoute,
   },
