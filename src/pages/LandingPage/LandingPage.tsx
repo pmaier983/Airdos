@@ -15,6 +15,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: row;
+  font-weight: ${({ theme }) => theme.normalFontWeight};
   background-color: ${({ theme }) => theme.backgroundColor};
 `
 

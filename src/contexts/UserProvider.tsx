@@ -1,9 +1,11 @@
 /* eslint-disable no-console */
+import _ from 'lodash/fp'
 import React, { createContext, useReducer, useContext } from 'react'
 
 import { useSession } from '../hooks'
+import { usersInfo } from '../dud-data/usersInfo'
 
-import { dudUserInfo } from '../dud-data/user'
+const gilUserInfo = _.find(({ username }) => username === 'gilbirney22', usersInfo)
 
 export interface IUserInfo {
   id: string,
@@ -13,6 +15,7 @@ export interface IUserInfo {
   lastName: string,
   username: string,
   collegeName?: string,
+  groups: string[],
 }
 
 interface IUserState {
@@ -58,7 +61,7 @@ const reducer = (state: IUserState, action: IAction) => {
       // query username Password
       if (action.payload.username === 'gil') {
         action.payload.onSuccess()
-        return { ...state, userInfo: dudUserInfo }
+        return { ...state, userInfo: gilUserInfo }
       }
       action.payload.onFailure()
       return state
@@ -74,7 +77,7 @@ const reducer = (state: IUserState, action: IAction) => {
 const UserProvider: React.FC = ({ children }) => {
   const [userId,, clearSession] = useSession()
   // query database to get userInfo
-  const userInfo = userId ? { ...dudUserInfo } : undefined
+  const userInfo = userId ? { ...gilUserInfo } : undefined
   const reducedState = useReducer(reducer, { userInfo, clearSession })
   return (
     <UserContext.Provider value={reducedState}>
