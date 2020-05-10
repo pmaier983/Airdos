@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import { ProfilePageUserInfo } from './ProfilePageUserInfo'
 import { ProfilePageNotFound } from './ProfilePageNotFound'
 import { ProfilePageRelationshipSummaries } from './ProfilePageRelationshipSummaries'
+import { useUserContext } from '../../contexts/UserProvider'
 
 import { usersInfo } from '../../dud-data/usersInfo'
 import { followerRelationships } from '../../dud-data/followerRelationships'
@@ -32,14 +33,21 @@ const getUrlUsername = (path: string) => {
 
 const ProfilePage = () => {
   const location = useLocation()
+  const [{ userInfo: currentUserInfo }] = useUserContext()
   const usernameFromPath = getUrlUsername(location.pathname)
 
-  if (usernameFromPath === 'undefined') {
+  if (!usernameFromPath && !usersInfo) {
     return <Redirect to="/login" />
   }
 
+  if (!usernameFromPath && usersInfo) {
+    return <Redirect to={`/profile/${currentUserInfo?.username}`} />
+  }
+
   // query database for user
-  const userInfo = _.find(({ username }) => username === usernameFromPath, usersInfo)
+  const userInfo = usernameFromPath
+    ? _.find(({ username }) => username === usernameFromPath, usersInfo)
+    : currentUserInfo
 
   if (!userInfo) {
     return <ProfilePageNotFound />

@@ -53,7 +53,7 @@ const renderFollowerSummary = (followerList: string[]) => {
 
 const renderGroupSummary = (groupList: string[]) => {
   const numberOfGroups = groupList.length
-  if (numberOfGroups <= 0) { return 'NOT A PART OF ANY YET' }
+  if (numberOfGroups <= 0) { return 'NOT A PART OF ANY GROUP YET' }
   const keyGroup = groupList[0]
   return (
     <span>

@@ -19,6 +19,7 @@ const ActiveStyleNavLink: React.FC<IActiveStyleNavLinkProps> = (
 ) => (
   <StyledNavLink
     to={to}
+    strict={false}
     activeStyle={{
       color: directTheme.highlightedFontColor,
     }}
