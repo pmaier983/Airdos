@@ -9,14 +9,22 @@ import { ProfilePageUserInfo } from './ProfilePageUserInfo'
 import { ProfilePageNotFound } from './ProfilePageNotFound'
 import { ProfilePageRelationshipSummaries } from './ProfilePageRelationshipSummaries'
 import { useUserContext } from '../../contexts/UserProvider'
+import { FollowButton, MessageButton } from '../../components/buttons'
 
 import { usersInfo } from '../../dud-data/usersInfo'
 import { followerRelationships } from '../../dud-data/followerRelationships'
-import { groups } from '../../dud-data/groups'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+`
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
 `
 
 const PaddingRelationshipsRow = styled.div`
@@ -36,7 +44,7 @@ const ProfilePage = () => {
   const [{ userInfo: currentUserInfo }] = useUserContext()
   const usernameFromPath = getUrlUsername(location.pathname)
 
-  if (!usernameFromPath && !usersInfo) {
+  if ((!usernameFromPath && !usersInfo) || usernameFromPath === 'undefined') {
     return <Redirect to="/login" />
   }
 
@@ -62,6 +70,15 @@ const ProfilePage = () => {
       <ProfilePageUserInfo {...userInfo} />
       <PaddingRelationshipsRow />
       <ProfilePageRelationshipSummaries followerList={followerList} groupList={groupList} />
+      <PaddingRelationshipsRow />
+      {userInfo.username !== currentUserInfo?.username
+      && (
+        <ButtonContainer>
+          <FollowButton usernameToFollow={userInfo.username} />
+          <MessageButton usernameToMessage={userInfo.username} />
+        </ButtonContainer>
+      )}
+
     </Container>
   )
 }

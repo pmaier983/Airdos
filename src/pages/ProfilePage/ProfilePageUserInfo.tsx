@@ -23,7 +23,8 @@ const ProfileInfoContainer = styled.div`
 `
 
 const ProfilePicture = styled.img`
-  width: 35%;
+  width: 150px;
+  height: 140px;
   border-radius: 50%; 
 `
 

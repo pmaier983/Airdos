@@ -31,7 +31,7 @@ export const basicTheme: IBasicTheme = {
   backgroundColor: `rgb(${colors.white})`,
   spacingColor: `rgb(${colors.grey})`,
   focusColor: `rgb(${colors.red})`,
-  lightFocusColor: `rgb(${colors.red.replace(/ /g, ',')}, 0.3)`,
+  lightFocusColor: `rgb(${colors.red.replace(/ /g, ',')}, 0.1)`,
   contrastFocusColor: `rgb(${colors.white})`,
   lightEmphasisColor: `rgb(${colors.grey.replace(/ /g, ',')}, 0.4)`,
 
