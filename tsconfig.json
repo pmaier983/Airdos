@@ -19,7 +19,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "includes": ["styled-components.d.ts"]
   },
   "include": ["src"],
   "files": ["src/index.tsx"],
