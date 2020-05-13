@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import {
   BrowserRouter as Router,
 } from 'react-router-dom'
+import { MockedProvider } from '@apollo/react-testing'
 
 import { Routes } from './Routes'
+import { mocks } from './dud-data/mocks'
 
 const FontWrapper = styled.div`
   font-family: ${({ theme }) => theme.normalFontFamily};
@@ -13,9 +15,11 @@ const FontWrapper = styled.div`
 
 const App = () => (
   <FontWrapper>
-    <Router>
-      <Routes />
-    </Router>
+    <MockedProvider addTypename={false} mocks={mocks}>
+      <Router>
+        <Routes />
+      </Router>
+    </MockedProvider>
   </FontWrapper>
 )
 
