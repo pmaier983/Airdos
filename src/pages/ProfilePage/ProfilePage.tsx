@@ -47,16 +47,6 @@ const ProfilePage = () => {
   const [{ userInfo: currentUserInfo }] = useUserContext()
   const usernameFromPath = getUrlUsername(location.pathname)
 
-  const {
-    data, loading, error,
-  } = useQuery(GET_USERINFO, {
-    variables: {
-      username: usernameFromPath,
-    },
-  })
-
-  console.log(data, loading, error)
-
   if ((!usernameFromPath && !usersInfo) || usernameFromPath === 'undefined') {
     return <Redirect to="/login" />
   }
