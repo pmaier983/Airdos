@@ -8,6 +8,7 @@ const InputBox = styled.textarea`
   border-radius: ${({ theme }) => theme.normalBorderRadius};
   font-size: ${({ theme }) => theme.mediumFontSize};
   resize: vertical;
+  font-family: inherit;
   border: none;
   padding: 0;
   :focus {

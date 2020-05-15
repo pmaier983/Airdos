@@ -40,7 +40,7 @@ const Icon = styled.i<IconStylingProps>`
   overflow: ${({ overflow }) => overflow};
   font-size: ${({ size }) => size} !important;
   color: ${({ color }) => color}; 
-  width: ${({ width }) => width};
+  width: ${({ width, size }) => width || size};
   &:hover {
     background: ${({ hasHoverEffect, theme }) => hasHoverEffect && theme.focusColor};
     border-radius: 20px;

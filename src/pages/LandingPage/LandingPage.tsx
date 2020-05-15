@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactGA from 'react-ga'
 import styled from 'styled-components'
 
 import { LandingPageNavigation } from './LandingPageNavigation'
@@ -14,6 +15,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: row;
+  font-weight: ${({ theme }) => theme.normalFontWeight};
   background-color: ${({ theme }) => theme.backgroundColor};
 `
 
@@ -22,14 +24,22 @@ const ContentPaddingColumn = styled.div`
   height: 100%;
 `
 
-const LandingPage = () => (
-  <Container>
-    <LandingPageNavigation />
-    <ContentPaddingColumn />
-    <LandingPageContent />
-    <ContentPaddingColumn />
-    <LandingPageExplorer />
-  </Container>
-)
+const initializeAnalytics = () => {
+  ReactGA.initialize('UA-164973605-2')
+  ReactGA.pageview('LandingPage')
+}
+
+const LandingPage = () => {
+  initializeAnalytics()
+  return (
+    <Container>
+      <LandingPageNavigation />
+      <ContentPaddingColumn />
+      <LandingPageContent />
+      <ContentPaddingColumn />
+      <LandingPageExplorer />
+    </Container>
+  )
+}
 
 export { LandingPage }

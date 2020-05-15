@@ -15,9 +15,9 @@ const FeedContainer = styled.div`
   display: flex;
   flex-direction: column;
   box-shadow: 
-    -${({ theme }) => theme.borderWidth} 0 0 0 ${({ theme }) => theme.borderColor}, 
-     ${({ theme }) => theme.borderWidth} 0 0 0 ${({ theme }) => theme.borderColor},
-     0 -${({ theme }) => theme.borderWidth} 0 0 ${({ theme }) => theme.borderColor};
+    -${({ theme }) => theme.normalBorderWidth} 0 0 0 ${({ theme }) => theme.borderColor}, 
+     ${({ theme }) => theme.normalBorderWidth} 0 0 0 ${({ theme }) => theme.borderColor},
+     0 -${({ theme }) => theme.normalBorderWidth} 0 0 ${({ theme }) => theme.borderColor};
 `
 
 const PaddingRowFeedSeparator = styled.div`
