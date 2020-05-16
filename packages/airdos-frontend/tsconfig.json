@@ -1,9 +1,15 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "experimentalDecorators": true,
     "module": "esnext",
     "target": "es6",
-    "lib": ["es6", "esnext", "es2015", "dom"],
+    "lib": [
+      "es6",
+      "esnext",
+      "es2015",
+      "dom"
+    ],
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -21,8 +27,16 @@
     "noEmit": true,
     "jsx": "react"
   },
-  "includes": ["styled-components.d.ts"],
-  "include": ["src"],
-  "files": ["src/index.tsx"],
-  "exclude": ["node_modules"]
+  "includes": [
+    "styled-components.d.ts"
+  ],
+  "include": [
+    "src"
+  ],
+  "files": [
+    "src/index.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

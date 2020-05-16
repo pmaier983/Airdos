@@ -1,5 +1,9 @@
 {
+  "version": "independent",
   "packages": ["packages/*"],
   "npmClient": "yarn",
-  "version": "independent"
+  "scripts": {
+    "diff": "lerna diff",
+    "new-version": "lerna new-version"
+  }
 }
