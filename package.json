@@ -3,5 +3,9 @@
   "private": true,
   "devDependencies": {
     "lerna": "^3.21.0"
+  },
+  "scripts": {
+    "diff": "lerna diff",
+    "new-version": "lerna version"
   }
 }
