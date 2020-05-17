@@ -1,0 +1,17 @@
+{
+  "name": "backend-airdos",
+  "version": "1.0.0",
+  "description": "Backend for Airdos.net",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.13.1",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
+    "graphql-tools": "^5.0.0"
+  }
+}

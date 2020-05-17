@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./packages",
     "paths": {
-      // "@airdosco/airdos": ["airdos-frontend/src"],
+      // "@airdosco/airdos": ["frontend-airdos/src"],
       "@airdosco/*": ["*/src"]
     }
   }
