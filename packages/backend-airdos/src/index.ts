@@ -1,5 +1,5 @@
-import express from 'express'
-import { ApolloServer, gql } from 'apollo-server-express'
+import express from 'express';
+import { ApolloServer, gql } from 'apollo-server-express';
 
 // Some fake data
 const books = [
@@ -24,20 +24,20 @@ const resolvers = {
   Query: { books: () => books },
 };
 
-const PORT = 4000
+const PORT = 4000;
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   playground: {
     endpoint: `http://localhost:${PORT}/graphql`,
-  }
+  },
 });
 
 const app = express();
 
 server.applyMiddleware({
-  app
+  app,
 });
 
 // Start the server
