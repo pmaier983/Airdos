@@ -25,5 +25,23 @@ module.exports = {
   rules: {
     "import/prefer-default-export": 0,
     semi: ["error", "never"],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ]
   },
+  settings: {
+    'import/resolver': {
+      node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          moduleDirectory: ['node_modules', 'src/'],
+      },
+  },
+  }
 };
