@@ -6,13 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./src/index.ts",
-    "clean": "rm yarn.lock & rm -rf node_modules"
+    "clean": "rm yarn.lock & rm -rf node_modules & rm -rf dist",
+    "build": "tsc",
+    "lint": "eslint . --fix"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "^2.13.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.33.0",

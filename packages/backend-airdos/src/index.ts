@@ -1,27 +1,32 @@
 import express from 'express'
 import { ApolloServer, gql } from 'apollo-server-express'
 
-// Some fake data
-const books = [
-  {
-    title: "Harry Potter and the Sorcerer's stone",
-    author: 'J.K. Rowling',
-  },
-  {
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
-  },
-]
+import { posts } from './dud-data'
 
-// The GraphQL schema in string form
+// import { typeDefs, resolvers } from './modules/schema'
+
 const typeDefs = gql`
-  type Query { books: [Book] }
-  type Book { title: String, author: String }
+  type Query {
+    posts: [Post]
+  }
+  enum PostTypeEnum {
+    PUBLICIZING_RESEARCH
+    PRE_PEER_REVIEW
+    DISCUSSION_TOPIC
+    CONFERENCE_AWARENESS
+    NONE
+  }
+  type Post {
+    id: ID!
+    location: String,
+    title: String,
+    postType: PostTypeEnum,
+    text: String,
+  }
 `
 
-// The resolvers
 const resolvers = {
-  Query: { books: () => books },
+  Query: { posts: () => posts },
 }
 
 const PORT = 4000
