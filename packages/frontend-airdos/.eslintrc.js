@@ -17,12 +17,12 @@ module.exports = {
     ecmaFeatures: {
       jsx: true
     },
-    ecmaVersion: 2018,
+    ecmaVersion: 2019,
     sourceType: "module"
   },
   plugins: ["react"],
   parser: "babel-eslint",
-  "settings": {
+  settings: {
     "import/resolver": {
       "node": {
         "extensions": [
@@ -38,7 +38,7 @@ module.exports = {
     "react/jsx-props-no-spreading": OFF,
     "react/require-default-props": OFF,
     "react/prop-types": OFF,
-    'import/prefer-default-export': OFF,
+    "import/prefer-default-export": OFF,
     semi: ["error", "never"],
     "space-infix-ops": OFF,
     "import/extensions": [
