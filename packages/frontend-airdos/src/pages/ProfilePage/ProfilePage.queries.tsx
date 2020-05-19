@@ -1,8 +1,8 @@
 import { gql } from 'apollo-boost'
 
 const GET_USERINFO = gql`
-  query getProfile($userName: String!){ 
-    user(login: $userName) {
+  query getProfile($username: String!){ 
+    user(username: $username) {
       id
       name
       firstName

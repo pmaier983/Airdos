@@ -47,6 +47,23 @@ const ProfilePage = () => {
   const [{ userInfo: currentUserInfo }] = useUserContext()
   const usernameFromPath = getUrlUsername(location.pathname)
 
+  const {
+    data, loading, error,
+  } = useQuery(GET_USERINFO, {
+    variables: {
+      username: usernameFromPath || currentUserInfo?.username,
+    },
+  })
+
+  // TODO: add loading and error screen
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error</div>
+  }
+
   if ((!usernameFromPath && !usersInfo) || usernameFromPath === 'undefined') {
     return <Redirect to="/login" />
   }
@@ -56,9 +73,7 @@ const ProfilePage = () => {
   }
 
   // query database for user
-  const userInfo = usernameFromPath
-    ? _.find(({ username }) => username === usernameFromPath, usersInfo)
-    : currentUserInfo
+  const userInfo = data.user
 
   if (!userInfo) {
     return <ProfilePageNotFound />
