@@ -1,39 +1,18 @@
 import express from 'express'
-import { ApolloServer, gql } from 'apollo-server-express'
+import { ApolloServer, makeExecutableSchema } from 'apollo-server-express'
 
-import { posts } from './dud-data'
-
-// import { typeDefs, resolvers } from './modules/schema'
-
-const typeDefs = gql`
-  type Query {
-    posts: [Post]
-  }
-  enum PostTypeEnum {
-    PUBLICIZING_RESEARCH
-    PRE_PEER_REVIEW
-    DISCUSSION_TOPIC
-    CONFERENCE_AWARENESS
-    NONE
-  }
-  type Post {
-    id: ID!
-    location: String,
-    title: String,
-    postType: PostTypeEnum,
-    text: String,
-  }
-`
-
-const resolvers = {
-  Query: { posts: () => posts },
-}
+import { typeDefs, resolvers } from './modules/schema'
 
 const PORT = 4000
 
-const server = new ApolloServer({
+const schema = makeExecutableSchema({
   typeDefs,
   resolvers,
+  resolverValidationOptions: { requireResolversForResolveType: false },
+})
+
+const server = new ApolloServer({
+  schema,
   playground: {
     endpoint: `http://localhost:${PORT}/graphql`,
   },
