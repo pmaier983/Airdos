@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import { ThemeWrapper } from './ThemeWrapper'
+import { ApolloWrapper } from './ApolloClient'
 import { UserProvider } from './contexts/UserProvider'
 import { App } from './App'
 
@@ -12,10 +13,12 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 ReactDOM.render(
-  <ThemeWrapper>
-    <UserProvider>
-      <App />
-    </UserProvider>
-  </ThemeWrapper>,
+  <ApolloWrapper>
+    <ThemeWrapper>
+      <UserProvider>
+        <App />
+      </UserProvider>
+    </ThemeWrapper>
+  </ApolloWrapper>,
   document.getElementById('root'),
 )
