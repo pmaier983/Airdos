@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useQuery } from '@apollo/react-hooks'
+import { GET_POSTS, IGetPosts } from './FeedStack.queries'
 
 import { FeedBlock } from './FeedBlock'
 import { FeedInput } from './FeedInput'
-
-import { posts } from '../dud-data/posts'
 
 const FeedStackContainer = styled.div`
   display: flex;
@@ -37,20 +37,34 @@ const LoadingIcon = styled.div`
   font-size: ${({ theme }) => theme.mediumFontSize};
 `
 
-const FeedStack = () => (
-  <FeedStackContainer>
-    <FeedInput />
-    <PaddingRowFeedSeparator />
-    <FeedContainer>
-      {posts.map((post) => (
-        <div key={post.text}>
-          <FeedBlock {...post} />
-          <PaddingRowFeedStack />
-        </div>
-      ))}
-    </FeedContainer>
-    <LoadingIcon>Loading ...</LoadingIcon>
-  </FeedStackContainer>
-)
+const FeedStack = () => {
+  const {
+    data, loading, error,
+  } = useQuery<IGetPosts>(GET_POSTS)
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error</div>
+  }
+
+  return (
+    <FeedStackContainer>
+      <FeedInput />
+      <PaddingRowFeedSeparator />
+      <FeedContainer>
+        {data?.posts.map((post) => (
+          <div key={post?.text}>
+            <FeedBlock {...post} />
+            <PaddingRowFeedStack />
+          </div>
+        ))}
+      </FeedContainer>
+      <LoadingIcon>Loading ...</LoadingIcon>
+    </FeedStackContainer>
+  )
+}
 
 export { FeedStack }
