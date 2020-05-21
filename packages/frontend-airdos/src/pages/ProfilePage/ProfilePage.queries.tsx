@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost'
+import gql from 'graphql-tag'
 
 const GET_USERINFO = gql`
   query getProfile($username: String!){ 
@@ -9,6 +9,7 @@ const GET_USERINFO = gql`
       lastName
       username
       groups
+      followers
       collegeName
     }
   }

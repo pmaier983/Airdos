@@ -14,9 +14,6 @@ import { ProfilePageRelationshipSummaries } from './ProfilePageRelationshipSumma
 import { useUserContext } from '../../contexts/UserProvider'
 import { FollowButton, MessageButton } from '../../components/buttons'
 
-import { usersInfo } from '../../dud-data/usersInfo'
-import { followerRelationships } from '../../dud-data/followerRelationships'
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -64,23 +61,22 @@ const ProfilePage = () => {
     return <div>Error</div>
   }
 
-  if ((!usernameFromPath && !usersInfo) || usernameFromPath === 'undefined') {
+  const userInfo = data.user
+
+  if ((!usernameFromPath && !userInfo) || usernameFromPath === 'undefined') {
     return <Redirect to="/login" />
   }
 
-  if (!usernameFromPath && usersInfo) {
+  if (!usernameFromPath && userInfo) {
     return <Redirect to={`/profile/${currentUserInfo?.username}`} />
   }
-
-  // query database for user
-  const userInfo = data.user
 
   if (!userInfo) {
     return <ProfilePageNotFound />
   }
 
   // these should all be queries.
-  const followerList = followerRelationships[userInfo.username]
+  const followerList = userInfo.followers
   const groupList = userInfo.groups
 
   return (
