@@ -3,6 +3,7 @@ import _ from 'lodash/fp'
 import { ApolloServer, makeExecutableSchema } from 'apollo-server-express'
 
 import { typeDefs, resolvers } from './modules/schema'
+import { getUserModels } from './modules/types/models'
 import { getUserFromToken } from './utils'
 
 const PORT = 4000
@@ -23,7 +24,13 @@ const server = new ApolloServer({
     // TODO: This should not be here...
     const secret = _.get('headers.secret', req)
     const user = getUserFromToken(token, secret)
-    return { user }
+
+    return {
+      user,
+      models: {
+        user: getUserModels({ user }),
+      },
+    }
   },
 })
 

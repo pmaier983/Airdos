@@ -1,6 +1,16 @@
 import { gql } from 'apollo-server-express'
 
-import { users } from '../../dud-data'
+export interface IUserType {
+  id: string
+  name: string
+  firstName: string
+  lastName: string
+  username: string
+  groups: [string]
+  collegeName: string
+  followers: [string]
+  following: [string]
+}
 
 export const typeDefs = gql`
   type User implements Node {
@@ -9,7 +19,7 @@ export const typeDefs = gql`
     firstName: String
     lastName: String
     username: String
-    groups: [String]
+    groups: [String] 
     collegeName: String
     followers: [String]
     following: [String]
@@ -17,5 +27,7 @@ export const typeDefs = gql`
 `
 
 export const resolvers = {
-  Query: { user: (parent, { username }) => users[username] },
+  Query: {
+    user: (parent, { username }, context) => context.models.user.getByUsername(username),
+  },
 }
