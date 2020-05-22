@@ -22,40 +22,40 @@ export const users = {
     groups: ['Airdos'],
     collegeName: 'Bowdoin College',
     followers: [
-      'brock18', 'drewandtom19',
+      'rackraider', 'doctoroz101',
     ],
     following: [
-      'brock18',
+      'rackraider',
     ],
   },
-  brock18: {
+  rackraider: {
     id: '985',
     name: 'William Brockett',
     firstName: 'William',
     lastName: 'Brockett',
-    username: 'brock18',
+    username: 'rackraider',
     groups: ['Airdos'],
     collegeName: 'Pewter City Battle College',
     followers: [
-      'drewandtom19', 'pmaier983',
+      'doctoroz101', 'pmaier983',
     ],
     following: [
-      'pmaier983', 'drewandtom19',
+      'pmaier983', 'doctoroz101',
     ],
   },
-  drewandtom19: {
+  doctoroz101: {
     id: '983',
     name: 'Andrew Thomson',
     firstName: 'Andrew',
     lastName: 'Andrew',
-    username: 'drewandtom19',
+    username: 'doctoroz101',
     groups: ['Airdos'],
     collegeName: 'Brown Academy for Wizards and Witches',
     followers: [
-      'brock18',
+      'rackraider',
     ],
     following: [
-      'brock18', 'pmaier983',
+      'rackraider', 'pmaier983',
     ],
   },
 }
