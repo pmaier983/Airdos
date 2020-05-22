@@ -1,7 +1,9 @@
 import express from 'express'
+import _ from 'lodash/fp'
 import { ApolloServer, makeExecutableSchema } from 'apollo-server-express'
 
 import { typeDefs, resolvers } from './modules/schema'
+import { getUserFromToken } from './utils'
 
 const PORT = 4000
 
@@ -15,6 +17,13 @@ const server = new ApolloServer({
   schema,
   playground: {
     endpoint: `http://localhost:${PORT}/graphql`,
+  },
+  context: ({ req }) => {
+    const token = _.get('headers.token', req)
+    // TODO: This should not be here...
+    const secret = _.get('headers.secret', req)
+    const user = getUserFromToken(token, secret)
+    return { user }
   },
 })
 
