@@ -1,18 +1,22 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // ^ a11y doesn't recognize styled-components input
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   Redirect,
   useHistory,
   Link,
 } from 'react-router-dom'
+import { useQuery, useLazyQuery } from '@apollo/react-hooks'
+import { darken, readableColor } from 'polished'
 import { useForm } from 'react-hook-form'
 
 import { SubmitButton } from '../../components/buttons'
 import { useUserContext, USER_ACTIONS } from '../../contexts/UserProvider'
 import { useSession } from '../../hooks/useSession'
 import { MaterialIcon } from '../../components/MaterialIcon'
+
+import { VERIFY_USER } from './LoginPage.queries'
 
 const Container = styled.form`
   position: absolute;
@@ -29,12 +33,29 @@ const Container = styled.form`
 `
 
 const LoginContainer = styled.div`
-  box-shadow: ${({ theme }) => theme.mediumHighlightedBoxShadow};
-  border-radius: ${({ theme }) => theme.largeBorderRadius};
-  background-color: ${({ theme }) => theme.lightEmphasisColor};
+  ${({ theme }) => css`
+    box-shadow: ${theme.mediumHighlightedBoxShadow};
+    border-radius: ${theme.largeBorderRadius};
+    background-color: ${theme.lightEmphasisColor};
+  `}
   width: 30%;
   min-width: 300px;
   height: 25%;
+`
+
+const LoggingInOverlay = styled.div`
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 25%;
+  width: 30%;
+  ${({ theme }) => css`
+    border-radius: ${theme.largeBorderRadius};
+    background-color: ${darken(0.9, theme.lightEmphasisColor)};
+    font-size: ${theme.extraLargeFontSize};
+    color: ${readableColor(darken(0.9, theme.lightEmphasisColor))};
+  `};
 `
 
 const SegmentContainer = styled.div`
@@ -104,46 +125,58 @@ const CloseContainer = styled.div`
   position: absolute;
 `
 
+// TODO: Split this page up. Too clunky
 const LoginPage = () => {
   const history = useHistory()
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, getValues } = useForm()
   const [{ userInfo }, dispatchUserEffect] = useUserContext()
   const [, establishSession] = useSession()
   const [error, setError] = useState<string | undefined>(undefined)
   const [saveSession, setSaveSession] = useState(false)
 
-  // if the user is logged in, redirect them to home.
+  const [verifyUser, {
+    called, loading, data, error: verifyError,
+  }] = useLazyQuery(VERIFY_USER, {
+    variables: {
+      username: getValues('username'),
+      password: getValues('password'),
+    },
+  })
+
+  // The if statements here are horrible. fix this
   if (userInfo) {
     return <Redirect to="/" />
   }
 
+  if (data) {
+    establishSession(getValues('username'))
+    return <Redirect to="/" />
+  }
+
+  if (!data && called && !loading) {
+    setError('Your Username or Password was Incorrect')
+  }
+
+  if (verifyError) {
+    setError('There was an error trying to Log you in')
+  }
+
   // TODO: specify data type
-  const onSubmit = (data: any) => {
-    // Go to Database verify username and Password, return user
-    dispatchUserEffect({
-      type: USER_ACTIONS.LOGIN,
-      payload: {
-        username: data.username,
-        password: data.password,
-        onFailure: () => setError('Username or Password Incorrect!'),
-        onSuccess: () => {
-          if (saveSession) {
-            establishSession('983')
-          }
-        },
-      },
-    })
+  const onSubmit = async () => {
+    verifyUser()
   }
 
   const toggleSaveSession = () => {
     setSaveSession((currentSaveSession) => !currentSaveSession)
   }
 
+  // TODO Material Icon Loading should use polish and theme for its color
   return (
     <Container onSubmit={handleSubmit(onSubmit)}>
       <LoginContainer>
+        {loading && <LoggingInOverlay>Loading...</LoggingInOverlay>}
         <CloseContainer>
-          <MaterialIcon name="close" onClick={() => history.goBack()} />
+          <MaterialIcon name="close" color={loading ? 'white' : 'black'} onClick={() => history.goBack()} />
         </CloseContainer>
         <SegmentContainer>
           <LoginTitleMessage>
@@ -182,9 +215,10 @@ const LoginPage = () => {
       </LoginContainer>
       <PaddingLoginRow />
       <SubmitButtonWrapper>
-        Login
+        {loading ? 'Logging You In' :' Login'}
       </SubmitButtonWrapper>
     </Container>
   )
 }
+
 export { LoginPage }
