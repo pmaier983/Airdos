@@ -4,6 +4,8 @@ import { gql } from 'apollo-server-express'
 import { typeDefs as enumTds, resolvers as enumRzs } from './enums'
 import { typeDefs as tds, resolvers as rzs } from './types'
 
+import { passwords } from '../dud-data/passwords'
+
 const td = gql`
   interface Node {
     id: ID!
@@ -11,17 +13,20 @@ const td = gql`
   type Query {
     posts: [Post]
     user(username: String!): User
+    verifyUser(username: String!, password: String!): Boolean,
   }
 `
 
 const rz = {
-  Node: {
-    // eslint-disable-next-line no-underscore-dangle
-    __resolveType() {
-      return null
+  Query: {
+    verifyUser: (parent, { username, password }) => {
+      if (_.get(username, passwords) === password) {
+        return true
+      }
+      return false
     },
   },
 }
 
 export const typeDefs = [...enumTds, ...tds, td]
-export const resolvers = _.merge(enumRzs, rzs, rz)
+export const resolvers = _.mergeAll(enumRzs, rzs, rz)
