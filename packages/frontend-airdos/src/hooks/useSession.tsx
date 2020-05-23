@@ -1,29 +1,38 @@
+import crypto from 'crypto'
 import { useLocalStorage } from './useLocalStorage'
-
-// verify session return userId
-// go to database and get userId using 128 bit session id
-const verifySessionGetUserID = (session: string) => (session === '123456789abc' ? '983' : undefined)
-
-// eslint-disable-next-line no-unused-vars
-const generateSession = (userId: string) => (userId ? '123456789abc' : undefined)
 
 type useSessionType = () => [
   undefined | string,
-  (validUserId: string) => void,
+  (username: string) => void,
+  (username: string) => boolean,
   () => void
 ]
 
 const useSession: useSessionType = () => {
   const [session, setSession, removeSession] = useLocalStorage({ key: 'Session', initialValue: undefined })
 
-  const establishSession = (validUserId: string) => {
-    // validate userId (maybe?)
-    setSession(generateSession(validUserId))
+  // TODO: ensure that env is present
+  const secret = process.env.REACT_APP_REMEMBER_ME_SECRET || '123' // '123' is not the value in the .env
+
+  // TODO: cleanup code. Very tired when I wrote this
+  const verifySession = () => {
+    const sessionInfo = session.split(':')
+    const randomKey = sessionInfo[0]
+    const retrievedHMACKey = sessionInfo[1]
+    // TODO: get username from graphql api
+    const possibleUsername = randomKey
+    return crypto.createHmac('SHA256', secret).update(`${possibleUsername}:${randomKey}`).digest('base64') === retrievedHMACKey
   }
 
-  const userId = verifySessionGetUserID(session)
+  const establishSession = (username: string) => {
+    // const randomKey = crypto.randomBytes(256)
+    const randomKey = username
+    // store key: randomKey, value: username
+    const hmacKey = crypto.createHmac('SHA256', secret).update(`${username}:${randomKey}`).digest('base64')
+    setSession(`${randomKey}:${hmacKey}`)
+  }
 
-  return [userId, establishSession, removeSession]
+  return [session, establishSession, verifySession, removeSession]
 }
 
 export { useSession }
