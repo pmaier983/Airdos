@@ -1,8 +1,6 @@
 import _ from 'lodash/fp'
 
-import { basicTheme, IBasicTheme } from './basicTheme'
-import { advancedTheme, IAdvancedTheme } from './advancedTheme'
+import { basicTheme } from './basicTheme'
+import { advancedTheme } from './advancedTheme'
 
-interface ITheme extends IBasicTheme, IAdvancedTheme {}
-
-export const theme: ITheme = _.merge(basicTheme, advancedTheme)
+export const theme = _.merge(basicTheme, advancedTheme)

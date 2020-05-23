@@ -1,39 +1,12 @@
 import { colors } from './colors'
 
-export interface IBasicTheme {
-  backgroundColor: string,
-  spacingColor: string,
-  focusColor: string,
-  lightFocusColor: string,
-  contrastFocusColor: string,
-  lightEmphasisColor: string,
-  borderColor: string,
-  borderStyle: string,
-  normalBorderWidth: string,
-  mediumBorderWidth: string,
-  largeBorderWidth: string,
-  normalBorderRadius: string,
-  largeBorderRadius: string,
-  searchBubbleBorderRadius: string,
-  primaryGlobalFont: string,
-  secondaryGlobalFont: string,
-  globalFontColor: string,
-  highlightedFontColor: string,
-  largeFontSize: string,
-  mediumLargeFontSize: string,
-  mediumFontSize: string,
-  normalFontSize: string,
-  normalFontWeight: number,
-  strongFontWeight: number,
-}
-
-export const basicTheme: IBasicTheme = {
+export const basicTheme = {
   backgroundColor: `rgb(${colors.white})`,
   spacingColor: `rgb(${colors.grey})`,
   focusColor: `rgb(${colors.red})`,
-  lightFocusColor: `rgb(${colors.red.replace(/ /g, ',')}, 0.1)`,
+  lightFocusColor: `rgba(${colors.red.replace(/ /g, ',')}, 0.1)`,
   contrastFocusColor: `rgb(${colors.white})`,
-  lightEmphasisColor: `rgb(${colors.grey.replace(/ /g, ',')}, 0.4)`,
+  lightEmphasisColor: `rgba(${colors.grey.replace(/ /g, ',')}, 0.4)`,
 
   // Borders
   borderColor: `rgb(${colors.grey})`,
@@ -52,6 +25,7 @@ export const basicTheme: IBasicTheme = {
   globalFontColor: `rgb(${colors.black})`,
   highlightedFontColor: `rgb(${colors.red})`,
 
+  extraLargeFontSize: '40px',
   largeFontSize: '20px',
   mediumLargeFontSize: '18px',
   mediumFontSize: '16px',
