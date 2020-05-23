@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useQuery } from '@apollo/react-hooks'
-import { GET_POSTS, IGetPosts } from './FeedStack.queries'
 
+import { GET_POSTS, IGetPosts } from '../queries'
 import { FeedBlock } from './FeedBlock'
 import { FeedInput } from './FeedInput'
 

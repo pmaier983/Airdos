@@ -6,7 +6,7 @@ import {
 import { useQuery } from '@apollo/react-hooks'
 import styled from 'styled-components'
 
-import { GET_USERINFO } from './ProfilePage.queries'
+import { GET_USERINFO } from '../../queries'
 
 import { ProfilePageUserInfo } from './ProfilePageUserInfo'
 import { ProfilePageNotFound } from './ProfilePageNotFound'
@@ -75,9 +75,15 @@ const ProfilePage = () => {
     return <ProfilePageNotFound />
   }
 
+  console.log(data)
+
   // these should all be queries.
   const followerList = userInfo.followers
   const groupList = userInfo.groups
+
+  if (!followerList || !groupList) {
+    return <div>Hello</div>
+  }
 
   return (
     <Container>

@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // ^ a11y doesn't recognize styled-components input
 import React, { useState } from 'react'
+import _ from 'lodash/fp'
 import styled, { css } from 'styled-components'
 import {
   Redirect,
   useHistory,
   Link,
 } from 'react-router-dom'
-import { useQuery, useLazyQuery } from '@apollo/react-hooks'
+import { useLazyQuery } from '@apollo/react-hooks'
 import { darken, readableColor } from 'polished'
 import { useForm } from 'react-hook-form'
 
@@ -16,7 +17,7 @@ import { useUserContext, USER_ACTIONS } from '../../contexts/UserProvider'
 import { useSession } from '../../hooks/useSession'
 import { MaterialIcon } from '../../components/MaterialIcon'
 
-import { VERIFY_USER } from './LoginPage.queries'
+import { VERIFY_AND_RETURN_USER } from '../../queries'
 
 const Container = styled.form`
   position: absolute;
@@ -136,24 +137,27 @@ const LoginPage = () => {
 
   const [verifyUser, {
     called, loading, data, error: verifyError,
-  }] = useLazyQuery(VERIFY_USER, {
+  }] = useLazyQuery(VERIFY_AND_RETURN_USER, {
     variables: {
       username: getValues('username'),
       password: getValues('password'),
     },
   })
 
+  const user = _.get('data.verifyAndReturnUser', data)
+
   // The if statements here are horrible. fix this
   if (userInfo) {
     return <Redirect to="/" />
   }
 
-  if (data) {
+  if (user) {
     establishSession(getValues('username'))
+    // dispatchUserEffect()
     return <Redirect to="/" />
   }
 
-  if (!data && called && !loading) {
+  if (!user && called && !loading) {
     setError('Your Username or Password was Incorrect')
   }
 
