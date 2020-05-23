@@ -32,7 +32,7 @@ export const usersInfo = [
     name: 'Andrew Thomson',
     firstName: 'Andrew',
     lastName: 'Andrew',
-    username: 'drewandtom19',
+    username: 'doctoroz101',
     groups: ['Airdos'],
     collegeName: 'Brown Academy for Wizards and Witches',
   },
