@@ -2,7 +2,7 @@ import _ from 'lodash/fp'
 
 // eslint-disable-next-line no-unused-vars
 import { IUserType } from '../UserType'
-import { users } from '../../../dud-data'
+import { users, passwords } from '../../../dud-data'
 
 const userPaths = ['id', 'name', 'firstName', 'lastName', 'username', 'groups', 'collegeName', 'followers', 'following']
 
@@ -19,5 +19,14 @@ export const getUserModels = ({ user }: {user: IUserType | undefined}) => ({
       return _.pick(publicPaths, foundUser)
     }
     return undefined
+  },
+  verifyAndReturnUser: ({ username, password }) => {
+    if (user) {
+      return user
+    }
+    if (_.get(username, passwords) === password) {
+      return users[username]
+    }
+    return null
   },
 })

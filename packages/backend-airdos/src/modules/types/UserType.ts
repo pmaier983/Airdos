@@ -29,5 +29,6 @@ export const typeDefs = gql`
 export const resolvers = {
   Query: {
     user: (parent, { username }, context) => context.models.user.getByUsername(username),
+    verifyAndReturnUser: (parent, props, context) => context.models.user.verifyAndReturnUser(props),
   },
 }
