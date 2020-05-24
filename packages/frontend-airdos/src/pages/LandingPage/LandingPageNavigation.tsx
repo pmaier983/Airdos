@@ -44,7 +44,7 @@ const LinkWrapper = styled(Link)`
 `
 
 const LandingPageNavigation = () => {
-  const [{ userInfo }, dispatchUserEffect] = useUserContext()
+  const [{ user }, dispatchUserEffect] = useUserContext()
 
   const logoutUser = () => {
     dispatchUserEffect({
@@ -86,7 +86,7 @@ const LandingPageNavigation = () => {
           <ActiveStyleNavLink to="/profile">PROFILE</ActiveStyleNavLink>
         </LinkContainer>
       </RouteContainer>
-      {userInfo
+      {user
         ? <LinkWrapper to="/" onClick={logoutUser}>Logout</LinkWrapper>
         :<LinkWrapper to="/login">Login</LinkWrapper> }
     </Container>

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { MaterialIcon } from '../../components/MaterialIcon'
-import { IUserInfo } from '../../contexts/UserProvider'
+import { IUser } from '../../contexts/UserProvider'
 
 const profilePicture = require('../../dud-data/userPhoto.png')
 
@@ -49,7 +49,7 @@ const SpacingCrestColumn = styled.div`
   width: 5px;
 `
 
-const ProfilePageUserInfo = ({ name, username, collegeName }: IUserInfo) => (
+const ProfilePageUserInfo = ({ name, username, collegeName }: IUser) => (
   <UserFactsContainer>
     <ProfileContainer>
       <ProfilePicture src={profilePicture} />

@@ -6,7 +6,7 @@ import {
 import { useQuery } from '@apollo/react-hooks'
 import styled from 'styled-components'
 
-import { GET_USERINFO } from '../../queries'
+import { GET_USER } from '../../queries'
 
 import { ProfilePageUserInfo } from './ProfilePageUserInfo'
 import { ProfilePageNotFound } from './ProfilePageNotFound'
@@ -41,14 +41,14 @@ const getUrlUsername = (path: string) => {
 
 const ProfilePage = () => {
   const location = useLocation()
-  const [{ userInfo: currentUserInfo }] = useUserContext()
+  const [{ user: currentUser }] = useUserContext()
   const usernameFromPath = getUrlUsername(location.pathname)
 
   const {
     data, loading, error,
-  } = useQuery(GET_USERINFO, {
+  } = useQuery(GET_USER, {
     variables: {
-      username: usernameFromPath || currentUserInfo?.username,
+      username: usernameFromPath || currentUser?.username,
     },
   })
 
@@ -61,25 +61,23 @@ const ProfilePage = () => {
     return <div>Error</div>
   }
 
-  const userInfo = data.user
+  const { user } = data
 
-  if ((!usernameFromPath && !userInfo) || usernameFromPath === 'undefined') {
+  if ((!usernameFromPath && !user) || usernameFromPath === 'undefined') {
     return <Redirect to="/login" />
   }
 
-  if (!usernameFromPath && userInfo) {
-    return <Redirect to={`/profile/${currentUserInfo?.username}`} />
+  if (!usernameFromPath && user) {
+    return <Redirect to={`/profile/${currentUser?.username}`} />
   }
 
-  if (!userInfo) {
+  if (!user) {
     return <ProfilePageNotFound />
   }
 
-  console.log(data)
-
   // these should all be queries.
-  const followerList = userInfo.followers
-  const groupList = userInfo.groups
+  const followerList = user.followers
+  const groupList = user.groups
 
   if (!followerList || !groupList) {
     return <div>Hello</div>
@@ -87,15 +85,15 @@ const ProfilePage = () => {
 
   return (
     <Container>
-      <ProfilePageUserInfo {...userInfo} />
+      <ProfilePageUserInfo {...user} />
       <PaddingRelationshipsRow />
       <ProfilePageRelationshipSummaries followerList={followerList} groupList={groupList} />
       <PaddingRelationshipsRow />
-      {userInfo.username !== currentUserInfo?.username
+      {user.username !== currentUser?.username
       && (
         <ButtonContainer>
-          <FollowButton usernameToFollow={userInfo.username} />
-          <MessageButton usernameToMessage={userInfo.username} />
+          <FollowButton usernameToFollow={user.username} />
+          <MessageButton usernameToMessage={user.username} />
         </ButtonContainer>
       )}
 

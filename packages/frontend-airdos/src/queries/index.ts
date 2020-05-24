@@ -47,7 +47,7 @@ const VERIFY_AND_RETURN_USER = gql`
   }
 `
 
-const GET_USERINFO = gql`
+const GET_USER = gql`
   query getProfile($username: String!){ 
     user(username: $username) {
       id
@@ -62,4 +62,4 @@ const GET_USERINFO = gql`
   }
 `
 
-export { GET_POSTS, VERIFY_AND_RETURN_USER, GET_USERINFO }
+export { GET_POSTS, VERIFY_AND_RETURN_USER, GET_USER }

@@ -8,11 +8,11 @@ interface IPrivateRouteProps {
 }
 
 const PrivateRoute: React.FC<IPrivateRouteProps> = ({ children, ...rest }) => {
-  const [{ userInfo }] = useUserContext()
+  const [{ user }] = useUserContext()
   return (
     <Route
       {...rest}
-      render={({ location }) => (userInfo ? (
+      render={({ location }) => (user ? (
         children
       ) : (
         <Redirect

@@ -25,9 +25,9 @@ interface IFollowButtonProps {
 // TODO: Possibly Consolidate Message and Follow Button
 const FollowButton: React.FC<IFollowButtonProps> = ({ usernameToFollow }) => {
   const history = useHistory()
-  const [{ userInfo }] = useUserContext()
+  const [{ user }] = useUserContext()
 
-  if (!userInfo) {
+  if (!user) {
     return <ButtonStyle onClick={() => history.push('/login')}>LOGIN TO FOLLOW</ButtonStyle>
   }
 

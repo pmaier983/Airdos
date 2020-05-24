@@ -1,13 +1,12 @@
 /* eslint-disable no-console */
 import _ from 'lodash/fp'
 import React, { createContext, useReducer, useContext } from 'react'
+// import { useQuery } from '@apollo/react-hooks'
 
 import { useSession } from '../hooks'
-import { usersInfo } from '../dud-data/usersInfo'
+// import { usersInfo } from '../dud-data/usersInfo'
 
-const gilUserInfo = _.find(({ username }) => username === 'gilbirney22', usersInfo)
-
-export interface IUserInfo {
+export interface IUser {
   id: string,
   name: string,
   firstName: string,
@@ -19,13 +18,13 @@ export interface IUserInfo {
 }
 
 interface IUserState {
-  userInfo?: IUserInfo,
-  clearSession: () => void,
+  user?: IUser,
+  // clearSession: () => void,
 }
 
 const initialState: IUserState = {
-  userInfo: undefined,
-  clearSession: () => undefined,
+  user: undefined,
+  // clearSession: () => undefined,
 }
 
 interface IAction {
@@ -56,18 +55,13 @@ const reducer = (state: IUserState, action: IAction) => {
     case USER_ACTIONS.UPDATE_USER_INFO:
       // TODO: push to database
       // TODO: verify all userInfo Items
-      return { ...state, userInfo: action.payload }
-    case USER_ACTIONS.LOGIN:
-      // query username Password
-      if (action.payload.username === 'gil') {
-        action.payload.onSuccess()
-        return { ...state, userInfo: gilUserInfo }
-      }
-      action.payload.onFailure()
       return state
+    case USER_ACTIONS.LOGIN: {
+      return state
+    }
     case USER_ACTIONS.LOGOUT:
-      state.clearSession()
-      return initialState
+      // state.clearSession()
+      return state
     default:
       console.error('The Reducer Doesn\'t handle this type')
       return state
@@ -77,8 +71,7 @@ const reducer = (state: IUserState, action: IAction) => {
 const UserProvider: React.FC = ({ children }) => {
   const [userId,, clearSession] = useSession()
   // query database to get userInfo
-  const userInfo = userId ? { ...gilUserInfo } : undefined
-  const reducedState = useReducer(reducer, { userInfo, clearSession })
+  const reducedState = useReducer(reducer, { user: undefined })
   return (
     <UserContext.Provider value={reducedState}>
       {children}

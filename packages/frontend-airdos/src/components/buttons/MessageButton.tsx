@@ -25,9 +25,9 @@ interface IMessageButtonProps {
 // TODO: Possibly Consolidate Message and Follow Button
 const MessageButton: React.FC<IMessageButtonProps> = ({ usernameToMessage }) => {
   const history = useHistory()
-  const [{ userInfo }] = useUserContext()
+  const [{ user }] = useUserContext()
 
-  if (!userInfo) {
+  if (!user) {
     return <ButtonStyle onClick={() => history.push('/login')}>LOGIN TO MESSAGE</ButtonStyle>
   }
 

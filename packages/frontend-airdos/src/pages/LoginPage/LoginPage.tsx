@@ -130,7 +130,7 @@ const CloseContainer = styled.div`
 const LoginPage = () => {
   const history = useHistory()
   const { register, handleSubmit, getValues } = useForm()
-  const [{ userInfo }, dispatchUserEffect] = useUserContext()
+  const [{ user: currentUser }, dispatchUserEffect] = useUserContext()
   const [, establishSession] = useSession()
   const [error, setError] = useState<string | undefined>(undefined)
   const [saveSession, setSaveSession] = useState(false)
@@ -147,7 +147,7 @@ const LoginPage = () => {
   const user = _.get('data.verifyAndReturnUser', data)
 
   // The if statements here are horrible. fix this
-  if (userInfo) {
+  if (currentUser) {
     return <Redirect to="/" />
   }
 
