@@ -6,6 +6,8 @@ import { typeDefs, resolvers } from './modules/schema'
 import { getUserModels } from './modules/types/models'
 import { getUserFromToken } from './utils'
 
+require('dotenv').config()
+
 const PORT = 4000
 
 const schema = makeExecutableSchema({
@@ -21,10 +23,7 @@ const server = new ApolloServer({
   },
   context: ({ req }) => {
     const token = _.get('headers.token', req)
-    // TODO: This should not be here...
-    const secret = _.get('headers.secret', req)
-    const user = getUserFromToken(token, secret)
-
+    const user = getUserFromToken(token)
     return {
       user,
       models: {
