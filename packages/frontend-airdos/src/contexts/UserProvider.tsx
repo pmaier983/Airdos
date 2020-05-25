@@ -1,6 +1,10 @@
 /* eslint-disable no-console */
+import _ from 'lodash/fp'
 import React, { createContext, useReducer, useContext } from 'react'
+import { useLazyQuery } from '@apollo/react-hooks'
 import { useSession } from '../hooks'
+
+import { GET_USER_BY_TOKEN } from '../queries'
 
 export interface IUser {
   id: string,
@@ -66,7 +70,29 @@ const reducer = (state: IUserState, action: IAction) => {
 
 const UserProvider: React.FC = ({ children }) => {
   const [, establishSession, removeSession] = useSession()
+  // initialize User (How to Remove Flicker)
+  const [sessionToken] = useSession()
+  const [fireQuery, { called, data }] = useLazyQuery(GET_USER_BY_TOKEN, {
+    variables: {
+      token: sessionToken,
+      secret: process.env.REACT_APP_REMEMBER_ME_SECRET,
+    },
+  })
+
   const reducedState = useReducer(reducer, { user: undefined, establishSession, removeSession })
+  const [{ user }, dispatchUserEffect] = reducedState
+
+  const possibleUser = _.get('userByToken', data)
+
+  console.log('this is the user:', user)
+
+  if (sessionToken && !called) {
+    fireQuery()
+  }
+
+  if (possibleUser && !user) {
+    dispatchUserEffect({ type: USER_ACTIONS.LOGIN, payload: possibleUser })
+  }
 
   return (
     <UserContext.Provider value={reducedState}>

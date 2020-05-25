@@ -14,7 +14,6 @@ import { useForm } from 'react-hook-form'
 
 import { SubmitButton } from '../../components/buttons'
 import { useUserContext, USER_ACTIONS } from '../../contexts/UserProvider'
-import { useSession } from '../../hooks/useSession'
 import { MaterialIcon } from '../../components/MaterialIcon'
 
 import { GET_USER_BY_LOGIN } from '../../queries'
