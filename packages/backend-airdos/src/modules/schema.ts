@@ -10,8 +10,9 @@ const td = gql`
   }
   type Query {
     posts: [Post]
-    user(username: String!): User
-    verifyAndReturnUser(username: String!, password: String!): User
+    userByUsername(username: String!): User
+    userByLogin(username: String!, password: String!): User
+    userByToken(token: String!): User
   }
 `
 

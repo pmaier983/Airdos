@@ -3,6 +3,7 @@ import _ from 'lodash/fp'
 // eslint-disable-next-line no-unused-vars
 import { IUserType } from '../UserType'
 import { users, passwords } from '../../../dud-data'
+import { getUserFromToken } from '../../../utils'
 
 const userPaths = ['id', 'name', 'firstName', 'lastName', 'username', 'groups', 'collegeName', 'followers', 'following']
 
@@ -16,9 +17,18 @@ export const getUserModels = ({ user }: {user: IUserType | undefined}) => ({
     }
     if (_.has(username, users)) {
       const foundUser = users[username]
+      if (user) {
+        return _.pick(userPaths, foundUser)
+      }
       return _.pick(publicPaths, foundUser)
     }
     return undefined
+  },
+  getByToken: ({ token }: {token: string}) => {
+    if (user) {
+      return user
+    }
+    return getUserFromToken(token)
   },
   verifyAndReturnUser: ({ username, password }) => {
     if (user) {
@@ -27,6 +37,6 @@ export const getUserModels = ({ user }: {user: IUserType | undefined}) => ({
     if (_.get(username, passwords) === password) {
       return users[username]
     }
-    return null
+    return undefined
   },
 })
