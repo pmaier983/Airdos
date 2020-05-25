@@ -31,9 +31,9 @@ const GET_POSTS = gql`
   }
 `
 
-const VERIFY_AND_RETURN_USER = gql`
-  query verifyAndReturnUser($username: String!, $password: String!) {
-    verifyAndReturnUser(username: $username, password: $password) {
+const GET_USER_BY_LOGIN = gql`
+  query getUserByLogin($username: String!, $password: String!) {
+    userByLogin(username: $username, password: $password) {
       id
       name
       firstName
@@ -47,9 +47,9 @@ const VERIFY_AND_RETURN_USER = gql`
   }
 `
 
-const GET_USER = gql`
-  query getProfile($username: String!){ 
-    user(username: $username) {
+const GET_USER_BY_USERNAME = gql`
+  query getUserByUsername($username: String!) { 
+    userByUsername(username: $username) {
       id
       name
       firstName
@@ -62,4 +62,22 @@ const GET_USER = gql`
   }
 `
 
-export { GET_POSTS, VERIFY_AND_RETURN_USER, GET_USER }
+const GET_USER_BY_TOKEN = gql`
+  query getUserByToken($token: String!) {
+    userByToken(token: $token) {
+      id
+      name
+      firstName
+      lastName
+      username
+      groups
+      collegeName
+      followers
+      following
+    }
+  }
+`
+
+export {
+  GET_POSTS, GET_USER_BY_LOGIN, GET_USER_BY_USERNAME, GET_USER_BY_TOKEN,
+}
