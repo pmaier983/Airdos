@@ -33,6 +33,10 @@ interface IProfilePageRelationshipSummariesProps {
 }
 
 const renderFollowerSummary = (followerList: string[]) => {
+  // TODO: Redo this logic
+  if (!followerList) {
+    return 'This user has disabled their follower list for you'
+  }
   const numberOfFollowers = followerList.length
   if (numberOfFollowers <= 0) { return 'NOT FOLLOWED BY ANYONE YET' }
   const keyFollower = followerList[0]
@@ -52,6 +56,10 @@ const renderFollowerSummary = (followerList: string[]) => {
 }
 
 const renderGroupSummary = (groupList: string[]) => {
+  // TODO: Redo this logic
+  if (!groupList) {
+    return 'This user has disabled their group list for you'
+  }
   const numberOfGroups = groupList.length
   if (numberOfGroups <= 0) { return 'NOT A PART OF ANY GROUP YET' }
   const keyGroup = groupList[0]
