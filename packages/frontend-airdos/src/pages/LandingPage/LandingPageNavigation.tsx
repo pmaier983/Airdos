@@ -46,6 +46,7 @@ const LinkWrapper = styled(Link)`
 const LandingPageNavigation = () => {
   const [{ user }, dispatchUserEffect] = useUserContext()
 
+  // TODO: fix cannot update component while another component renders bug
   const logoutUser = () => {
     dispatchUserEffect({
       type: USER_ACTIONS.LOGOUT,

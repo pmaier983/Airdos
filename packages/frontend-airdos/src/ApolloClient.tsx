@@ -14,8 +14,7 @@ const GITHUB_BASE_URL = 'http://localhost:4000/graphql'
 const httpLink = new HttpLink({
   uri: GITHUB_BASE_URL,
   headers: {
-    authorization: localStorage.getItem('token'),
-    secret: process.env.REACT_APP_REMEMBER_ME_SECRET,
+    token: localStorage.getItem('Session'),
   },
 })
 

@@ -17,7 +17,7 @@ import { useUserContext, USER_ACTIONS } from '../../contexts/UserProvider'
 import { useSession } from '../../hooks/useSession'
 import { MaterialIcon } from '../../components/MaterialIcon'
 
-import { VERIFY_AND_RETURN_USER } from '../../queries'
+import { GET_USER_BY_LOGIN } from '../../queries'
 
 const Container = styled.form`
   position: absolute;
@@ -131,33 +131,34 @@ const LoginPage = () => {
   const history = useHistory()
   const { register, handleSubmit, getValues } = useForm()
   const [{ user: currentUser }, dispatchUserEffect] = useUserContext()
-  const [, establishSession] = useSession()
   const [error, setError] = useState<string | undefined>(undefined)
   const [saveSession, setSaveSession] = useState(false)
 
   const [verifyUser, {
     called, loading, data, error: verifyError,
-  }] = useLazyQuery(VERIFY_AND_RETURN_USER, {
+  }] = useLazyQuery(GET_USER_BY_LOGIN, {
     variables: {
       username: getValues('username'),
       password: getValues('password'),
     },
   })
 
-  const user = _.get('data.verifyAndReturnUser', data)
+  const user = _.get('userByLogin', data)
 
   // The if statements here are horrible. fix this
   if (currentUser) {
     return <Redirect to="/" />
   }
 
+  console.log('we got the user?', user, data)
   if (user) {
-    establishSession(getValues('username'))
-    // dispatchUserEffect()
+    dispatchUserEffect(
+      { type: saveSession ? USER_ACTIONS.LOGIN_AND_REMEMBER : USER_ACTIONS.LOGIN, payload: user },
+    )
     return <Redirect to="/" />
   }
 
-  if (!user && called && !loading) {
+  if (!user && called && !loading && !error) {
     setError('Your Username or Password was Incorrect')
   }
 
