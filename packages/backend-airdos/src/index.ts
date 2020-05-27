@@ -21,9 +21,16 @@ const server = new ApolloServer({
   playground: {
     endpoint: `http://localhost:${PORT}/graphql`,
   },
-  context: ({ req }) => {
+  context: async ({ req }) => {
     const token = _.get('headers.token', req)
-    const user = getUserFromToken(token)
+    let user = null
+    try {
+      if (token) {
+        user = await getUserFromToken(token)
+      }
+    } catch (e) {
+      console.warn(`Unable to authenticate using token: ${token}`)
+    }
     return {
       user,
       models: {
