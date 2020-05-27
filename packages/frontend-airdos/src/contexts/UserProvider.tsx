@@ -69,9 +69,8 @@ const reducer = (state: IUserState, action: IAction) => {
 }
 
 const UserProvider: React.FC = ({ children }) => {
-  const [, establishSession, removeSession] = useSession()
+  const [sessionToken, establishSession, removeSession] = useSession()
   // initialize User (How to Remove Flicker)
-  const [sessionToken] = useSession()
   const [fireQuery, { called, data }] = useLazyQuery(GET_USER_BY_TOKEN, {
     variables: {
       token: sessionToken,
