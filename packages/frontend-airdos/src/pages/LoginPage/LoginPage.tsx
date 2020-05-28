@@ -1,22 +1,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // ^ a11y doesn't recognize styled-components input
-import React, { useState } from 'react'
-import _ from 'lodash/fp'
+import React from 'react'
 import styled, { css } from 'styled-components'
 import {
   Redirect,
   useHistory,
   Link,
 } from 'react-router-dom'
-import { useLazyQuery } from '@apollo/react-hooks'
 import { darken, readableColor } from 'polished'
 import { useForm } from 'react-hook-form'
 
 import { SubmitButton } from '../../components/buttons'
-import { useUserContext, USER_ACTIONS } from '../../contexts/UserProvider'
+import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
 import { MaterialIcon } from '../../components/MaterialIcon'
-
-import { GET_USER_BY_LOGIN } from '../../queries'
 
 const Container = styled.form`
   position: absolute;
@@ -129,49 +125,33 @@ const CloseContainer = styled.div`
 const LoginPage = () => {
   const history = useHistory()
   const { register, handleSubmit, getValues } = useForm()
-  const [{ user: currentUser }, dispatchUserEffect] = useUserContext()
-  const [error, setError] = useState<string | undefined>(undefined)
-  const [saveSession, setSaveSession] = useState(false)
-
-  const [verifyUser, {
-    called, loading, data, error: verifyError,
-  }] = useLazyQuery(GET_USER_BY_LOGIN, {
-    variables: {
-      username: getValues('username'),
-      password: getValues('password'),
+  const [
+    {
+      loading,
+      currentUser,
+      rememberCurrentUser,
+      authError,
     },
-  })
+    { setRememberCurrentUser, getUserByLogin },
+  ] = useCurrentUserContext()
 
-  const user = _.get('userByLogin', data)
-
-  // The if statements here are horrible. fix this
   if (currentUser) {
     return <Redirect to="/" />
   }
 
-  console.log('we got the user?', user, data)
-  if (user) {
-    dispatchUserEffect(
-      { type: saveSession ? USER_ACTIONS.LOGIN_AND_REMEMBER : USER_ACTIONS.LOGIN, payload: user },
-    )
-    return <Redirect to="/" />
-  }
-
-  if (!user && called && !loading && !error) {
-    setError('Your Username or Password was Incorrect')
-  }
-
-  if (verifyError) {
-    setError('There was an error trying to Log you in')
-  }
-
   // TODO: specify data type
-  const onSubmit = async () => {
-    verifyUser()
+  const onSubmit = () => {
+    console.log('try to login')
+    getUserByLogin({
+      variables: {
+        username: getValues('username'),
+        password: getValues('password'),
+      },
+    })
   }
 
   const toggleSaveSession = () => {
-    setSaveSession((currentSaveSession) => !currentSaveSession)
+    setRememberCurrentUser(!rememberCurrentUser)
   }
 
   // TODO Material Icon Loading should use polish and theme for its color
@@ -203,13 +183,13 @@ const LoginPage = () => {
             </label>
           </InputContainer>
           <SaveSessionContainer>
-            <MaterialIcon size="16px" name={saveSession ? 'check_box' : 'check_box_outline_blank'} onClick={toggleSaveSession} />
+            <MaterialIcon size="16px" name={rememberCurrentUser ? 'check_box' : 'check_box_outline_blank'} onClick={toggleSaveSession} />
             Remember Me
           </SaveSessionContainer>
         </SegmentContainer>
         <SegmentContainer>
           <ErrorContainer>
-            {error && error}
+            {authError}
           </ErrorContainer>
           <FooterContainer>
             <LinkWrapper to="/">Forgot Password/Username?</LinkWrapper>
