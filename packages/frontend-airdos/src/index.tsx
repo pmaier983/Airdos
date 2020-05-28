@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import { ThemeWrapper } from './ThemeWrapper'
 import { ApolloWrapper } from './ApolloClient'
-import { UserProvider } from './contexts/UserProvider'
+import { CurrentUserProvider } from './contexts/CurrentUserProvider'
 import { App } from './App'
 
 if (process.env.NODE_ENV !== 'production') {
