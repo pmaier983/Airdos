@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { MaterialIcon } from '../../components/MaterialIcon'
-import { IUser } from '../../contexts/UserProvider'
+import { IUser } from '../../contexts/CurrentUserProvider'
 
 const profilePicture = require('../../dud-data/userPhoto.png')
 

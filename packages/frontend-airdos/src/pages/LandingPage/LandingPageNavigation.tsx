@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 
 import { PaddingRowPage } from './landingPageStyles'
-import { useUserContext, USER_ACTIONS } from '../../contexts/UserProvider'
+import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
 import { ActiveStyleNavLink } from '../../components/ActiveStyleNavLink'
 import { MaterialIcon } from '../../components/MaterialIcon'
 
@@ -44,13 +44,11 @@ const LinkWrapper = styled(Link)`
 `
 
 const LandingPageNavigation = () => {
-  const [{ user }, dispatchUserEffect] = useUserContext()
+  const [{ currentUser }, { clearUser }] = useCurrentUserContext()
 
   // TODO: fix cannot update component while another component renders bug
   const logoutUser = () => {
-    dispatchUserEffect({
-      type: USER_ACTIONS.LOGOUT,
-    })
+    clearUser()
   }
 
   return (
@@ -87,7 +85,7 @@ const LandingPageNavigation = () => {
           <ActiveStyleNavLink to="/profile">PROFILE</ActiveStyleNavLink>
         </LinkContainer>
       </RouteContainer>
-      {user
+      {currentUser
         ? <LinkWrapper to="/" onClick={logoutUser}>Logout</LinkWrapper>
         :<LinkWrapper to="/login">Login</LinkWrapper> }
     </Container>

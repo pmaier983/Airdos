@@ -11,7 +11,7 @@ import { GET_USER_BY_USERNAME } from '../../queries'
 import { ProfilePageUserInfo } from './ProfilePageUserInfo'
 import { ProfilePageNotFound } from './ProfilePageNotFound'
 import { ProfilePageRelationshipSummaries } from './ProfilePageRelationshipSummaries'
-import { useUserContext } from '../../contexts/UserProvider'
+import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
 import { FollowButton, MessageButton } from '../../components/buttons'
 
 const Container = styled.div`
@@ -41,7 +41,7 @@ const getUrlUsername = (path: string) => {
 
 const ProfilePage = () => {
   const location = useLocation()
-  const [{ user: currentUser }] = useUserContext()
+  const [{ currentUser }] = useCurrentUserContext()
   const usernameFromPath = getUrlUsername(location.pathname)
 
   const [getUser, {
@@ -59,6 +59,7 @@ const ProfilePage = () => {
 
   // if you need to get the info of a user
   if (!currentUser && usernameFromPath && !called) {
+    console.log('hello')
     getUser()
   }
 

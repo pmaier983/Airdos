@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
-import { useUserContext } from '../../contexts/UserProvider'
+import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
 
 const ButtonStyle = styled.button`
   border: none;
@@ -25,9 +25,9 @@ interface IFollowButtonProps {
 // TODO: Possibly Consolidate Message and Follow Button
 const FollowButton: React.FC<IFollowButtonProps> = ({ usernameToFollow }) => {
   const history = useHistory()
-  const [{ user }] = useUserContext()
+  const [{ currentUser }] = useCurrentUserContext()
 
-  if (!user) {
+  if (!currentUser) {
     return <ButtonStyle onClick={() => history.push('/login')}>LOGIN TO FOLLOW</ButtonStyle>
   }
 

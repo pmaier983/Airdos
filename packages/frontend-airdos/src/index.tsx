@@ -15,9 +15,9 @@ if (process.env.NODE_ENV !== 'production') {
 ReactDOM.render(
   <ApolloWrapper>
     <ThemeWrapper>
-      <UserProvider>
+      <CurrentUserProvider>
         <App />
-      </UserProvider>
+      </CurrentUserProvider>
     </ThemeWrapper>
   </ApolloWrapper>,
   document.getElementById('root'),
