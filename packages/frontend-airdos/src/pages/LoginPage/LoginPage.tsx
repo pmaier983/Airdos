@@ -141,7 +141,6 @@ const LoginPage = () => {
 
   // TODO: specify data type
   const onSubmit = () => {
-    console.log('try to login')
     getUserByLogin({
       variables: {
         username: getValues('username'),

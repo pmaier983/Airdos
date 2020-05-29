@@ -59,7 +59,6 @@ const ProfilePage = () => {
 
   // if you need to get the info of a user
   if (!currentUser && usernameFromPath && !called) {
-    console.log('hello')
     getUser()
   }
 
