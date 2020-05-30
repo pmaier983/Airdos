@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactGA from 'react-ga'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { LandingPageNavigation } from './LandingPageNavigation'
 import { LandingPageExplorer } from './LandingPageExplorer'
@@ -15,8 +15,11 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: row;
-  font-weight: ${({ theme }) => theme.normalFontWeight};
-  background-color: ${({ theme }) => theme.backgroundColor};
+  ${({ theme }) => css`
+    font-weight: ${theme.normalFontWeight};
+    background-color: ${theme.backgroundColor};
+  `}
+
 `
 
 const ContentPaddingColumn = styled.div`
@@ -28,6 +31,7 @@ const initializeAnalytics = () => {
   ReactGA.initialize('UA-164973605-2')
   ReactGA.pageview('LandingPage')
 }
+
 
 const LandingPage = () => {
   initializeAnalytics()

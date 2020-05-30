@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import _ from 'lodash/fp'
 import {
   BrowserRouter as Router,
 } from 'react-router-dom'
@@ -7,8 +8,10 @@ import {
 import { Routes } from './Routes'
 
 const FontWrapper = styled.div`
-  font-family: ${({ theme }) => theme.normalFontFamily};
-  font-size: ${({ theme }) => theme.normalFontSize};
+  ${({ theme }) => css`
+    font-family: ${theme.normalFontFamily};
+    font-size: ${theme.normalFontSize};
+  `}
 `
 
 const App = () => (
