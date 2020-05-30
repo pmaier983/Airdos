@@ -1,6 +1,5 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import _ from 'lodash/fp'
 import {
   BrowserRouter as Router,
 } from 'react-router-dom'

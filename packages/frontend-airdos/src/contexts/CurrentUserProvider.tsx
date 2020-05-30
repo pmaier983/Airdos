@@ -139,6 +139,7 @@ const CurrentUserProvider: React.FC = ({ children }) => {
     if (!currentUser && session) {
       getUserByToken()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

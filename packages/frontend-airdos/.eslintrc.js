@@ -20,7 +20,7 @@ module.exports = {
     ecmaVersion: 2019,
     sourceType: "module"
   },
-  plugins: ["react"],
+  plugins: ["react", "react-hooks"],
   parser: "babel-eslint",
   settings: {
     "import/resolver": {
