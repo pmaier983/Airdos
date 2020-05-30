@@ -7,7 +7,8 @@ export const getUserFromToken = (token: string) => {
   }
   const [usernameToken, hmac] = token.replace(/["]/g, '').split(':')
   const possibleUsername = tokens[usernameToken]
-  const possibleHMAC = crypto.createHmac('SHA256', process.env.REMEMBER_ME_SECRET).update(`${possibleUsername}:${usernameToken}`).digest('base64')
+  // TODO: make this more secure obv.
+  const possibleHMAC = crypto.createHmac('SHA256', usernameToken).update(`${possibleUsername}:${usernameToken}`).digest('base64')
   if (hmac === possibleHMAC) {
     return users[possibleUsername]
   }
