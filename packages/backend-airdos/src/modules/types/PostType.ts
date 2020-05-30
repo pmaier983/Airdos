@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-express'
+import { gql } from 'apollo-server-lambda'
 
 import { posts } from '../../dud-data'
 

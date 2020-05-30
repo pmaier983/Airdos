@@ -1,5 +1,5 @@
 import _ from 'lodash/fp'
-import { gql } from 'apollo-server-express'
+import { gql } from 'apollo-server-lambda'
 
 import { typeDefs as enumTds, resolvers as enumRzs } from './enums'
 import { typeDefs as tds, resolvers as rzs } from './types'
@@ -19,4 +19,5 @@ const td = gql`
 const rz = {}
 
 export const typeDefs = [...enumTds, ...tds, td]
-export const resolvers = _.mergeAll(enumRzs, rzs, rz)
+// TODO how to get merge all to work here?
+export const resolvers = _.merge(_.merge(enumRzs, rzs), rz)
