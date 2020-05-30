@@ -40,7 +40,7 @@
     "clean": "rm yarn.lock & rm -rf node_modules/",
     "test:jest": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "test": "CI=true react-scripts test --env=jest-environment-jsdom-sixteen",
-    "deploy": "aws s3 cp --recursive ./build s3://airdos.net",
+    "deploy": "react-scripts build & aws s3 cp --recursive ./build s3://airdos.net",
     "eject": "react-scripts eject",
     "lint": "eslint . --fix"
   },

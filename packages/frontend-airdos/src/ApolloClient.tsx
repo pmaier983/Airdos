@@ -9,10 +9,8 @@ import { HttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
-const GITHUB_BASE_URL = 'http://localhost:4000/graphql'
-
 const httpLink = new HttpLink({
-  uri: GITHUB_BASE_URL,
+  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
   headers: {
     token: localStorage.getItem('Session'),
   },
