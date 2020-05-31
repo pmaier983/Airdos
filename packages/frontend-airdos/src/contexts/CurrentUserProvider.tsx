@@ -61,6 +61,8 @@ const initialState: [ICurrentUserState, ICurrentUserEffects] = [
 
 export const CurrentUserContext = createContext(initialState)
 
+CurrentUserContext.displayName = 'CurrentUserContext'
+
 export const useCurrentUserContext = () => useContext(CurrentUserContext)
 
 // This file is a bit messy, refactor (use reducer mb?)
