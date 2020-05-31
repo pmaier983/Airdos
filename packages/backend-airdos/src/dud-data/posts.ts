@@ -1,0 +1,98 @@
+export const posts = [
+  {
+    location: 'Group post',
+    title: 'Dummy Title',
+    postType: 'PUBLICIZING_RESEARCH',
+    text: 'Our latest pre-print, on the use of saliva as a diagnostic sample for testing [link]',
+  },
+  {
+    location: 'Public & Group',
+    title: 'Dummy Title',
+    postType: 'PRE_PEER_REVIEW',
+    text: "Sharing my lab partner's initial findings for discussion, in advance of her submission to Nature",
+  },
+  {
+    location: 'Public thread',
+    title: 'Dummy Title',
+    postType: 'DISCUSSION_TOPIC',
+    text: "I decided to read all relevant Coronavirus preprints. Here's what I've found:",
+  },
+  {
+    location: 'Group thread',
+    title: 'Dummy Title',
+    postType: 'PRE_PEER_REVIEW',
+    text: "The recent paper by J. Doe [link] predicts these features which are not holding up. Here's where I think they go wrong:",
+  },
+  {
+    location: 'Public post',
+    title: 'Dummy Title',
+    postType: 'PUBLICIZING_RESEARCH',
+    text: 'Just published in Nature [link]. Fundamental cytoskeletal insight here: Length-dependent disassembly maintains four different flagellar lengths in Giardia',
+  },
+  {
+    location: 'Public comment',
+    title: 'Dummy Title',
+    postType: 'PRE_PEER_REVIEW',
+    text: 'I suggest you re-run the PCR used in section 2, as in my most recent paper [link]',
+  },
+  {
+    location: 'Public post',
+    title: 'Dummy Title',
+    postType: 'DISCUSSION_TOPIC',
+    text: "Current CB actions don't relax budget constraint of the govt intertemporally. Public finance fundamentals did not change. CB just made borrowing easy",
+  },
+  {
+    location: 'Public thread',
+    title: 'Dummy Title',
+    postType: 'PRE_PEER_REVIEW',
+    text: 'The BCG paper has been released on medRxiv The paper is now under review by Cell. Here are the key takeaways:',
+  },
+  {
+    location: 'Group post',
+    title: 'Dummy Title',
+    postType: 'DISCUSSION_TOPIC',
+    text: 'Based on the J. Doe lab preprint, I think we need to tweak our protocol',
+  },
+  {
+    location: 'Public comment',
+    title: 'Dummy Title',
+    postType: 'DISCUSSION_TOPIC',
+    text: 'Are you planning on sharing cleaned data for this?',
+  },
+  {
+    location: 'Public & Group p',
+    title: 'Dummy Title',
+    postType: 'CONFERENCE_AWARENESS',
+    text: 'My poster presentation at ECTRIMS from today [link]! Great to have all the molecular-bio team at U of A dial-in to support. ',
+  },
+  {
+    location: 'Public & Group p',
+    title: 'Dummy Title',
+    postType: 'CONFERENCE_AWARENESS',
+    text: "Latest white paper from Novartis [link], on Ofatumumab's impact on the patient experience (full presentation this afternoon at AAN virtual)",
+  },
+  {
+    location: 'Group post',
+    title: 'Dummy Title',
+    postType: 'CONFERENCE_AWARENESS',
+    text: 'Please join Merck at their Overcoming Monoclonal Antibody Administration Challenges Workshop this afternoon at 330pm (ET) for a discussion on strategies industry players are taking to commercialize mAbs [link]',
+  },
+  {
+    location: 'Public & Group p',
+    title: 'Dummy Title',
+    postType: 'CONFERENCE_AWARENESS',
+    text: 'Latest oncology data released at BioEurope by Bluebird Bio, take a peek [photo]',
+  },
+  {
+    location: 'Private Thread',
+    title: 'Dummy Title',
+    postType: 'PRE_PEER_REVIEW',
+    text: 'The protocal on step 4b of this manuscript needs to be repeated to show proof of effectiveness',
+  },
+  {
+    location: 'Public post',
+    title: 'Dummy Title',
+    postType: 'PUBLICIZING_RESEARCH',
+    text: 'Product X has officially been approved by the FDA for use in infants',
+  },
+]

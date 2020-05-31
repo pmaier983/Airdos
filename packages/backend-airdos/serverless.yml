@@ -1,0 +1,27 @@
+# TODO: change this to Airdos
+org: pmaier983
+app: backend-airdos
+service: apollo-lambda
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-2
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+functions:
+  graphql:
+    environment:
+      SLS_DEBUG: true
+    handler: src/index.graphqlHandler
+    events:
+      - http:
+          path: graphql
+          method: get
+          cors: true
+          integration: lambda-proxy
+      - http:
+          path: graphql
+          method: post
+          cors: true
+          integration: lambda-proxy
