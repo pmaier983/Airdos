@@ -28,7 +28,7 @@ const ICON_THEMES = {
   SHARP: '-sharp',
 }
 
-const IconContainer = styled.div<IconStylingProps>`
+const StyledIconContainer = styled.div<IconStylingProps>`
   display: ${({ display }) => display};
   cursor: ${({ onClick }) => (onClick ? 'pointer' : undefined)};
   align-self: ${({ alignSelf }) => alignSelf};
@@ -36,7 +36,7 @@ const IconContainer = styled.div<IconStylingProps>`
 
 // TODO: avoid using !important
 // TODO: how to add rgba to theme.
-const Icon = styled.i<IconStylingProps>`
+const StyledIcon = styled.i<IconStylingProps>`
   overflow: ${({ overflow }) => overflow};
   font-size: ${({ size }) => size} !important;
   color: ${({ color }) => color}; 
@@ -55,7 +55,7 @@ const MaterialIcon = forwardRef(
   }: IMaterialIconsProps, buttonRef: React.Ref<any>) => {
     const materialTheme = _.get(_.flow(_.split('_'), _.last, _.toUpper)(name), ICON_THEMES)
     return (
-      <IconContainer
+      <StyledIconContainer
         role={role || (onClick && 'button')}
         onClick={onClick}
         onKeyPress={onClick}
@@ -63,10 +63,10 @@ const MaterialIcon = forwardRef(
         display={display}
         ref={buttonRef}
       >
-        <Icon {...props} className={materialTheme ? `material-icons${materialTheme}` : 'material-icons'}>
+        <StyledIcon {...props} className={materialTheme ? `material-icons${materialTheme}` : 'material-icons'}>
           {name}
-        </Icon>
-      </IconContainer>
+        </StyledIcon>
+      </StyledIconContainer>
     )
   },
 )

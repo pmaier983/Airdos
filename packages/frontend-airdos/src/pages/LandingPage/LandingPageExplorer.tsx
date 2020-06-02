@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { PaddingRowPage } from './landingPageStyles'
+import { StyledPaddingRowPage } from './landingPageStyles'
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   position: sticky;
   flex-direction: column;
@@ -11,7 +11,7 @@ const Container = styled.div`
   top: 0px;
 `
 
-const ExplorerSearch = styled.input`
+const StyledExplorerSearch = styled.input`
   border-radius: ${({ theme }) => theme.normalBorderRadius}; 
   height: ${({ theme }) => theme.largeFontSize};
   box-shadow: ${({ theme }) => theme.basicBoxShadow};
@@ -23,10 +23,10 @@ const ExplorerSearch = styled.input`
 `
 
 const LandingPageExplorer = () => (
-  <Container>
-    <PaddingRowPage />
-    <ExplorerSearch placeholder="Explore Airdos" />
-  </Container>
+  <StyledContainer>
+    <StyledPaddingRowPage />
+    <StyledExplorerSearch placeholder="Explore Airdos" />
+  </StyledContainer>
 )
 
 export { LandingPageExplorer }

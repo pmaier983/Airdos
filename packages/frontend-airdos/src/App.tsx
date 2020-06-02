@@ -6,7 +6,7 @@ import {
 
 import { Routes } from './Routes'
 
-const FontWrapper = styled.div`
+const StyledFontWrapper = styled.div`
   ${({ theme }) => css`
     font-family: ${theme.normalFontFamily};
     font-size: ${theme.normalFontSize};
@@ -14,11 +14,11 @@ const FontWrapper = styled.div`
 `
 
 const App = () => (
-  <FontWrapper>
+  <StyledFontWrapper>
     <Router>
       <Routes />
     </Router>
-  </FontWrapper>
+  </StyledFontWrapper>
 )
 
 export { App }

@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 
 import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
 
-const ButtonStyle = styled.button`
+const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   border-radius: ${({ theme }) => theme.normalBorderRadius};
@@ -28,11 +28,11 @@ const FollowButton: React.FC<IFollowButtonProps> = ({ usernameToFollow }) => {
   const [{ currentUser }] = useCurrentUserContext()
 
   if (!currentUser) {
-    return <ButtonStyle onClick={() => history.push('/login')}>LOGIN TO FOLLOW</ButtonStyle>
+    return <StyledButton onClick={() => history.push('/login')}>LOGIN TO FOLLOW</StyledButton>
   }
 
   return (
-    <ButtonStyle onClick={() => console.log(usernameToFollow)}>FOLLOW</ButtonStyle>
+    <StyledButton onClick={() => console.log(usernameToFollow)}>FOLLOW</StyledButton>
   )
 }
 

@@ -4,43 +4,43 @@ import styled from 'styled-components'
 
 import { MaterialIcon } from './MaterialIcon'
 
-const FeedBlockContainer = styled.div`
+const StyledFeedBlockContainer = styled.div`
   padding: 2px;
 `
 
-const HeaderContainer = styled.div`
+const StyledHeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 `
 
-const TitleContainer = styled.div`
+const StyledTitleContainer = styled.div`
   font-size: ${({ theme }) => theme.mediumFontSize};
 `
 
-const TextContainer = styled.div`
+const StyledTextContainer = styled.div`
   display: flex;
   flex-direction: row;
 `
 
-const PaddingTextColumn = styled.div`
+const StyledPaddingTextColumn = styled.div`
   height: 100%;
   width: 10px;
 `
 
-const FooterContainer = styled.div`
+const StyledFooterContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 `
 
-const LikesContainer = styled.div`
+const StyledLikesContainer = styled.div`
   display: flex;
   flex-direction: row;
 `
 
-const LikesCount = styled.div`
+const StyledLikesCount = styled.div`
   align-self: center;
   cursor: pointer;
 `
@@ -67,24 +67,24 @@ const FeedBlock: React.FC<IFeedBlockProps> = ({ text, title }) => {
     })
   }
   return (
-    <FeedBlockContainer>
-      <HeaderContainer>
-        <TitleContainer>{title}</TitleContainer>
+    <StyledFeedBlockContainer>
+      <StyledHeaderContainer>
+        <StyledTitleContainer>{title}</StyledTitleContainer>
         <MaterialIcon name="save" size="18px" onClick={() => console.log('save post')} />
-      </HeaderContainer>
-      <TextContainer>
-        <PaddingTextColumn />
+      </StyledHeaderContainer>
+      <StyledTextContainer>
+        <StyledPaddingTextColumn />
         {text}
-        <PaddingTextColumn />
-      </TextContainer>
-      <FooterContainer>
+        <StyledPaddingTextColumn />
+      </StyledTextContainer>
+      <StyledFooterContainer>
         <MaterialIcon name="record_voice_over" size="18px" onClick={() => console.log('repost')} />
-        <LikesContainer>
-          <LikesCount>{likeCount}</LikesCount>
+        <StyledLikesContainer>
+          <StyledLikesCount>{likeCount}</StyledLikesCount>
           <MaterialIcon name={isLiked ? 'emoji_objects' : 'emoji_objects_outlined'} size="20px" onClick={handleLike} />
-        </LikesContainer>
-      </FooterContainer>
-    </FeedBlockContainer>
+        </StyledLikesContainer>
+      </StyledFooterContainer>
+    </StyledFeedBlockContainer>
   )
 }
 

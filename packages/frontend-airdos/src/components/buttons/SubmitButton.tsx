@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ButtonStyle = styled.button`
+const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   border-radius: ${({ theme }) => theme.normalBorderRadius};
@@ -15,9 +15,9 @@ const ButtonStyle = styled.button`
 `
 
 const SubmitButton: React.FC = ({ children, ...props }) => (
-  <ButtonStyle {...props}>
+  <StyledButton {...props}>
     {children}
-  </ButtonStyle>
+  </StyledButton>
 )
 
 export { SubmitButton }

@@ -14,20 +14,20 @@ import { ProfilePageRelationshipSummaries } from './ProfilePageRelationshipSumma
 import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
 import { FollowButton, MessageButton } from '../../components/buttons'
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
 `
 
-const ButtonContainer = styled.div`
+const StyledButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
 `
 
-const PaddingRelationshipsRow = styled.div`
+const StyledPaddingRelationshipsRow = styled.div`
   height: 10px;
   width: 100%;
 `
@@ -85,20 +85,20 @@ const ProfilePage = () => {
   const groupList = user.groups
 
   return (
-    <Container>
+    <StyledContainer>
       <ProfilePageUserInfo {...user} />
-      <PaddingRelationshipsRow />
+      <StyledPaddingRelationshipsRow />
       <ProfilePageRelationshipSummaries followerList={followerList} groupList={groupList} />
-      <PaddingRelationshipsRow />
+      <StyledPaddingRelationshipsRow />
       {user.username !== currentUser?.username
       && (
-        <ButtonContainer>
+        <StyledButtonContainer>
           <FollowButton usernameToFollow={user.username} />
           <MessageButton usernameToMessage={user.username} />
-        </ButtonContainer>
+        </StyledButtonContainer>
       )}
 
-    </Container>
+    </StyledContainer>
   )
 }
 

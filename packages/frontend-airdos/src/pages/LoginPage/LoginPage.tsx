@@ -3,7 +3,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import {
-  Redirect,
   useHistory,
   Link,
 } from 'react-router-dom'
@@ -14,7 +13,7 @@ import { SubmitButton } from '../../components/buttons'
 import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
 import { MaterialIcon } from '../../components/MaterialIcon'
 
-const Container = styled.form`
+const StyledContainer = styled.form`
   position: absolute;
   top: 0;
   left: 0;
@@ -28,7 +27,7 @@ const Container = styled.form`
   background-color: ${({ theme }) => theme.backgroundColor};
 `
 
-const LoginContainer = styled.div`
+const StyledLoginContainer = styled.div`
   ${({ theme }) => css`
     box-shadow: ${theme.mediumHighlightedBoxShadow};
     border-radius: ${theme.largeBorderRadius};
@@ -39,7 +38,7 @@ const LoginContainer = styled.div`
   height: 25%;
 `
 
-const LoggingInOverlay = styled.div`
+const StyledLoggingInOverlay = styled.div`
   position: absolute;
   justify-content: center;
   align-items: center;
@@ -54,14 +53,14 @@ const LoggingInOverlay = styled.div`
   `};
 `
 
-const SegmentContainer = styled.div`
+const StyledSegmentContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 25%;
 `
 
-const LoginTitleMessage = styled.div`
+const StyledLoginTitleMessage = styled.div`
   height: 100%;
   display: flex;    
   justify-content: center;
@@ -69,55 +68,55 @@ const LoginTitleMessage = styled.div`
   font-size: ${({ theme }) => theme.largeFontSize};
 `
 
-const Input = styled.input`  
+const StyledInput = styled.input`  
   display: flex;    
   justify-content: center;
   align-items: center;
 `
 
-const InputContainer = styled.div`
+const StyledInputContainer = styled.div`
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: center;
 `
 
-const PaddingLoginRow = styled.div`
+const StyledPaddingLoginRow = styled.div`
   width: 100%;
   height: 20px;
 `
 
-const SubmitButtonWrapper = styled(SubmitButton)`
+const StyledSubmitButtonWrapper = styled(SubmitButton)`
   background-color: ${({ theme }) => theme.lightFocusColor};
   min-width: 200px;
   width: 15%;
   height: 3%;
 `
 
-const ErrorContainer = styled.div`
+const StyledErrorContainer = styled.div`
   display: flex;
   justify-content: center;
   color: ${({ theme }) => theme.focusColor};
 `
 
-const FooterContainer = styled.div`
+const StyledFooterContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
   height: 100%;
 `
 
-const SaveSessionContainer = styled.div`
+const StyledSaveSessionContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
 `
 
-const LinkWrapper = styled(Link)`
+const StyledLinkWrapper = styled(Link)`
   text-decoration: none;
 `
 
-const CloseContainer = styled.div`
+const StyledCloseContainer = styled.div`
   position: absolute;
 `
 
@@ -136,7 +135,7 @@ const LoginPage = () => {
   ] = useCurrentUserContext()
 
   if (currentUser) {
-    return <Redirect to="/" />
+    history.goBack()
   }
 
   // TODO: specify data type
@@ -155,52 +154,52 @@ const LoginPage = () => {
 
   // TODO Material Icon Loading should use polish and theme for its color
   return (
-    <Container onSubmit={handleSubmit(onSubmit)}>
-      <LoginContainer>
-        {loading && <LoggingInOverlay>Loading...</LoggingInOverlay>}
-        <CloseContainer>
+    <StyledContainer onSubmit={handleSubmit(onSubmit)}>
+      <StyledLoginContainer>
+        {loading && <StyledLoggingInOverlay>Loading...</StyledLoggingInOverlay>}
+        <StyledCloseContainer>
           <MaterialIcon name="close" color={loading ? 'white' : 'black'} onClick={() => history.goBack()} />
-        </CloseContainer>
-        <SegmentContainer>
-          <LoginTitleMessage>
+        </StyledCloseContainer>
+        <StyledSegmentContainer>
+          <StyledLoginTitleMessage>
             Login To Airdos
-          </LoginTitleMessage>
-        </SegmentContainer>
-        <SegmentContainer>
-          <InputContainer>
+          </StyledLoginTitleMessage>
+        </StyledSegmentContainer>
+        <StyledSegmentContainer>
+          <StyledInputContainer>
             <label htmlFor="username">
               Username
-              <Input ref={register} type="text" id="username" name="username" />
+              <StyledInput ref={register} type="text" id="username" name="username" />
             </label>
-          </InputContainer>
-        </SegmentContainer>
-        <SegmentContainer>
-          <InputContainer>
+          </StyledInputContainer>
+        </StyledSegmentContainer>
+        <StyledSegmentContainer>
+          <StyledInputContainer>
             <label htmlFor="password">
               Password
-              <Input ref={register} type="text" id="password" name="password" />
+              <StyledInput ref={register} type="text" id="password" name="password" />
             </label>
-          </InputContainer>
-          <SaveSessionContainer>
+          </StyledInputContainer>
+          <StyledSaveSessionContainer>
             <MaterialIcon size="16px" name={rememberCurrentUser ? 'check_box' : 'check_box_outline_blank'} onClick={toggleSaveSession} />
             Remember Me
-          </SaveSessionContainer>
-        </SegmentContainer>
-        <SegmentContainer>
-          <ErrorContainer>
+          </StyledSaveSessionContainer>
+        </StyledSegmentContainer>
+        <StyledSegmentContainer>
+          <StyledErrorContainer>
             {authError}
-          </ErrorContainer>
-          <FooterContainer>
-            <LinkWrapper to="/">Forgot Password/Username?</LinkWrapper>
-            <LinkWrapper to="/">Sign Up</LinkWrapper>
-          </FooterContainer>
-        </SegmentContainer>
-      </LoginContainer>
-      <PaddingLoginRow />
-      <SubmitButtonWrapper>
+          </StyledErrorContainer>
+          <StyledFooterContainer>
+            <StyledLinkWrapper to="/">Forgot Password/Username?</StyledLinkWrapper>
+            <StyledLinkWrapper to="/">Sign Up</StyledLinkWrapper>
+          </StyledFooterContainer>
+        </StyledSegmentContainer>
+      </StyledLoginContainer>
+      <StyledPaddingLoginRow />
+      <StyledSubmitButtonWrapper>
         {loading ? 'Logging You In' :' Login'}
-      </SubmitButtonWrapper>
-    </Container>
+      </StyledSubmitButtonWrapper>
+    </StyledContainer>
   )
 }
 

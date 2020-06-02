@@ -6,7 +6,7 @@ import { LandingPageNavigation } from './LandingPageNavigation'
 import { LandingPageExplorer } from './LandingPageExplorer'
 import { LandingPageContent } from './LandingPageContent'
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -22,7 +22,7 @@ const Container = styled.div`
 
 `
 
-const ContentPaddingColumn = styled.div`
+const StyledContentPaddingColumn = styled.div`
   width: 20px;
   height: 100%;
 `
@@ -36,13 +36,13 @@ const initializeAnalytics = () => {
 const LandingPage = () => {
   initializeAnalytics()
   return (
-    <Container>
+    <StyledContainer>
       <LandingPageNavigation />
-      <ContentPaddingColumn />
+      <StyledContentPaddingColumn />
       <LandingPageContent />
-      <ContentPaddingColumn />
+      <StyledContentPaddingColumn />
       <LandingPageExplorer />
-    </Container>
+    </StyledContainer>
   )
 }
 

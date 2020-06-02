@@ -4,18 +4,18 @@ import {
   Link,
 } from 'react-router-dom'
 
-const RelationshipContainer = styled.div`
+const StyledRelationshipContainer = styled.div`
   display: flex;
   flex-direction: column;
   font-size: ${({ theme }) => theme.mediumFontSize};
 `
 
-const PaddingBetweenRelationshipsRow = styled.div`
+const StyledPaddingBetweenRelationshipsRow = styled.div`
   height: 5px;
   width: 100%;
 `
 
-const BoldText = styled.strong`
+const StyledBoldText = styled.strong`
   font-weight: ${({ theme }) => theme.strongFontWeight};
 `
 
@@ -44,7 +44,7 @@ const renderFollowerSummary = (followerList: string[]) => {
     <span>
       FOLLOWED BY
       {' '}
-      <BoldText>{numberOfFollowers}</BoldText>
+      <StyledBoldText>{numberOfFollowers}</StyledBoldText>
       {' '}
       {numberOfFollowers === 1 ? 'PERSON' : 'PEOPLE'}
       {' '}
@@ -67,7 +67,7 @@ const renderGroupSummary = (groupList: string[]) => {
     <span>
       MEMBER OF
       {' '}
-      <BoldText>{numberOfGroups}</BoldText>
+      <StyledBoldText>{numberOfGroups}</StyledBoldText>
       {' '}
       {numberOfGroups === 1 ? 'GROUP' : 'GROUP\'s'}
       {' '}
@@ -81,11 +81,11 @@ const renderGroupSummary = (groupList: string[]) => {
 const ProfilePageRelationshipSummaries: React.FC<IProfilePageRelationshipSummariesProps> = (
   { followerList, groupList },
 ) => (
-  <RelationshipContainer>
+  <StyledRelationshipContainer>
     {renderFollowerSummary(followerList)}
-    <PaddingBetweenRelationshipsRow />
+    <StyledPaddingBetweenRelationshipsRow />
     {renderGroupSummary(groupList)}
-  </RelationshipContainer>
+  </StyledRelationshipContainer>
 )
 
 

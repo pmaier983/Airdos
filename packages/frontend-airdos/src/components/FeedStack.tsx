@@ -1,37 +1,40 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { useQuery } from '@apollo/react-hooks'
 
 import { GET_POSTS, IGetPosts } from '../queries'
 import { FeedBlock } from './FeedBlock'
 import { FeedInput } from './FeedInput'
 
-const FeedStackContainer = styled.div`
+const StyledFeedStackContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
 
-const FeedContainer = styled.div`
+const StyledFeedContainer = styled.div`
   display: flex;
   flex-direction: column;
-  box-shadow: 
-    -${({ theme }) => theme.normalBorderWidth} 0 0 0 ${({ theme }) => theme.borderColor}, 
-     ${({ theme }) => theme.normalBorderWidth} 0 0 0 ${({ theme }) => theme.borderColor},
-     0 -${({ theme }) => theme.normalBorderWidth} 0 0 ${({ theme }) => theme.borderColor};
+  ${({ theme }) => css`
+    box-shadow: 
+      -${theme.normalBorderWidth} 0 0 0 ${theme.borderColor}, 
+      ${theme.normalBorderWidth} 0 0 0 ${theme.borderColor},
+      0 -${theme.normalBorderWidth} 0 0 ${theme.borderColor};
+  `}
+
 `
 
-const PaddingRowFeedSeparator = styled.div`
+const StyledPaddingRowFeedSeparator = styled.div`
   width: 100%;
   height: 20px;   
 `
 
-const PaddingRowFeedStack = styled.div`
+const StyledPaddingRowFeedStack = styled.div`
   width: 100%;
   height: 2px;
   background-color: ${({ theme }) => theme.spacingColor};
 `
 
-const LoadingIcon = styled.div`
+const StyledLoadingIcon = styled.div`
   display: flex;
   align-self: center;
   font-size: ${({ theme }) => theme.mediumFontSize};
@@ -51,19 +54,19 @@ const FeedStack = () => {
   }
 
   return (
-    <FeedStackContainer>
+    <StyledFeedStackContainer>
       <FeedInput />
-      <PaddingRowFeedSeparator />
-      <FeedContainer>
+      <StyledPaddingRowFeedSeparator />
+      <StyledFeedContainer>
         {data?.posts.map((post) => (
           <div key={post?.text}>
             <FeedBlock {...post} />
-            <PaddingRowFeedStack />
+            <StyledPaddingRowFeedStack />
           </div>
         ))}
-      </FeedContainer>
-      <LoadingIcon>Loading ...</LoadingIcon>
-    </FeedStackContainer>
+      </StyledFeedContainer>
+      <StyledLoadingIcon>Loading ...</StyledLoadingIcon>
+    </StyledFeedStackContainer>
   )
 }
 
