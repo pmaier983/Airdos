@@ -4,4 +4,5 @@ export const colors = {
   red: '196 11 12',
   white: '255 255 255',
   teal: '11 196 196',
+  green: '11 196 103',
 }

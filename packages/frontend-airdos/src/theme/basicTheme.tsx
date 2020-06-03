@@ -1,12 +1,14 @@
 import { colors } from './colors'
 
 export const basicTheme = {
-  backgroundColor: `rgb(${colors.white})`,
-  spacingColor: `rgb(${colors.grey})`,
-  focusColor: `rgb(${colors.red})`,
+  backgroundColor: `rgb(${colors.white.replace(/ /g, ',')})`,
+  spacingColor: `rgb(${colors.grey.replace(/ /g, ',')})`,
+  focusColor: `rgb(${colors.red.replace(/ /g, ',')})`,
   lightFocusColor: `rgba(${colors.red.replace(/ /g, ',')}, 0.1)`,
-  contrastFocusColor: `rgb(${colors.white})`,
+  contrastFocusColor: `rgb(${colors.white.replace(/ /g, ',')})`,
   lightEmphasisColor: `rgba(${colors.grey.replace(/ /g, ',')}, 0.4)`,
+  acceptColor: `rgb(${colors.green.replace(/ /g, ',')})`,
+  lightAcceptColor: `rgba(${colors.green.replace(/ /g, ',')}, 0.07)`,
 
   // Borders
   borderColor: `rgb(${colors.grey})`,
