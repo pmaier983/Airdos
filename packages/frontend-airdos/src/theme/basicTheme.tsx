@@ -26,6 +26,8 @@ export const basicTheme = {
   secondaryGlobalFont: 'sans-serif',
   globalFontColor: `rgb(${colors.black})`,
   highlightedFontColor: `rgb(${colors.red})`,
+  lightContrastFontColor: `rgb(${colors.white})`,
+  darkContrastFontColor: `rgb(${colors.black})`,
 
   extraLargeFontSize: '40px',
   largeFontSize: '20px',

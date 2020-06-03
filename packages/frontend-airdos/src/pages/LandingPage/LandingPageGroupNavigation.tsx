@@ -1,13 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
 
-const StyledGroupButton = styled.div`
-  font-size: ${({ theme }) => theme.largeFontSize};
-`
+import { AcceptButton } from '../../components/buttons'
 
-const LandingPageGroupNavigation = () => {
-  console.log('hi')
-  return (<StyledGroupButton>Group +</StyledGroupButton>)
-}
+// TODO: Appropriately size the add icon
+const LandingPageGroupNavigation = () => (
+  <AcceptButton />
+)
 
 export { LandingPageGroupNavigation }
