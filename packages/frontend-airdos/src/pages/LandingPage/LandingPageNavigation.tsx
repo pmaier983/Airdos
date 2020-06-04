@@ -15,6 +15,7 @@ const StyledContainer = styled.div`
   position: sticky;
   flex-direction: column;
   height: 100%;
+  max-width: 250px;
   top: 0px;
 `
 

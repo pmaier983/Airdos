@@ -25,6 +25,7 @@ export const basicTheme = {
   primaryGlobalFont: 'Red Hat Text',
   secondaryGlobalFont: 'sans-serif',
   globalFontColor: `rgb(${colors.black})`,
+  lightGlobalFontColor: `rgba(${colors.black.replace(/ /g, ',')}, 0.5)`,
   highlightedFontColor: `rgb(${colors.red})`,
   lightContrastFontColor: `rgb(${colors.white})`,
   darkContrastFontColor: `rgb(${colors.black})`,
