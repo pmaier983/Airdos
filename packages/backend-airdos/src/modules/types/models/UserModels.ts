@@ -5,7 +5,7 @@ import { IUserType } from '../UserType'
 import { users, passwords } from '../../../dud-data'
 import { getUserFromToken } from '../../../utils'
 
-const userPaths = ['id', 'name', 'firstName', 'lastName', 'username', 'groups', 'collegeName', 'followers', 'following']
+const userPaths = ['id', 'name', 'firstName', 'lastName', 'username', 'groups', 'collegeName', 'followers', 'following', 'chosenGroups']
 
 const publicPaths = ['id', 'name', 'firstName', 'lastName', 'username', 'collegeName']
 
