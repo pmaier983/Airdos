@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server-lambda": "^2.14.1",
+    "apollo-server-lambda": "^2.14.2",
     "lodash": "^4.17.15"
   },
   "devDependencies": {
