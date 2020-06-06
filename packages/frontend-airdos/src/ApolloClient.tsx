@@ -34,6 +34,7 @@ const client = new ApolloClient({
     httpLink,
   ]),
   cache,
+  assumeImmutableResults: true,
 })
 
 export const ApolloWrapper: React.FC = ({ children }) => (
