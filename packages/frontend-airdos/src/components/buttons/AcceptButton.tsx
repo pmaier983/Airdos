@@ -23,7 +23,7 @@ const StyledGroupButton = styled.div`
   align-self: center;
 `
 
-const AcceptButton = () => (
+const AcceptButton: React.FC = () => (
   <StyledGroupButton>
     Groups
     <MaterialIcon name="add" size="26px" display="flex" />
