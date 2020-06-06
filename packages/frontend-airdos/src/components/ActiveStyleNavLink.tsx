@@ -1,8 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useContext } from 'react'
+import styled, { ThemeContext } from 'styled-components'
 import { NavLink } from 'react-router-dom'
-
-import { theme as directTheme } from '../theme'
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
@@ -16,16 +14,19 @@ interface IActiveStyleNavLinkProps {
 
 const ActiveStyleNavLink: React.FC<IActiveStyleNavLinkProps> = (
   { to, children },
-) => (
-  <StyledNavLink
-    to={to}
-    strict={false}
-    activeStyle={{
-      color: directTheme.highlightedFontColor,
-    }}
-  >
-    {children}
-  </StyledNavLink>
-)
+) => {
+  const theme = useContext(ThemeContext)
+  return (
+    <StyledNavLink
+      to={to}
+      strict={false}
+      activeStyle={{
+        color: theme.highlightedFontColor,
+      }}
+    >
+      {children}
+    </StyledNavLink>
+  )
+}
 
 export { ActiveStyleNavLink }
