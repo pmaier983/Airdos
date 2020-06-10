@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import ReactGA from 'react-ga'
 import styled, { css } from 'styled-components'
 
@@ -33,7 +33,7 @@ const initializeAnalytics = () => {
 }
 
 
-const LandingPage = () => {
+const LandingPage = memo(() => {
   initializeAnalytics()
   return (
     <StyledContainer>
@@ -44,6 +44,6 @@ const LandingPage = () => {
       <LandingPageExplorer />
     </StyledContainer>
   )
-}
+})
 
 export { LandingPage }
