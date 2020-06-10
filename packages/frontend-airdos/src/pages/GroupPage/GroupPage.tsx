@@ -1,76 +1,34 @@
 import React from 'react'
-import styled from 'styled-components'
+import _ from 'lodash/fp'
+import {
+  useLocation, Route, Redirect,
+} from 'react-router-dom'
 
-import { GroupPageNavigation } from './GroupPageNavigation'
+import { GroupPageContent } from './GroupPageContent'
+import { GroupsPage } from './GroupsPage'
 
-interface IGroupPage {
-  pathGroupName: string
+const getUrlGroupName = (path: string) => {
+  const splitPath = path.split('/')
+  const profileIndex = _.findIndex((pathSegment) => pathSegment === 'groups', splitPath)
+  return splitPath[profileIndex + 1]
 }
 
-const StyledGroupPageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`
+const GroupPage: React.FC = () => {
+  const location = useLocation()
 
-const StyledHeaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`
+  // TODO: handle this so that it can handle paths that are not Groups after /groups
+  // TODO: make context?
+  const pathGroupName = getUrlGroupName(location.pathname)
 
-const StyledGroupName = styled.div`
-  font-size: ${({ theme }) => theme.extraLargeFontSize};
-`
-
-const StyledGroupDetails = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-const StyledGroupDetail = styled.span`
-  font-size: ${({ theme }) => theme.mediumFontSize};
-  color: ${({ theme }) => theme.lightGlobalFontColor};
-`
-
-const StyledPaddingColumnGroupDetail = styled.div`
-  width: 20px;
-`
-
-const StyledPaddingColumn = styled.div`
-  height: 20px;
-`
-
-const GroupPage: React.FC<IGroupPage> = ({ pathGroupName }) => {
-  const groupName = pathGroupName.replace(/_/g, ' ')
-
-  const memberCount = 13
-  const adminCount = 2
-  // query group
-  // check if is private group with user in it.
-  console.log('query for group and stuff')
   return (
-    <StyledGroupPageContainer>
-      <StyledHeaderContainer>
-        <StyledGroupName>
-          {groupName}
-        </StyledGroupName>
-        <StyledGroupDetails>
-          <StyledGroupDetail>
-            Member Count:
-            {' '}
-            {memberCount}
-          </StyledGroupDetail>
-          <StyledPaddingColumnGroupDetail />
-          <StyledGroupDetail>
-            Admin Count:
-            {' '}
-            {adminCount}
-          </StyledGroupDetail>
-        </StyledGroupDetails>
-      </StyledHeaderContainer>
-      <StyledPaddingColumn />
-      <GroupPageNavigation />
-    </StyledGroupPageContainer>
+    <>
+      <Route exact path={`/groups/${pathGroupName}/`}><Redirect to={`/groups/${pathGroupName}/feed`} /></Route>
+      <Route exact path={`/groups/${pathGroupName}/feed`}><GroupPageContent pathGroupName={pathGroupName}>GroupFeed</GroupPageContent></Route>
+      <Route exact path={`/groups/${pathGroupName}/files`}><GroupPageContent pathGroupName={pathGroupName}>Files</GroupPageContent></Route>
+      <Route exact path={`/groups/${pathGroupName}/members`}><GroupPageContent pathGroupName={pathGroupName}>Members</GroupPageContent></Route>
+      <Route exact path={`/groups/${pathGroupName}/settings`}><GroupPageContent pathGroupName={pathGroupName}>Settings</GroupPageContent></Route>
+      <Route exact path="/groups"><GroupsPage /></Route>
+    </>
   )
 }
 

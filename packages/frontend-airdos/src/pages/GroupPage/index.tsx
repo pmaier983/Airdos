@@ -1,1 +1,1 @@
-export { RouteGroupPage } from './RouteGroupPage'
+export { GroupPage } from './GroupPage'
