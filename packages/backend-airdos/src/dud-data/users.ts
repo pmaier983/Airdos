@@ -19,8 +19,8 @@ export const users = {
     firstName: 'Phillip',
     lastName: 'Maier',
     username: 'pmaier983',
-    groups: ['Airdos', 'Bowdoin College', 'Bowdoin Biochemistry', 'Boat Building', 'General Philosophy'],
-    chosenGroups: ['Airdos', 'Bowdoin College', 'Boat Building', 'General Philosophy'],
+    groups: ['Airdos', 'Bowdoin College'],
+    chosenGroups: ['Airdos', 'Bowdoin College'],
     collegeName: 'Bowdoin College',
     followers: [
       'rackraider', 'doctoroz101',
@@ -35,8 +35,8 @@ export const users = {
     firstName: 'William',
     lastName: 'Brockett',
     username: 'rackraider',
-    groups: ['Airdos', 'Bowdoin College', 'Boat Building'],
-    chosenGroups: ['Airdos', 'Bowdoin College', 'Boat Building'],
+    groups: ['Airdos', 'Bowdoin College'],
+    chosenGroups: ['Airdos', 'Bowdoin College'],
     collegeName: 'Pewter City Battle College',
     followers: [
       'doctoroz101', 'pmaier983',
@@ -51,8 +51,8 @@ export const users = {
     firstName: 'Andrew',
     lastName: 'Andrew',
     username: 'doctoroz101',
-    groups: ['Airdos', 'Brown College', 'Brown Human Biology', 'Brown Academics', 'General Philosophy'],
-    chosenGroups: ['Airdos', 'Brown College', 'Brown Human Biology', 'Brown Academics', 'General Philosophy'],
+    groups: ['Airdos', 'Brown College'],
+    chosenGroups: ['Airdos', 'Brown College'],
     collegeName: 'Brown Academy for Wizards and Witches',
     followers: [
       'rackraider',
