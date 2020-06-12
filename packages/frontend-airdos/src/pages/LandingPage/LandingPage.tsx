@@ -19,7 +19,6 @@ const StyledContainer = styled.div`
     font-weight: ${theme.normalFontWeight};
     background-color: ${theme.backgroundColor};
   `}
-
 `
 
 const StyledContentPaddingColumn = styled.div`
@@ -31,7 +30,6 @@ const initializeAnalytics = () => {
   ReactGA.initialize('UA-164973605-2')
   ReactGA.pageview('LandingPage')
 }
-
 
 const LandingPage = memo(() => {
   initializeAnalytics()

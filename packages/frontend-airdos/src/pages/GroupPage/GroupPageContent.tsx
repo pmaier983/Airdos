@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import { GroupPageNavigation } from './GroupPageNavigation'

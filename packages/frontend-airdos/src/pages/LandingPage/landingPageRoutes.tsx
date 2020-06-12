@@ -4,10 +4,22 @@ import {
 } from 'react-router-dom'
 
 import { PrivateRoute } from '../../components/PrivateRoute'
-import { IPageRoutes } from '../../Routes'
 import { FeedStack } from '../../components/FeedStack'
 import { ProfilePage } from '../ProfilePage'
 import { GroupPage } from '../GroupPage'
+
+// TODO: find out the true type of these components
+export interface IPageRoutes {
+  path: string,
+  Component: React.JSXElementConstructor<any>,
+  Router: React.JSXElementConstructor<any>,
+}
+
+export const renderRoutes = (routes: IPageRoutes[]) => routes.map(({ path, Component, Router }) => (
+  <Router key={path} path={path}>
+    <Component />
+  </Router>
+))
 
 const DummyComponent = () => <div>This Route is not built yet</div>
 

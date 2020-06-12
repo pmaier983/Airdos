@@ -1,13 +1,13 @@
 import crypto from 'crypto'
 import { useLocalStorage } from './useLocalStorage'
 
-type useSessionType = () => [
+type UseSessionType = () => [
   undefined | string,
   (username: string) => void,
   () => void
 ]
 
-const useSession: useSessionType = () => {
+const useSession: UseSessionType = () => {
   const [session, setSession, removeSession] = useLocalStorage({ key: 'Session', initialValue: undefined })
 
   // TODO: ensure that env is present

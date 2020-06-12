@@ -41,5 +41,4 @@ const ResponsiveGridLayout: React.FC = ({ children, layouts, ...props }: any) =>
   </>
 )
 
-
 export { ResponsiveGridLayout }

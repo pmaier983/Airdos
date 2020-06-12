@@ -37,7 +37,7 @@ interface ICurrentUserEffects {
   setRememberCurrentUser: React.Dispatch<boolean>
 }
 
-/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 const initialState: [ICurrentUserState, ICurrentUserEffects] = [
   {
@@ -57,7 +57,7 @@ const initialState: [ICurrentUserState, ICurrentUserEffects] = [
   },
 ]
 
-/* eslint-enable no-unused-vars */
+/* eslint-enable @typescript-eslint/no-unused-vars */
 
 export const CurrentUserContext = createContext(initialState)
 

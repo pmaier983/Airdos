@@ -88,5 +88,4 @@ const ProfilePageRelationshipSummaries: React.FC<IProfilePageRelationshipSummari
   </StyledRelationshipContainer>
 )
 
-
 export { ProfilePageRelationshipSummaries }

@@ -4,9 +4,8 @@ import {
   Switch,
 } from 'react-router-dom'
 
-import { renderRoutes } from '../../Routes'
+import { renderRoutes, landingPageRoutes } from './landingPageRoutes'
 import { StyledPaddingRowPage } from './landingPageStyles'
-import { landingPageRoutes } from './landingPageRoutes'
 
 const StyledContainer = styled.div`
   max-width: 500px;
