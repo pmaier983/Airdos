@@ -19,7 +19,6 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    // project: ['./tsconfig.json', 'babel.config.js', 'jest.config.js'],
     ecmaFeatures: {
       jsx: true,
     },
@@ -40,7 +39,6 @@ module.exports = {
     'react/require-default-props': OFF,
     'react/prop-types': OFF,
     'import/prefer-default-export': OFF,
-    semi: ['error', 'never'],
     "@typescript-eslint/semi": ['error', 'never'],
     'space-infix-ops': OFF,
     'import/extensions': [

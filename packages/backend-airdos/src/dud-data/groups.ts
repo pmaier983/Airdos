@@ -4,16 +4,22 @@ export const groups = {
   Airdos: {
     name: 'Airdos',
     members: ['rackraider', 'doctoroz101', 'pmaier983'],
+    admins: ['rackraider', 'doctoroz101', 'pmaier983'],
     posts: groupsPosts.Airdos,
+    private: true,
   },
   Bowdoin_College: {
-    name: 'Airdos',
+    name: 'Bowdoin College',
     members: ['rackraider', 'pmaier983'],
+    admins: [],
     posts: groupsPosts.Bowdoin_College,
+    private: false,
   },
   Brown_College: {
-    name: 'Airdos',
+    name: 'Brown College',
     members: ['doctoroz101'],
+    admins: [],
     posts: groupsPosts.Brown_College,
+    private: false,
   },
 }
