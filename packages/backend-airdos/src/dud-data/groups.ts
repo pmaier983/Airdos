@@ -8,14 +8,14 @@ export const groups = {
     posts: groupsPosts.Airdos,
     private: true,
   },
-  Bowdoin_College: {
+  BowdoinCollege: {
     name: 'Bowdoin College',
     members: ['rackraider', 'pmaier983'],
     admins: [],
     posts: groupsPosts.Bowdoin_College,
     private: false,
   },
-  Brown_College: {
+  BrownCollege: {
     name: 'Brown College',
     members: ['doctoroz101'],
     admins: [],
