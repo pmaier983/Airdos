@@ -7,12 +7,13 @@ import { typeDefs as tds, resolvers as rzs } from './types'
 const td = gql`
   interface Node {
     id: ID!
-  }
+  } 
   type Query {
     posts: [Post]
     userByUsername(username: String!): User
     userByLogin(username: String!, password: String!): User
     userByToken(token: String!): User
+    groupByName(name: String!): Group
   }
 `
 

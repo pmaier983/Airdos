@@ -10,8 +10,8 @@ export const getGroupModels = ({ user }: {user: IUserType | undefined}) => ({
     const possibleGroup = _.get(name, groups)
     if (possibleGroup) {
       const group = possibleGroup
-      if (group.private && user) {
-        if (group.members.includes(user.username)) {
+      if (group.private) {
+        if (group.members.includes(_.get('username', user))) {
           return group
         }
         throw new AuthenticationError('You do not have access to this group')

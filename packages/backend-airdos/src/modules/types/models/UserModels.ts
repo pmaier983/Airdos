@@ -1,3 +1,4 @@
+import { AuthenticationError } from 'apollo-server-lambda'
 import _ from 'lodash/fp'
 
 // eslint-disable-next-line no-unused-vars
@@ -22,7 +23,7 @@ export const getUserModels = ({ user }: {user: IUserType | undefined}) => ({
       }
       return _.pick(publicPaths, foundUser)
     }
-    return undefined
+    throw Error('No such User in directory')
   },
   getByToken: ({ token }: {token: string}) => {
     if (user) {
@@ -31,12 +32,9 @@ export const getUserModels = ({ user }: {user: IUserType | undefined}) => ({
     return getUserFromToken(token)
   },
   verifyAndReturnUser: ({ username, password }) => {
-    if (user) {
-      return user
-    }
     if (_.get(username, passwords) === password) {
       return users[username]
     }
-    return undefined
+    throw new AuthenticationError('Wrong username or password')
   },
 })
