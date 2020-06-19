@@ -12,14 +12,14 @@ export const groups = {
     name: 'Bowdoin College',
     members: ['rackraider', 'pmaier983'],
     admins: [],
-    posts: groupsPosts.Bowdoin_College,
+    posts: groupsPosts.BowdoinCollege,
     private: false,
   },
   BrownCollege: {
     name: 'Brown College',
     members: ['doctoroz101'],
     admins: [],
-    posts: groupsPosts.Brown_College,
+    posts: groupsPosts.BrownCollege,
     private: false,
   },
 }

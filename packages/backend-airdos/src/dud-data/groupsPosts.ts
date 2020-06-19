@@ -7,7 +7,7 @@ export const groupsPosts = {
       text: 'Our latest pre-print, on the use of saliva as a diagnostic sample for testing [link]',
     },
   ],
-  Bowdoin_College: [
+  BowdoinCollege: [
     {
       location: 'Group post',
       title: 'Dummy Title',
@@ -15,7 +15,7 @@ export const groupsPosts = {
       text: 'Our latest pre-print, on the use of saliva as a diagnostic sample for testing [link]',
     },
   ],
-  Brown_College: [
+  BrownCollege: [
     {
       location: 'Group post',
       title: 'Dummy Title',
