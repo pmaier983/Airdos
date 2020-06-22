@@ -16,6 +16,7 @@ const getUrlGroupName = (path: string) => {
 const GroupPage: React.FC = () => {
   const location = useLocation()
 
+  // TODO tommorow: import from apollo graphql server
   // TODO: handle this so that it can handle paths that are not Groups after /groups
   // TODO: make context?
   const pathGroupName = getUrlGroupName(location.pathname)
