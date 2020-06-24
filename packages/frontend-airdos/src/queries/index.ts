@@ -35,7 +35,7 @@ const UserFragment = gql`
   }
 `
 
-const GET_USER_BY_LOGIN = gql`
+export const GET_USER_BY_LOGIN = gql`
   query getUserByLogin($username: String!, $password: String!) {
     userByLogin(username: $username, password: $password) {
       ...UserFragment
@@ -44,7 +44,7 @@ const GET_USER_BY_LOGIN = gql`
   ${UserFragment}
 `
 
-const GET_USER_BY_USERNAME = gql`
+export const GET_USER_BY_USERNAME = gql`
   query getUserByUsername($username: String!) { 
     userByUsername(username: $username) {
       ...UserFragment
@@ -53,7 +53,7 @@ const GET_USER_BY_USERNAME = gql`
   ${UserFragment}
 `
 
-const GET_USER_BY_TOKEN = gql`
+export const GET_USER_BY_TOKEN = gql`
   query getUserByToken($token: String!) {
     userByToken(token: $token) {
       ...UserFragment
@@ -62,7 +62,7 @@ const GET_USER_BY_TOKEN = gql`
   ${UserFragment}
 `
 
-const GET_POSTS = gql`
+export const GET_POSTS = gql`
   query getPosts { 
     posts {
       location
@@ -73,6 +73,15 @@ const GET_POSTS = gql`
   }
 `
 
-export {
-  GET_POSTS, GET_USER_BY_LOGIN, GET_USER_BY_USERNAME, GET_USER_BY_TOKEN,
-}
+export const GET_GROUP_BY_NAME = gql`
+  query getGroupByName($name: String!) {
+    groupByName(name: $name) {
+      name
+      posts {
+        location
+        text  
+      }
+      members
+    }
+  }
+`
