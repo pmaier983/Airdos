@@ -4,6 +4,7 @@ export const typeDefs = gql`
   type Group implements Node {
     id: ID!
     name: String
+    displayName: String
     posts: [Post]
     members: [String]
     admins: [String]
