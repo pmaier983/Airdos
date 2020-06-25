@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useQuery } from '@apollo/react-hooks'
+import { GET_GROUP_BY_NAME } from '../../queries'
 
 import { GroupPageNavigation } from './GroupPageNavigation'
 
@@ -41,9 +43,22 @@ interface IGroupPage {
 }
 
 const GroupPageContent: React.FC<IGroupPage> = ({ pathGroupName, children }) => {
-  const groupName = pathGroupName ? pathGroupName?.replace(/_/g, ' ') : 'Something Went Wrong'
+  const { data, loading, error } = useQuery(GET_GROUP_BY_NAME, {
+    variables: {
+      name: pathGroupName,
+    },
+  })
 
-  console.log('reRender GroupPage')
+  if (loading || error) {
+    return <div>Loading...</div>
+  }
+
+  const {
+    groupByName: {
+      displayName,
+      name,
+    },
+  } = data
 
   const memberCount = 13
   const adminCount = 2
@@ -53,7 +68,7 @@ const GroupPageContent: React.FC<IGroupPage> = ({ pathGroupName, children }) => 
     <StyledGroupPageContainer>
       <StyledHeaderContainer>
         <StyledGroupName>
-          {groupName}
+          {displayName}
         </StyledGroupName>
         <StyledGroupDetails>
           <StyledGroupDetail>
@@ -70,7 +85,7 @@ const GroupPageContent: React.FC<IGroupPage> = ({ pathGroupName, children }) => 
         </StyledGroupDetails>
       </StyledHeaderContainer>
       <StyledPaddingColumn />
-      <GroupPageNavigation groupName={groupName} />
+      <GroupPageNavigation groupName={name} />
       {children}
     </StyledGroupPageContainer>
   )
