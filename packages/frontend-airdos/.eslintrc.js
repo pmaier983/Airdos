@@ -26,7 +26,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2019,
+    ecmaVersion: 2020,
     sourceType: "module",
   },
   plugins: ["react", "react-hooks", "@typescript-eslint"],
@@ -49,6 +49,7 @@ module.exports = {
     "react/prop-types": OFF,
     "import/prefer-default-export": OFF,
     "@typescript-eslint/semi": ["error", "never"],
+    "@typescript-eslint/no-unused-vars": ERROR,
     "space-infix-ops": OFF,
     "import/extensions": [
       "error",

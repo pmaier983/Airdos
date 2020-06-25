@@ -13,10 +13,6 @@ const StyledPaddingBetweenRelationshipsRow = styled.div`
   width: 100%;
 `
 
-const StyledBoldText = styled.strong`
-  font-weight: ${({ theme }) => theme.strongFontWeight};
-`
-
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${({ theme }) => theme.globalFontColor};
