@@ -10,14 +10,14 @@ enum PostTypeEnum {
 }
 
 interface IPost {
-  location: string,
-  title: string,
-  postType: PostTypeEnum,
-  text: string,
+  location: string;
+  title: string;
+  postType: PostTypeEnum;
+  text: string;
 }
 
 export interface IGetPosts {
-  posts: [IPost]
+  posts: [IPost];
 }
 
 const UserFragment = gql`

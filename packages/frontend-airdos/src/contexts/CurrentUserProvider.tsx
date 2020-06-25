@@ -10,31 +10,31 @@ import { useSession } from '../hooks'
 import { GET_USER_BY_TOKEN, GET_USER_BY_LOGIN } from '../queries'
 
 export interface IUser {
-  id: string,
-  name: string,
-  firstName: string,
-  middleName?: string,
-  lastName: string,
-  username: string,
-  collegeName?: string,
-  groups: string[],
+  id: string;
+  name: string;
+  firstName: string;
+  middleName?: string;
+  lastName: string;
+  username: string;
+  collegeName?: string;
+  groups: string[];
 }
 
 interface ICurrentUserState {
-  loading: boolean,
-  error?: ApolloError,
-  called: boolean,
-  authError?: string,
-  currentUser?: IUser,
-  rememberCurrentUser: boolean,
+  loading: boolean;
+  error?: ApolloError;
+  called: boolean;
+  authError?: string;
+  currentUser?: IUser;
+  rememberCurrentUser: boolean;
 }
 
 interface ICurrentUserEffects {
-  getUserByToken: (queryProps: any) => void,
-  getUserByLogin: (queryProps: any) => void,
-  setCurrentUser: React.Dispatch<undefined>,
-  clearUser: () => void,
-  setRememberCurrentUser: React.Dispatch<boolean>
+  getUserByToken: (queryProps: any) => void;
+  getUserByLogin: (queryProps: any) => void;
+  setCurrentUser: React.Dispatch<undefined>;
+  clearUser: () => void;
+  setRememberCurrentUser: React.Dispatch<boolean>;
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars */

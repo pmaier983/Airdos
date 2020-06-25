@@ -2,8 +2,8 @@
 import { useState } from 'react'
 
 export interface IuseLocalStorageProps {
-  key: string,
-  initialValue: any
+  key: string;
+  initialValue: any;
 }
 
 // Hook

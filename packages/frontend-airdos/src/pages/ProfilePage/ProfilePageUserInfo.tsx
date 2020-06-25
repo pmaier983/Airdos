@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { MaterialIcon } from '../../components/MaterialIcon'
 import { IUser } from '../../contexts/CurrentUserProvider'
 
-const profilePicture = require('../../dud-data/userPhoto.png')
+import profilePicture from '../../dud-data/userPhoto.png'
 
 const StyledUserFactsContainer = styled.div`
   display: flex;

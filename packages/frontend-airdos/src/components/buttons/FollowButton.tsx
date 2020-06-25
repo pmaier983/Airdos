@@ -19,7 +19,7 @@ const StyledButton = styled.button`
 `
 
 interface IFollowButtonProps {
-  usernameToFollow: string
+  usernameToFollow: string;
 }
 
 // TODO: Possibly Consolidate Message and Follow Button

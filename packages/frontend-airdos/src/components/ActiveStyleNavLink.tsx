@@ -9,7 +9,7 @@ const StyledNavLink = styled(NavLink)`
 `
 
 interface IActiveStyleNavLinkProps {
-  to: string,
+  to: string;
 }
 
 const ActiveStyleNavLink: React.FC<IActiveStyleNavLinkProps> = (

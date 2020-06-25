@@ -26,7 +26,7 @@ const StyledButton = styled(NavLink)`
 `
 
 interface IGroupButtonProps {
-  path: string,
+  path: string;
 }
 
 // TODO: Make Reusable if needed

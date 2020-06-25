@@ -38,7 +38,7 @@ const StyledNavButton = styled(NavLink)`
 `
 
 interface IGroupPageNavigationProps {
-  groupName: string
+  groupName: string;
 }
 
 const GroupPageNavigation: React.FC<IGroupPageNavigationProps> = ({ groupName }) => {

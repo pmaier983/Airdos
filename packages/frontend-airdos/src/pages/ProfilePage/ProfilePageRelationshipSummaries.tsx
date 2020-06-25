@@ -28,8 +28,8 @@ const StyledLink = styled(Link)`
 `
 
 interface IProfilePageRelationshipSummariesProps {
-  followerList: string[],
-  groupList: string[],
+  followerList: string[];
+  groupList: string[];
 }
 
 const renderFollowerSummary = (followerList: string[]) => {

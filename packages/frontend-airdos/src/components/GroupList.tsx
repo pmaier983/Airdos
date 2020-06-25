@@ -4,7 +4,7 @@ import { ResponsiveGridLayout } from './grid'
 import { GroupButton } from './buttons'
 
 interface IGroupListProps {
-  list: string[],
+  list: string[];
 }
 
 const GroupList: React.FC<IGroupListProps> = ({ list }) => {

@@ -39,7 +39,7 @@ const StyledPaddingColumn = styled.div`
 `
 
 interface IGroupPage {
-  pathGroupName?: string
+  pathGroupName?: string;
 }
 
 const GroupPageContent: React.FC<IGroupPage> = ({ pathGroupName, children }) => {

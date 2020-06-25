@@ -10,9 +10,9 @@ import { GroupPage } from '../GroupPage'
 
 // TODO: find out the true type of these components
 export interface IPageRoutes {
-  path: string,
-  Component: React.JSXElementConstructor<any>,
-  Router: React.JSXElementConstructor<any>,
+  path: string;
+  Component: React.JSXElementConstructor<any>;
+  Router: React.JSXElementConstructor<any>;
 }
 
 export const renderRoutes = (routes: IPageRoutes[]) => routes.map(({ path, Component, Router }) => (

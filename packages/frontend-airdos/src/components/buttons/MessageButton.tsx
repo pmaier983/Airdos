@@ -19,7 +19,7 @@ const StyledButton = styled.button`
 `
 
 interface IMessageButtonProps {
-  usernameToMessage: string
+  usernameToMessage: string;
 }
 
 // TODO: Possibly Consolidate Message and Follow Button

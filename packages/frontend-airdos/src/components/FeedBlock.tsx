@@ -46,10 +46,10 @@ const StyledLikesCount = styled.div`
 `
 
 interface IFeedBlockProps {
-  text: string,
-  location: string,
-  postType: string,
-  title: string,
+  text: string;
+  location: string;
+  postType: string;
+  title: string;
 }
 
 const FeedBlock: React.FC<IFeedBlockProps> = ({ text, title }) => {

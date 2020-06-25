@@ -4,20 +4,20 @@ import _ from 'lodash/fp'
 import styled from 'styled-components'
 
 interface IconStylingProps {
-  size?: string,
-  color?: string,
-  onclick?: () => void,
-  hasHoverEffect?: boolean,
-  width?: string,
-  alignSelf?: string,
-  overflow?: string,
-  display?: string,
-  role?: string,
+  size?: string;
+  color?: string;
+  onclick?: () => void;
+  hasHoverEffect?: boolean;
+  width?: string;
+  alignSelf?: string;
+  overflow?: string;
+  display?: string;
+  role?: string;
 }
 
 interface IMaterialIconsProps extends IconStylingProps {
-  name: string,
-  onClick?: () => any,
+  name: string;
+  onClick?: () => any;
 }
 
 const ICON_THEMES = {

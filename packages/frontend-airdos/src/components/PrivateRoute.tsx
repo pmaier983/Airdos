@@ -4,7 +4,7 @@ import { useCurrentUserContext } from '../contexts/CurrentUserProvider'
 
 // TODO: get this from react router v6
 interface IPrivateRouteProps {
-  path: string
+  path: string;
 }
 
 const PrivateRoute: React.FC<IPrivateRouteProps> = ({ children, ...rest }) => {
