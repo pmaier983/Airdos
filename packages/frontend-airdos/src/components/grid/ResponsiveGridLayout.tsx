@@ -1,8 +1,8 @@
-import React from 'react'
-import { createGlobalStyle, css } from 'styled-components'
+import React from "react"
+import { createGlobalStyle, css } from "styled-components"
 
-import 'react-grid-layout/css/styles.css'
-import { Responsive, WidthProvider } from 'react-grid-layout'
+import "react-grid-layout/css/styles.css"
+import { Responsive, WidthProvider } from "react-grid-layout"
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive)
 
@@ -18,17 +18,29 @@ const StyledGlobalPlaceholder = createGlobalStyle`
 `
 
 // TODO: make more re-usable
-const ResponsiveGridLayout: React.FC = ({ children, layouts, ...props }: any) => (
+const ResponsiveGridLayout: React.FC = ({
+  children,
+  layouts,
+  ...props
+}: any) => (
   <>
     <StyledGlobalPlaceholder />
     <ResponsiveReactGridLayout
       rowHeight={30}
       cols={{
-        lg: 1, md: 1, sm: 1, xs: 1, xxs: 1,
+        lg: 1,
+        md: 1,
+        sm: 1,
+        xs: 1,
+        xxs: 1,
       }}
       rows={2}
       breakpoints={{
-        lg: 1200, md: 1024, sm: 768, xs: 568, xxs: 320,
+        lg: 1200,
+        md: 1024,
+        sm: 768,
+        xs: 568,
+        xxs: 320,
       }}
       isResizable={false}
       layouts={layouts}

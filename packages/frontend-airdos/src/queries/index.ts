@@ -1,23 +1,23 @@
-import gql from 'graphql-tag'
+import gql from "graphql-tag"
 
 // TODO: how to colocate this with graphql api?
 enum PostTypeEnum {
-  PUBLICIZING_RESEARCH = 'PUBLICIZING_RESEARCH',
-  PRE_PEER_REVIEW = 'PRE_PEER_REVIEW',
-  DISCUSSION_TOPIC = 'DISCUSSION_TOPIC',
-  CONFERENCE_AWARENESS = 'CONFERENCE_AWARENESS',
-  NONE = 'NONE',
+  PUBLICIZING_RESEARCH = "PUBLICIZING_RESEARCH",
+  PRE_PEER_REVIEW = "PRE_PEER_REVIEW",
+  DISCUSSION_TOPIC = "DISCUSSION_TOPIC",
+  CONFERENCE_AWARENESS = "CONFERENCE_AWARENESS",
+  NONE = "NONE",
 }
 
 interface IPost {
-  location: string;
-  title: string;
-  postType: PostTypeEnum;
-  text: string;
+  location: string
+  title: string
+  postType: PostTypeEnum
+  text: string
 }
 
 export interface IGetPosts {
-  posts: [IPost];
+  posts: [IPost]
 }
 
 const UserFragment = gql`
@@ -40,16 +40,16 @@ export const GET_USER_BY_LOGIN = gql`
     userByLogin(username: $username, password: $password) {
       ...UserFragment
     }
-  },
+  }
   ${UserFragment}
 `
 
 export const GET_USER_BY_USERNAME = gql`
-  query getUserByUsername($username: String!) { 
+  query getUserByUsername($username: String!) {
     userByUsername(username: $username) {
       ...UserFragment
     }
-  },
+  }
   ${UserFragment}
 `
 
@@ -58,12 +58,12 @@ export const GET_USER_BY_TOKEN = gql`
     userByToken(token: $token) {
       ...UserFragment
     }
-  },
+  }
   ${UserFragment}
 `
 
 export const GET_POSTS = gql`
-  query getPosts { 
+  query getPosts {
     posts {
       location
       title
@@ -80,7 +80,7 @@ export const GET_GROUP_BY_NAME = gql`
       displayName
       posts {
         location
-        text  
+        text
       }
       members
     }

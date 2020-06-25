@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import { MaterialIcon } from '../../components/MaterialIcon'
-import { IUser } from '../../contexts/CurrentUserProvider'
+import { MaterialIcon } from "../../components/MaterialIcon"
+import { IUser } from "../../contexts/CurrentUserProvider"
 
-import profilePicture from '../../dud-data/userPhoto.png'
+import profilePicture from "../../dud-data/userPhoto.png"
 
 const StyledUserFactsContainer = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ const StyledProfileInfoContainer = styled.div`
 const StyledProfilePicture = styled.img`
   width: 150px;
   height: 140px;
-  border-radius: 50%; 
+  border-radius: 50%;
 `
 
 const StyledNameContainer = styled.span`
@@ -55,9 +55,7 @@ const ProfilePageUserInfo = ({ name, username, collegeName }: IUser) => (
       <StyledProfilePicture src={profilePicture} />
       <StyledSpacingProfileColumn />
       <StyledProfileInfoContainer>
-        <StyledNameContainer>
-          {name}
-        </StyledNameContainer>
+        <StyledNameContainer>{name}</StyledNameContainer>
         <StyledSpacingSubNameRow />
         <StyledSubInfoContainer>
           <MaterialIcon name="alternate_email" size="14px" />

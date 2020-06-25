@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useHistory } from 'react-router-dom'
+import React from "react"
+import styled from "styled-components"
+import { useHistory } from "react-router-dom"
 
-import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
+import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
 
 const StyledButton = styled.button`
   border: none;
@@ -19,7 +19,7 @@ const StyledButton = styled.button`
 `
 
 interface IFollowButtonProps {
-  usernameToFollow: string;
+  usernameToFollow: string
 }
 
 // TODO: Possibly Consolidate Message and Follow Button
@@ -28,11 +28,17 @@ const FollowButton: React.FC<IFollowButtonProps> = ({ usernameToFollow }) => {
   const [{ currentUser }] = useCurrentUserContext()
 
   if (!currentUser) {
-    return <StyledButton onClick={() => history.push('/login')}>LOGIN TO FOLLOW</StyledButton>
+    return (
+      <StyledButton onClick={() => history.push("/login")}>
+        LOGIN TO FOLLOW
+      </StyledButton>
+    )
   }
 
   return (
-    <StyledButton onClick={() => console.log(usernameToFollow)}>FOLLOW</StyledButton>
+    <StyledButton onClick={() => console.log(usernameToFollow)}>
+      FOLLOW
+    </StyledButton>
   )
 }
 

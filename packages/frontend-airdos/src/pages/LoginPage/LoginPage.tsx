@@ -1,17 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // ^ a11y doesn't recognize styled-components input
-import React from 'react'
-import styled, { css } from 'styled-components'
-import {
-  useHistory,
-  Link,
-} from 'react-router-dom'
-import { darken, readableColor } from 'polished'
-import { useForm } from 'react-hook-form'
+import React from "react"
+import styled, { css } from "styled-components"
+import { useHistory, Link } from "react-router-dom"
+import { darken, readableColor } from "polished"
+import { useForm } from "react-hook-form"
 
-import { SubmitButton } from '../../components/buttons'
-import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
-import { MaterialIcon } from '../../components/MaterialIcon'
+import { SubmitButton } from "../../components/buttons"
+import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
+import { MaterialIcon } from "../../components/MaterialIcon"
 
 const StyledContainer = styled.form`
   position: absolute;
@@ -62,14 +59,14 @@ const StyledSegmentContainer = styled.div`
 
 const StyledLoginTitleMessage = styled.div`
   height: 100%;
-  display: flex;    
+  display: flex;
   justify-content: center;
   align-items: center;
   font-size: ${({ theme }) => theme.largeFontSize};
 `
 
-const StyledInput = styled.input`  
-  display: flex;    
+const StyledInput = styled.input`
+  display: flex;
   justify-content: center;
   align-items: center;
 `
@@ -125,12 +122,7 @@ const LoginPage = () => {
   const history = useHistory()
   const { register, handleSubmit, getValues } = useForm()
   const [
-    {
-      loading,
-      currentUser,
-      rememberCurrentUser,
-      authError,
-    },
+    { loading, currentUser, rememberCurrentUser, authError },
     { setRememberCurrentUser, getUserByLogin },
   ] = useCurrentUserContext()
 
@@ -142,8 +134,8 @@ const LoginPage = () => {
   const onSubmit = () => {
     getUserByLogin({
       variables: {
-        username: getValues('username'),
-        password: getValues('password'),
+        username: getValues("username"),
+        password: getValues("password"),
       },
     })
   }
@@ -158,18 +150,25 @@ const LoginPage = () => {
       <StyledLoginContainer>
         {loading && <StyledLoggingInOverlay>Loading...</StyledLoggingInOverlay>}
         <StyledCloseContainer>
-          <MaterialIcon name="close" color={loading ? 'white' : 'black'} onClick={() => history.goBack()} />
+          <MaterialIcon
+            name="close"
+            color={loading ? "white" : "black"}
+            onClick={() => history.goBack()}
+          />
         </StyledCloseContainer>
         <StyledSegmentContainer>
-          <StyledLoginTitleMessage>
-            Login To Airdos
-          </StyledLoginTitleMessage>
+          <StyledLoginTitleMessage>Login To Airdos</StyledLoginTitleMessage>
         </StyledSegmentContainer>
         <StyledSegmentContainer>
           <StyledInputContainer>
             <label htmlFor="username">
               Username
-              <StyledInput ref={register} type="text" id="username" name="username" />
+              <StyledInput
+                ref={register}
+                type="text"
+                id="username"
+                name="username"
+              />
             </label>
           </StyledInputContainer>
         </StyledSegmentContainer>
@@ -177,27 +176,38 @@ const LoginPage = () => {
           <StyledInputContainer>
             <label htmlFor="password">
               Password
-              <StyledInput ref={register} type="text" id="password" name="password" />
+              <StyledInput
+                ref={register}
+                type="text"
+                id="password"
+                name="password"
+              />
             </label>
           </StyledInputContainer>
           <StyledSaveSessionContainer>
-            <MaterialIcon size="16px" name={rememberCurrentUser ? 'check_box' : 'check_box_outline_blank'} onClick={toggleSaveSession} />
+            <MaterialIcon
+              size="16px"
+              name={
+                rememberCurrentUser ? "check_box" : "check_box_outline_blank"
+              }
+              onClick={toggleSaveSession}
+            />
             Remember Me
           </StyledSaveSessionContainer>
         </StyledSegmentContainer>
         <StyledSegmentContainer>
-          <StyledErrorContainer>
-            {authError}
-          </StyledErrorContainer>
+          <StyledErrorContainer>{authError}</StyledErrorContainer>
           <StyledFooterContainer>
-            <StyledLinkWrapper to="/">Forgot Password/Username?</StyledLinkWrapper>
+            <StyledLinkWrapper to="/">
+              Forgot Password/Username?
+            </StyledLinkWrapper>
             <StyledLinkWrapper to="/">Sign Up</StyledLinkWrapper>
           </StyledFooterContainer>
         </StyledSegmentContainer>
       </StyledLoginContainer>
       <StyledPaddingLoginRow />
       <StyledSubmitButtonWrapper>
-        {loading ? 'Logging You In' :' Login'}
+        {loading ? "Logging You In" : " Login"}
       </StyledSubmitButtonWrapper>
     </StyledContainer>
   )

@@ -1,36 +1,36 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { forwardRef } from 'react'
-import _ from 'lodash/fp'
-import styled from 'styled-components'
+import React, { forwardRef } from "react"
+import _ from "lodash/fp"
+import styled from "styled-components"
 
 interface IconStylingProps {
-  size?: string;
-  color?: string;
-  onclick?: () => void;
-  hasHoverEffect?: boolean;
-  width?: string;
-  alignSelf?: string;
-  overflow?: string;
-  display?: string;
-  role?: string;
+  size?: string
+  color?: string
+  onclick?: () => void
+  hasHoverEffect?: boolean
+  width?: string
+  alignSelf?: string
+  overflow?: string
+  display?: string
+  role?: string
 }
 
 interface IMaterialIconsProps extends IconStylingProps {
-  name: string;
-  onClick?: () => any;
+  name: string
+  onClick?: () => any
 }
 
 const ICON_THEMES = {
-  FILLED: '',
-  OUTLINED: '-outlined',
-  ROUNDED: '-round',
-  TWOTONE: '-two-tone',
-  SHARP: '-sharp',
+  FILLED: "",
+  OUTLINED: "-outlined",
+  ROUNDED: "-round",
+  TWOTONE: "-two-tone",
+  SHARP: "-sharp",
 }
 
 const StyledIconContainer = styled.div<IconStylingProps>`
   display: ${({ display }) => display};
-  cursor: ${({ onClick }) => (onClick ? 'pointer' : undefined)};
+  cursor: ${({ onClick }) => (onClick ? "pointer" : undefined)};
   align-self: ${({ alignSelf }) => alignSelf};
 `
 
@@ -39,10 +39,11 @@ const StyledIconContainer = styled.div<IconStylingProps>`
 const StyledIcon = styled.i<IconStylingProps>`
   overflow: ${({ overflow }) => overflow};
   font-size: ${({ size }) => size} !important;
-  color: ${({ color }) => color}; 
+  color: ${({ color }) => color};
   width: ${({ width, size }) => width || size};
   &:hover {
-    background: ${({ hasHoverEffect, theme }) => hasHoverEffect && theme.focusColor};
+    background: ${({ hasHoverEffect, theme }) =>
+      hasHoverEffect && theme.focusColor};
     border-radius: 20px;
   }
 `
@@ -50,25 +51,34 @@ const StyledIcon = styled.i<IconStylingProps>`
 // TODO: correctly manage onKeyPress, role and tabIndex...
 // TODO: clarify React.Ref attributes
 const MaterialIcon = forwardRef(
-  ({
-    name, role, onClick, alignSelf, display, ...props
-  }: IMaterialIconsProps, buttonRef: React.Ref<any>) => {
-    const materialTheme = _.get(_.flow(_.split('_'), _.last, _.toUpper)(name), ICON_THEMES)
+  (
+    { name, role, onClick, alignSelf, display, ...props }: IMaterialIconsProps,
+    buttonRef: React.Ref<any>
+  ) => {
+    const materialTheme = _.get(
+      _.flow(_.split("_"), _.last, _.toUpper)(name),
+      ICON_THEMES
+    )
     return (
       <StyledIconContainer
-        role={role || (onClick && 'button')}
+        role={role || (onClick && "button")}
         onClick={onClick}
         onKeyPress={onClick}
         alignSelf={alignSelf}
         display={display}
         ref={buttonRef}
       >
-        <StyledIcon {...props} className={materialTheme ? `material-icons${materialTheme}` : 'material-icons'}>
+        <StyledIcon
+          {...props}
+          className={
+            materialTheme ? `material-icons${materialTheme}` : "material-icons"
+          }
+        >
           {name}
         </StyledIcon>
       </StyledIconContainer>
     )
-  },
+  }
 )
 
 export { MaterialIcon }

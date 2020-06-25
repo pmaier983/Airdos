@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
-import styled, { css, ThemeContext } from 'styled-components'
+import React, { useContext } from "react"
+import { NavLink } from "react-router-dom"
+import styled, { css, ThemeContext } from "styled-components"
 
 const StyledButton = styled(NavLink)`
   ${({ theme }) => css`
@@ -10,11 +10,11 @@ const StyledButton = styled(NavLink)`
     font-size: ${theme.mediumFontSize};
     :hover {
       cursor: pointer;
-      background-color: ${theme.strongEmphasisColor}
+      background-color: ${theme.strongEmphasisColor};
     }
     :active {
       cursor: grabbing;
-      background-color: ${theme.strongEmphasisColor}
+      background-color: ${theme.strongEmphasisColor};
     }
   `};
   display: flex;
@@ -26,11 +26,15 @@ const StyledButton = styled(NavLink)`
 `
 
 interface IGroupButtonProps {
-  path: string;
+  path: string
 }
 
 // TODO: Make Reusable if needed
-const GroupButton: React.FC<IGroupButtonProps> = ({ children, path, ...props }) => {
+const GroupButton: React.FC<IGroupButtonProps> = ({
+  children,
+  path,
+  ...props
+}) => {
   const theme = useContext(ThemeContext)
   return (
     <StyledButton

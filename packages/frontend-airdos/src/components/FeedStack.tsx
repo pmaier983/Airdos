@@ -1,10 +1,10 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import { useQuery } from '@apollo/react-hooks'
+import React from "react"
+import styled, { css } from "styled-components"
+import { useQuery } from "@apollo/react-hooks"
 
-import { GET_POSTS, IGetPosts } from '../queries'
-import { FeedBlock } from './FeedBlock'
-import { FeedInput } from './FeedInput'
+import { GET_POSTS, IGetPosts } from "../queries"
+import { FeedBlock } from "./FeedBlock"
+import { FeedInput } from "./FeedInput"
 
 const StyledFeedStackContainer = styled.div`
   display: flex;
@@ -15,17 +15,15 @@ const StyledFeedContainer = styled.div`
   display: flex;
   flex-direction: column;
   ${({ theme }) => css`
-    box-shadow: 
-      -${theme.normalBorderWidth} 0 0 0 ${theme.borderColor}, 
+    box-shadow: -${theme.normalBorderWidth} 0 0 0 ${theme.borderColor},
       ${theme.normalBorderWidth} 0 0 0 ${theme.borderColor},
       0 -${theme.normalBorderWidth} 0 0 ${theme.borderColor};
   `}
-
 `
 
 const StyledPaddingRowFeedSeparator = styled.div`
   width: 100%;
-  height: 20px;   
+  height: 20px;
 `
 
 const StyledPaddingRowFeedStack = styled.div`
@@ -41,9 +39,7 @@ const StyledLoadingIcon = styled.div`
 `
 
 const FeedStack = () => {
-  const {
-    data, loading, error,
-  } = useQuery<IGetPosts>(GET_POSTS)
+  const { data, loading, error } = useQuery<IGetPosts>(GET_POSTS)
 
   if (loading) {
     return <div>Loading...</div>

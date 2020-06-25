@@ -1,12 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react"
+import ReactDOM from "react-dom"
 
-import { ThemeWrapper } from './ThemeWrapper'
-import { ApolloWrapper } from './ApolloClient'
-import { CurrentUserProvider } from './contexts/CurrentUserProvider'
-import { App } from './App'
+import { ThemeWrapper } from "./ThemeWrapper"
+import { ApolloWrapper } from "./ApolloClient"
+import { CurrentUserProvider } from "./contexts/CurrentUserProvider"
+import { App } from "./App"
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   // eslint-disable-next-line global-require
   // const axe = require('react-axe')
   // axe(React, ReactDOM, 1000)
@@ -20,5 +20,5 @@ ReactDOM.render(
       </CurrentUserProvider>
     </ThemeWrapper>
   </ApolloWrapper>,
-  document.getElementById('root'),
+  document.getElementById("root")
 )

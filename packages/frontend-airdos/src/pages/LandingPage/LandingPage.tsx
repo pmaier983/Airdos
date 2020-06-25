@@ -1,10 +1,10 @@
-import React, { memo } from 'react'
-import ReactGA from 'react-ga'
-import styled, { css } from 'styled-components'
+import React, { memo } from "react"
+import ReactGA from "react-ga"
+import styled, { css } from "styled-components"
 
-import { LandingPageNavigation } from './LandingPageNavigation'
-import { LandingPageExplorer } from './LandingPageExplorer'
-import { LandingPageContent } from './LandingPageContent'
+import { LandingPageNavigation } from "./LandingPageNavigation"
+import { LandingPageExplorer } from "./LandingPageExplorer"
+import { LandingPageContent } from "./LandingPageContent"
 
 const StyledContainer = styled.div`
   position: absolute;
@@ -27,8 +27,8 @@ const StyledContentPaddingColumn = styled.div`
 `
 
 const initializeAnalytics = () => {
-  ReactGA.initialize('UA-164973605-2')
-  ReactGA.pageview('LandingPage')
+  ReactGA.initialize("UA-164973605-2")
+  ReactGA.pageview("LandingPage")
 }
 
 const LandingPage = memo(() => {

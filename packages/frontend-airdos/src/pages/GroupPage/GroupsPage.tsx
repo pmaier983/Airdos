@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
+import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
 
 const GroupsPage: React.FC = () => {
   const [{ currentUser, loading }] = useCurrentUserContext()

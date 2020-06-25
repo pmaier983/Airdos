@@ -1,16 +1,14 @@
-import React from 'react'
-import {
-  Route,
-  Redirect,
-  useRouteMatch,
-} from 'react-router-dom'
+import React from "react"
+import { Route, Redirect, useRouteMatch } from "react-router-dom"
 
-import { LoginPage } from './pages/LoginPage'
-import { LandingPage } from './pages/LandingPage'
-import { landingPageRoutes } from './pages/LandingPage/landingPageRoutes'
+import { LoginPage } from "./pages/LoginPage"
+import { LandingPage } from "./pages/LandingPage"
+import { landingPageRoutes } from "./pages/LandingPage/landingPageRoutes"
 
 const Routes = () => {
-  const landingPageRoute = useRouteMatch(landingPageRoutes.map(({ path }) => path))
+  const landingPageRoute = useRouteMatch(
+    landingPageRoutes.map(({ path }) => path)
+  )
 
   return (
     <>
@@ -18,7 +16,9 @@ const Routes = () => {
       <Route exact path="/">
         <Redirect to="/feed" />
       </Route>
-      <Route path="/login"><LoginPage /></Route>
+      <Route path="/login">
+        <LoginPage />
+      </Route>
     </>
   )
 }

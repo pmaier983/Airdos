@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useQuery } from '@apollo/react-hooks'
-import { GET_GROUP_BY_NAME } from '../../queries'
+import React from "react"
+import styled from "styled-components"
+import { useQuery } from "@apollo/react-hooks"
+import { GET_GROUP_BY_NAME } from "../../queries"
 
-import { GroupPageNavigation } from './GroupPageNavigation'
+import { GroupPageNavigation } from "./GroupPageNavigation"
 
 const StyledGroupPageContainer = styled.div`
   display: flex;
@@ -39,10 +39,13 @@ const StyledPaddingColumn = styled.div`
 `
 
 interface IGroupPage {
-  pathGroupName?: string;
+  pathGroupName?: string
 }
 
-const GroupPageContent: React.FC<IGroupPage> = ({ pathGroupName, children }) => {
+const GroupPageContent: React.FC<IGroupPage> = ({
+  pathGroupName,
+  children,
+}) => {
   const { data, loading, error } = useQuery(GET_GROUP_BY_NAME, {
     variables: {
       name: pathGroupName,
@@ -54,10 +57,7 @@ const GroupPageContent: React.FC<IGroupPage> = ({ pathGroupName, children }) => 
   }
 
   const {
-    groupByName: {
-      displayName,
-      name,
-    },
+    groupByName: { displayName, name },
   } = data
 
   const memberCount = 13
@@ -67,19 +67,15 @@ const GroupPageContent: React.FC<IGroupPage> = ({ pathGroupName, children }) => 
   return (
     <StyledGroupPageContainer>
       <StyledHeaderContainer>
-        <StyledGroupName>
-          {displayName}
-        </StyledGroupName>
+        <StyledGroupName>{displayName}</StyledGroupName>
         <StyledGroupDetails>
           <StyledGroupDetail>
             Member Count:
-            {' '}
             {memberCount}
           </StyledGroupDetail>
           <StyledPaddingColumnGroupDetail />
           <StyledGroupDetail>
             Admin Count:
-            {' '}
             {adminCount}
           </StyledGroupDetail>
         </StyledGroupDetails>

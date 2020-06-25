@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import { StyledPaddingRowPage } from './landingPageStyles'
+import { StyledPaddingRowPage } from "./landingPageStyles"
 
 const StyledContainer = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const StyledContainer = styled.div`
 `
 
 const StyledExplorerSearch = styled.input`
-  border-radius: ${({ theme }) => theme.normalBorderRadius}; 
+  border-radius: ${({ theme }) => theme.normalBorderRadius};
   height: ${({ theme }) => theme.largeFontSize};
   box-shadow: ${({ theme }) => theme.basicBoxShadow};
   border: none;

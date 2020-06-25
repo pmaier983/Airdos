@@ -1,9 +1,9 @@
 // Small modifications to https://usehooks.com/useLocalStorage/
-import { useState } from 'react'
+import { useState } from "react"
 
 export interface IuseLocalStorageProps {
-  key: string;
-  initialValue: any;
+  key: string
+  initialValue: any
 }
 
 // Hook
@@ -28,7 +28,8 @@ const useLocalStorage = ({ key, initialValue }: IuseLocalStorageProps) => {
   const setValue = (value: any) => {
     try {
       // Allow value to be a function so we have same API as useState
-      const valueToStore = value instanceof Function ? value(storedValue) : value
+      const valueToStore =
+        value instanceof Function ? value(storedValue) : value
       // Save state
       setStoredValue(valueToStore)
       // Save to local storage

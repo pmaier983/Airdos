@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
 const StyledInputBox = styled.textarea`
   width: 100%;
@@ -16,6 +16,8 @@ const StyledInputBox = styled.textarea`
   }
 `
 
-const FeedInput = () => <StyledInputBox placeholder="What's piqued your interest lately" />
+const FeedInput = () => (
+  <StyledInputBox placeholder="What's piqued your interest lately" />
+)
 
 export { FeedInput }

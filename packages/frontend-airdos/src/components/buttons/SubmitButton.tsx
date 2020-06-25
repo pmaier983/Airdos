@@ -1,5 +1,5 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
+import React from "react"
+import styled, { css } from "styled-components"
 
 const StyledButton = styled.button`
   border: none;
@@ -17,9 +17,7 @@ const StyledButton = styled.button`
 `
 
 const SubmitButton: React.FC = ({ children, ...props }) => (
-  <StyledButton {...props}>
-    {children}
-  </StyledButton>
+  <StyledButton {...props}>{children}</StyledButton>
 )
 
 export { SubmitButton }

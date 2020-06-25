@@ -13,7 +13,9 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:testing-library/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
   ],
   globals: {
     Atomics: "readonly",
@@ -37,6 +39,7 @@ module.exports = {
     },
   },
   rules: {
+    "react/jsx-curly-newline": OFF,
     "@typescript-eslint/explicit-function-return-type": OFF,
     "@typescript-eslint/interface-name-prefix": OFF,
     "react/jsx-props-no-spreading": OFF,

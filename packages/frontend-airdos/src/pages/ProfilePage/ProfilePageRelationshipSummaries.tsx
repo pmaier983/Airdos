@@ -1,8 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import {
-  Link,
-} from 'react-router-dom'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const StyledRelationshipContainer = styled.div`
   display: flex;
@@ -28,29 +26,27 @@ const StyledLink = styled(Link)`
 `
 
 interface IProfilePageRelationshipSummariesProps {
-  followerList: string[];
-  groupList: string[];
+  followerList: string[]
+  groupList: string[]
 }
 
 const renderFollowerSummary = (followerList: string[]) => {
   // TODO: Redo this logic
   if (!followerList) {
-    return 'This user has disabled their follower list for you'
+    return "This user has disabled their follower list for you"
   }
   const numberOfFollowers = followerList.length
-  if (numberOfFollowers <= 0) { return 'NOT FOLLOWED BY ANYONE YET' }
+  if (numberOfFollowers <= 0) {
+    return "NOT FOLLOWED BY ANYONE YET"
+  }
   const keyFollower = followerList[0]
   return (
     <span>
-      FOLLOWED BY
-      {' '}
-      <StyledBoldText>{numberOfFollowers}</StyledBoldText>
-      {' '}
-      {numberOfFollowers === 1 ? 'PERSON' : 'PEOPLE'}
-      {' '}
-      INCLUDING:
-      {' '}
-      <StyledLink to={keyFollower}>{keyFollower}</StyledLink>
+      {`FOLLOWED BY 
+        ${(<StyledBoldText>{numberOfFollowers}</StyledBoldText>)}
+        ${numberOfFollowers === 1 ? "PERSON" : "PEOPLE"}
+        INCLUDING:
+        ${(<StyledLink to={keyFollower}>{keyFollower}</StyledLink>)}`}
     </span>
   )
 }
@@ -58,29 +54,27 @@ const renderFollowerSummary = (followerList: string[]) => {
 const renderGroupSummary = (groupList: string[]) => {
   // TODO: Redo this logic
   if (!groupList) {
-    return 'This user has disabled their group list for you'
+    return "This user has disabled their group list for you"
   }
   const numberOfGroups = groupList.length
-  if (numberOfGroups <= 0) { return 'NOT A PART OF ANY GROUP YET' }
+  if (numberOfGroups <= 0) {
+    return "NOT A PART OF ANY GROUP YET"
+  }
   const keyGroup = groupList[0]
   return (
     <span>
-      MEMBER OF
-      {' '}
-      <StyledBoldText>{numberOfGroups}</StyledBoldText>
-      {' '}
-      {numberOfGroups === 1 ? 'GROUP' : 'GROUP\'s'}
-      {' '}
+      {`MEMBER OF ${(<StyledBoldText>{numberOfGroups}</StyledBoldText>)}
+      ${numberOfGroups === 1 ? "GROUP" : "GROUP's"} 
       INCLUDING:
-      {' '}
-      {keyGroup}
+      ${keyGroup}`}
     </span>
   )
 }
 
-const ProfilePageRelationshipSummaries: React.FC<IProfilePageRelationshipSummariesProps> = (
-  { followerList, groupList },
-) => (
+const ProfilePageRelationshipSummaries: React.FC<IProfilePageRelationshipSummariesProps> = ({
+  followerList,
+  groupList,
+}) => (
   <StyledRelationshipContainer>
     {renderFollowerSummary(followerList)}
     <StyledPaddingBetweenRelationshipsRow />

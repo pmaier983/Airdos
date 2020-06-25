@@ -1,14 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import {
-  Link,
-} from 'react-router-dom'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 
-import { StyledPaddingRowPage } from './landingPageStyles'
-import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
-import { ActiveStyleNavLink } from '../../components/ActiveStyleNavLink'
-import { MaterialIcon } from '../../components/MaterialIcon'
-import { LandingPageGroupNavigation } from './LandingPageGroupNavigation'
+import { StyledPaddingRowPage } from "./landingPageStyles"
+import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
+import { ActiveStyleNavLink } from "../../components/ActiveStyleNavLink"
+import { MaterialIcon } from "../../components/MaterialIcon"
+import { LandingPageGroupNavigation } from "./LandingPageGroupNavigation"
 
 const StyledContainer = styled.div`
   display: flex;
@@ -91,12 +89,15 @@ const LandingPageNavigation = () => {
           <ActiveStyleNavLink to="/profile">PROFILE</ActiveStyleNavLink>
         </StyledLinkContainer>
       </StyledRouteContainer>
-      {currentUser
-        ? <StyledLinkWrapper to="/" onClick={logoutUser}>Logout</StyledLinkWrapper>
-        :<StyledLinkWrapper to="/login">Login</StyledLinkWrapper> }
+      {currentUser ? (
+        <StyledLinkWrapper to="/" onClick={logoutUser}>
+          Logout
+        </StyledLinkWrapper>
+      ) : (
+        <StyledLinkWrapper to="/login">Login</StyledLinkWrapper>
+      )}
       <StyledPaddingGroupRow />
       <LandingPageGroupNavigation />
-
     </StyledContainer>
   )
 }

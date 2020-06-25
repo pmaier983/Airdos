@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import _ from 'lodash/fp'
-import styled from 'styled-components'
+import React, { useState } from "react"
+import _ from "lodash/fp"
+import styled from "styled-components"
 
-import { MaterialIcon } from './MaterialIcon'
+import { MaterialIcon } from "./MaterialIcon"
 
 const StyledFeedBlockContainer = styled.div`
   padding: 2px;
@@ -46,10 +46,10 @@ const StyledLikesCount = styled.div`
 `
 
 interface IFeedBlockProps {
-  text: string;
-  location: string;
-  postType: string;
-  title: string;
+  text: string
+  location: string
+  postType: string
+  title: string
 }
 
 const FeedBlock: React.FC<IFeedBlockProps> = ({ text, title }) => {
@@ -59,9 +59,9 @@ const FeedBlock: React.FC<IFeedBlockProps> = ({ text, title }) => {
   const handleLike = () => {
     setLike((isCurrentlyLiked) => {
       if (isCurrentlyLiked) {
-        setLikeCount((currentLikeCount) => currentLikeCount -1)
+        setLikeCount((currentLikeCount) => currentLikeCount - 1)
       } else {
-        setLikeCount((currentLikeCount) => currentLikeCount +1)
+        setLikeCount((currentLikeCount) => currentLikeCount + 1)
       }
       return !isCurrentlyLiked
     })
@@ -70,7 +70,11 @@ const FeedBlock: React.FC<IFeedBlockProps> = ({ text, title }) => {
     <StyledFeedBlockContainer>
       <StyledHeaderContainer>
         <StyledTitleContainer>{title}</StyledTitleContainer>
-        <MaterialIcon name="save" size="18px" onClick={() => console.log('save post')} />
+        <MaterialIcon
+          name="save"
+          size="18px"
+          onClick={() => console.log("save post")}
+        />
       </StyledHeaderContainer>
       <StyledTextContainer>
         <StyledPaddingTextColumn />
@@ -78,10 +82,18 @@ const FeedBlock: React.FC<IFeedBlockProps> = ({ text, title }) => {
         <StyledPaddingTextColumn />
       </StyledTextContainer>
       <StyledFooterContainer>
-        <MaterialIcon name="record_voice_over" size="18px" onClick={() => console.log('repost')} />
+        <MaterialIcon
+          name="record_voice_over"
+          size="18px"
+          onClick={() => console.log("repost")}
+        />
         <StyledLikesContainer>
           <StyledLikesCount>{likeCount}</StyledLikesCount>
-          <MaterialIcon name={isLiked ? 'emoji_objects' : 'emoji_objects_outlined'} size="20px" onClick={handleLike} />
+          <MaterialIcon
+            name={isLiked ? "emoji_objects" : "emoji_objects_outlined"}
+            size="20px"
+            onClick={handleLike}
+          />
         </StyledLikesContainer>
       </StyledFooterContainer>
     </StyledFeedBlockContainer>

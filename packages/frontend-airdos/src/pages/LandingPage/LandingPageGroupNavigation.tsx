@@ -1,10 +1,10 @@
-import React from 'react'
-import _ from 'lodash/fp'
-import styled from 'styled-components'
-import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
+import React from "react"
+import _ from "lodash/fp"
+import styled from "styled-components"
+import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
 
-import { AcceptButton } from '../../components/buttons'
-import { GroupList } from '../../components/GroupList'
+import { AcceptButton } from "../../components/buttons"
+import { GroupList } from "../../components/GroupList"
 
 const StyledNoGroupsMessage = styled.div`
   text-align: center;
@@ -31,7 +31,9 @@ const LandingPageGroupNavigation: React.FC = () => {
   if (error || !currentUser) {
     return (
       <GroupNavigationWrapper>
-        <StyledNoGroupsMessage>You&apos;ve not joined any groups yet!</StyledNoGroupsMessage>
+        <StyledNoGroupsMessage>
+          You&apos;ve not joined any groups yet!
+        </StyledNoGroupsMessage>
       </GroupNavigationWrapper>
     )
   }
@@ -45,7 +47,11 @@ const LandingPageGroupNavigation: React.FC = () => {
     )
   }
 
-  const groupList: string[] = _.slice(0, 4, _.get('chosenGroups', currentUser) || _.get('groups', currentUser))
+  const groupList: string[] = _.slice(
+    0,
+    4,
+    _.get("chosenGroups", currentUser) || _.get("groups", currentUser)
+  )
 
   return (
     <GroupNavigationWrapper>

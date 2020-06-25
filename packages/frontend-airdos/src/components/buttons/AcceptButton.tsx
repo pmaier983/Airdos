@@ -1,8 +1,8 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import { readableColor } from 'polished'
+import React from "react"
+import styled, { css } from "styled-components"
+import { readableColor } from "polished"
 
-import { MaterialIcon } from '../MaterialIcon'
+import { MaterialIcon } from "../MaterialIcon"
 
 const StyledGroupButton = styled.div`
   ${({ theme }) => css`
@@ -13,7 +13,11 @@ const StyledGroupButton = styled.div`
     background-color: ${theme.lightAcceptColor};
     :hover {
       background-color: ${theme.acceptColor};
-      color: ${readableColor(theme.acceptColor, theme.lightContrastFontColor, theme.darkContrastFontColor)};
+      color: ${readableColor(
+        theme.acceptColor,
+        theme.lightContrastFontColor,
+        theme.darkContrastFontColor
+      )};
       cursor: pointer;
     }
   `};

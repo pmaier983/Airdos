@@ -1,14 +1,11 @@
-import React from 'react'
-import {
-  render,
-  screen,
-} from '@testing-library/react'
+import React from "react"
+import { render, screen } from "@testing-library/react"
 
 const MockComponent = () => <div>Hello</div>
 
-describe('Test App', () => {
-  it('Are Tests Working', () => {
+describe("Test App", () => {
+  it("Are Tests Working", () => {
     render(<MockComponent />)
-    expect(screen.getByText('Hello')).toBeDefined()
+    expect(screen.getByText("Hello")).toBeDefined()
   })
 })

@@ -1,4 +1,4 @@
-import { basicTheme } from './basicTheme'
+import { basicTheme } from "./basicTheme"
 
 export const advancedTheme = {
   basicBoxShadow: `0 0 0 ${basicTheme.normalBorderWidth} ${basicTheme.borderColor}`,

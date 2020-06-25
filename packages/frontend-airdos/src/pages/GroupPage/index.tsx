@@ -1,1 +1,1 @@
-export { GroupPage } from './GroupPage'
+export { GroupPage } from "./GroupPage"

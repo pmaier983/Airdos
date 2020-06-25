@@ -1,18 +1,16 @@
-import React from 'react'
-import _ from 'lodash/fp'
-import {
-  useLocation, Redirect,
-} from 'react-router-dom'
-import { useLazyQuery } from '@apollo/react-hooks'
-import styled from 'styled-components'
+import React from "react"
+import _ from "lodash/fp"
+import { useLocation, Redirect } from "react-router-dom"
+import { useLazyQuery } from "@apollo/react-hooks"
+import styled from "styled-components"
 
-import { GET_USER_BY_USERNAME } from '../../queries'
+import { GET_USER_BY_USERNAME } from "../../queries"
 
-import { ProfilePageUserInfo } from './ProfilePageUserInfo'
-import { ProfilePageNotFound } from './ProfilePageNotFound'
-import { ProfilePageRelationshipSummaries } from './ProfilePageRelationshipSummaries'
-import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
-import { FollowButton, MessageButton } from '../../components/buttons'
+import { ProfilePageUserInfo } from "./ProfilePageUserInfo"
+import { ProfilePageNotFound } from "./ProfilePageNotFound"
+import { ProfilePageRelationshipSummaries } from "./ProfilePageRelationshipSummaries"
+import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
+import { FollowButton, MessageButton } from "../../components/buttons"
 
 const StyledContainer = styled.div`
   display: flex;
@@ -34,8 +32,11 @@ const StyledPaddingRelationshipsRow = styled.div`
 
 // The username is the path after /profile
 const getUrlUsername = (path: string) => {
-  const splitPath = path.split('/')
-  const profileIndex = _.findIndex((pathSegment) => pathSegment === 'profile', splitPath)
+  const splitPath = path.split("/")
+  const profileIndex = _.findIndex(
+    (pathSegment) => pathSegment === "profile",
+    splitPath
+  )
   return splitPath[profileIndex + 1]
 }
 
@@ -44,13 +45,14 @@ const ProfilePage = () => {
   const [{ currentUser }] = useCurrentUserContext()
   const usernameFromPath = getUrlUsername(location.pathname)
 
-  const [getUser, {
-    called, data, loading, error,
-  }] = useLazyQuery(GET_USER_BY_USERNAME, {
-    variables: {
-      username: usernameFromPath,
-    },
-  })
+  const [getUser, { called, data, loading, error }] = useLazyQuery(
+    GET_USER_BY_USERNAME,
+    {
+      variables: {
+        username: usernameFromPath,
+      },
+    }
+  )
 
   // if the current user is viewing their profile page
   if (!usernameFromPath && currentUser) {
@@ -62,7 +64,7 @@ const ProfilePage = () => {
     getUser()
   }
 
-  if ((!currentUser && !usernameFromPath) || usernameFromPath === 'undefined') {
+  if ((!currentUser && !usernameFromPath) || usernameFromPath === "undefined") {
     return <Redirect to="/login" />
   }
 
@@ -75,7 +77,10 @@ const ProfilePage = () => {
   }
 
   // if current user, show in url, if not show queried user.
-  const user = usernameFromPath && (usernameFromPath !== currentUser?.username) ? _.get('userByUsername', data) : currentUser
+  const user =
+    usernameFromPath && usernameFromPath !== currentUser?.username
+      ? _.get("userByUsername", data)
+      : currentUser
 
   if (!user) {
     return <ProfilePageNotFound />
@@ -88,16 +93,17 @@ const ProfilePage = () => {
     <StyledContainer>
       <ProfilePageUserInfo {...user} />
       <StyledPaddingRelationshipsRow />
-      <ProfilePageRelationshipSummaries followerList={followerList} groupList={groupList} />
+      <ProfilePageRelationshipSummaries
+        followerList={followerList}
+        groupList={groupList}
+      />
       <StyledPaddingRelationshipsRow />
-      {user.username !== currentUser?.username
-      && (
+      {user.username !== currentUser?.username && (
         <StyledButtonContainer>
           <FollowButton usernameToFollow={user.username} />
           <MessageButton usernameToMessage={user.username} />
         </StyledButtonContainer>
       )}
-
     </StyledContainer>
   )
 }

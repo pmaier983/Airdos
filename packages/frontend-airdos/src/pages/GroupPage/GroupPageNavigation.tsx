@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
-import styled, { css, ThemeContext } from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import React, { useContext } from "react"
+import styled, { css, ThemeContext } from "styled-components"
+import { NavLink } from "react-router-dom"
 
 const StyledNavContainer = styled.div`
   display: flex;
@@ -32,16 +32,19 @@ const StyledNavButton = styled(NavLink)`
   ${({ theme }) => css`
     color: ${theme.globalFontColor};
     box-shadow: 0 0 0 1px ${theme.darkBorderColor};
-    border-radius: ${theme.normalBorderRadius} ${theme.normalBorderRadius} 0px 0px;
+    border-radius: ${theme.normalBorderRadius} ${theme.normalBorderRadius} 0px
+      0px;
     font-size: ${theme.mediumFontSize};
   `}
 `
 
 interface IGroupPageNavigationProps {
-  groupName: string;
+  groupName: string
 }
 
-const GroupPageNavigation: React.FC<IGroupPageNavigationProps> = ({ groupName }) => {
+const GroupPageNavigation: React.FC<IGroupPageNavigationProps> = ({
+  groupName,
+}) => {
   const theme = useContext(ThemeContext)
   return (
     <StyledNavContainer>
