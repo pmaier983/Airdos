@@ -43,10 +43,10 @@ const renderFollowerSummary = (followerList: string[]) => {
   return (
     <span>
       {`FOLLOWED BY 
-        ${(<StyledBoldText>{numberOfFollowers}</StyledBoldText>)}
+        ${numberOfFollowers}
         ${numberOfFollowers === 1 ? "PERSON" : "PEOPLE"}
-        INCLUDING:
-        ${(<StyledLink to={keyFollower}>{keyFollower}</StyledLink>)}`}
+        INCLUDING: `}
+      <StyledLink to={keyFollower}>{keyFollower}</StyledLink>
     </span>
   )
 }
@@ -63,7 +63,7 @@ const renderGroupSummary = (groupList: string[]) => {
   const keyGroup = groupList[0]
   return (
     <span>
-      {`MEMBER OF ${(<StyledBoldText>{numberOfGroups}</StyledBoldText>)}
+      {`MEMBER OF ${numberOfGroups}
       ${numberOfGroups === 1 ? "GROUP" : "GROUP's"} 
       INCLUDING:
       ${keyGroup}`}

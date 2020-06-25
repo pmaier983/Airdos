@@ -40,6 +40,7 @@ module.exports = {
   },
   rules: {
     "react/jsx-curly-newline": OFF,
+    "react/jsx-one-expression-per-line": OFF,
     "@typescript-eslint/explicit-function-return-type": OFF,
     "@typescript-eslint/interface-name-prefix": OFF,
     "react/jsx-props-no-spreading": OFF,
