@@ -48,7 +48,7 @@ module.exports = {
     "react/require-default-props": OFF,
     "react/prop-types": OFF,
     "import/prefer-default-export": OFF,
-    "@typescript-eslint/semi": ["error", "never"],
+    "@typescript-eslint/semi": OFF,
     "@typescript-eslint/no-unused-vars": ERROR,
     "space-infix-ops": OFF,
     "import/extensions": [
