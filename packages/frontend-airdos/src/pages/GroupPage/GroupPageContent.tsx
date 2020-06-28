@@ -52,8 +52,12 @@ const GroupPageContent: React.FC<IGroupPage> = ({
     },
   })
 
-  if (loading || error) {
+  if (loading) {
     return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>This group was not found</div>
   }
 
   const {
