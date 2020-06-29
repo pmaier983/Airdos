@@ -2,6 +2,8 @@ import React, { useContext } from "react"
 import styled, { css, ThemeContext } from "styled-components"
 import { NavLink } from "react-router-dom"
 
+import { Group } from "../../typings/api"
+
 const StyledNavContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,14 +40,9 @@ const StyledNavButton = styled(NavLink)`
   `}
 `
 
-interface IGroupPageNavigationProps {
-  groupName: string
-}
-
-const GroupPageNavigation: React.FC<IGroupPageNavigationProps> = ({
-  groupName,
-}) => {
+const GroupPageNavigation: React.FC<{ group: Group }> = ({ group }) => {
   const theme = useContext(ThemeContext)
+  const groupName = group.name
   return (
     <StyledNavContainer>
       <StyledNavButtonContainer>

@@ -4,7 +4,7 @@ import { useLocation, Redirect } from "react-router-dom"
 import { useLazyQuery } from "@apollo/react-hooks"
 import styled from "styled-components"
 
-import { GET_USER_BY_USERNAME } from "../../queries"
+import { GET_USER_BY_USERNAME } from "./ProfilePageQueries"
 
 import { ProfilePageUserInfo } from "./ProfilePageUserInfo"
 import { ProfilePageNotFound } from "./ProfilePageNotFound"

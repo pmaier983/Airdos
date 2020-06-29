@@ -1,10 +1,22 @@
 import React from "react"
 import styled, { css } from "styled-components"
 import { useQuery } from "@apollo/react-hooks"
+import gql from "graphql-tag"
 
-import { GET_POSTS, IGetPosts } from "../queries"
+import { Post } from "../typings/api"
 import { FeedBlock } from "./FeedBlock"
 import { FeedInput } from "./FeedInput"
+
+export const GET_POSTS = gql`
+  query getPosts {
+    posts {
+      location
+      title
+      postType
+      text
+    }
+  }
+`
 
 const StyledFeedStackContainer = styled.div`
   display: flex;
@@ -39,13 +51,13 @@ const StyledLoadingIcon = styled.div`
 `
 
 const FeedStack = () => {
-  const { data, loading, error } = useQuery<IGetPosts>(GET_POSTS)
+  const { data, loading, error } = useQuery<{ posts: Post[] }>(GET_POSTS)
 
   if (loading) {
     return <div>Loading...</div>
   }
 
-  if (error) {
+  if (error || !data) {
     return <div>Error</div>
   }
 

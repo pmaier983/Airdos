@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect } from "react"
 import { useLazyQuery } from "@apollo/react-hooks"
 import { useSession } from "../hooks"
 
-import { GET_USER_BY_TOKEN, GET_USER_BY_LOGIN } from "../queries"
+import { GET_USER_BY_TOKEN, GET_USER_BY_LOGIN } from "./CurrentUserQueries"
 
 export interface IUser {
   id: string
