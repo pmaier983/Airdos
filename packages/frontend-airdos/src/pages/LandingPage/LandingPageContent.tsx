@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { Switch } from "react-router-dom"
 
 import { renderRoutes, landingPageRoutes } from "./landingPageRoutes"
-import { StyledPaddingRowPage } from "./landingPageStyles"
 
 const StyledContainer = styled.div`
   max-width: 500px;
@@ -28,7 +27,6 @@ const StyledPaddingColumnContent = styled.div`
 
 const LandingPageContent = () => (
   <StyledContainer>
-    <StyledPaddingRowPage />
     <StyledPaddingContainer>
       <StyledPaddingColumnContent />
       <Switch>{renderRoutes(landingPageRoutes)}</Switch>

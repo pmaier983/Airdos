@@ -1,7 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 
-import { StyledPaddingRowPage } from "./landingPageStyles"
+const StyledPaddingRowPageTop = styled.div`
+  width: 100%;
+  height: 20px;
+  background-color: ${({ theme }) => theme.backgroundColor};
+  z-index: 2;
+`
 
 const StyledContainer = styled.div`
   display: flex;
@@ -24,7 +29,7 @@ const StyledExplorerSearch = styled.input`
 
 const LandingPageExplorer = () => (
   <StyledContainer>
-    <StyledPaddingRowPage />
+    <StyledPaddingRowPageTop />
     <StyledExplorerSearch placeholder="Explore Airdos" />
   </StyledContainer>
 )

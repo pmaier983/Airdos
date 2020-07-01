@@ -2,11 +2,15 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
-import { StyledPaddingRowPage } from "./landingPageStyles"
 import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
 import { ActiveStyleNavLink } from "../../components/ActiveStyleNavLink"
 import { MaterialIcon } from "../../components/MaterialIcon"
 import { LandingPageGroupNavigation } from "./LandingPageGroupNavigation"
+
+const StyledPaddingRowPageTop = styled.div`
+  width: 100%;
+  height: 20px;
+`
 
 const StyledContainer = styled.div`
   display: flex;
@@ -57,7 +61,7 @@ const LandingPageNavigation = () => {
 
   return (
     <StyledContainer>
-      <StyledPaddingRowPage />
+      <StyledPaddingRowPageTop />
       <StyledRouteContainer>
         <StyledLinkContainer>
           <MaterialIcon name="list" />
