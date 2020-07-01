@@ -4,6 +4,7 @@ import { useLocation, Route, Redirect } from "react-router-dom"
 
 import { GroupPageContent } from "./GroupPageContent"
 import { GroupsPage } from "./GroupsPage"
+import { GroupPageFeed } from "./GroupPageFeed"
 
 const getUrlGroupName = (path: string) => {
   const splitPath = path.split("/")
@@ -28,7 +29,7 @@ const GroupPage: React.FC = () => {
       </Route>
       <Route exact path={`/groups/${pathGroupName}/feed`}>
         <GroupPageContent pathGroupName={pathGroupName}>
-          GroupFeed
+          <GroupPageFeed />
         </GroupPageContent>
       </Route>
       <Route exact path={`/groups/${pathGroupName}/files`}>

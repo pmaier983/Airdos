@@ -12,6 +12,10 @@ import { ProfilePageRelationshipSummaries } from "./ProfilePageRelationshipSumma
 import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
 import { FollowButton, MessageButton } from "../../components/buttons"
 
+const StyledPaddingRowPageTop = styled.div`
+  height: 20px;
+`
+
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -91,6 +95,7 @@ const ProfilePage = () => {
 
   return (
     <StyledContainer>
+      <StyledPaddingRowPageTop />
       <ProfilePageUserInfo {...user} />
       <StyledPaddingRelationshipsRow />
       <ProfilePageRelationshipSummaries

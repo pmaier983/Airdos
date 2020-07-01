@@ -18,6 +18,10 @@ export const GET_POSTS = gql`
   }
 `
 
+const StyledPaddingRowFeedTop = styled.div`
+  height: 20px;
+`
+
 const StyledFeedStackContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -63,6 +67,7 @@ const FeedStack = () => {
 
   return (
     <StyledFeedStackContainer>
+      <StyledPaddingRowFeedTop />
       <FeedInput />
       <StyledPaddingRowFeedSeparator />
       <StyledFeedContainer>

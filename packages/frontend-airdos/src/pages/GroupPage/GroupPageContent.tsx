@@ -6,6 +6,17 @@ import { GET_GROUP_BY_NAME } from "./GroupPageQueries"
 import { Group } from "../../typings/api"
 import { GroupPageNavigation } from "./GroupPageNavigation"
 
+const StyledFixedHeaderContainer = styled.div`
+  position: sticky;
+  /* TODO: makes this part of theme*/
+  top: 0;
+  padding-top: 10px;
+  /* TODO: make a better solution then this*/
+  width: 101%;
+  align-self: center;
+  background-color: ${({ theme }) => theme.backgroundColor};
+`
+
 const StyledGroupPageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -70,22 +81,24 @@ const GroupPageContent: React.FC<IGroupPage> = ({
   // check if is private group with user in it.
   return (
     <StyledGroupPageContainer>
-      <StyledHeaderContainer>
-        <StyledGroupName>{data.groupByName.displayName}</StyledGroupName>
-        <StyledGroupDetails>
-          <StyledGroupDetail>
-            Member Count:
-            {memberCount}
-          </StyledGroupDetail>
-          <StyledPaddingColumnGroupDetail />
-          <StyledGroupDetail>
-            Admin Count:
-            {adminCount}
-          </StyledGroupDetail>
-        </StyledGroupDetails>
-      </StyledHeaderContainer>
-      <StyledPaddingColumn />
-      <GroupPageNavigation group={data.groupByName} />
+      <StyledFixedHeaderContainer>
+        <StyledHeaderContainer>
+          <StyledGroupName>{data.groupByName.displayName}</StyledGroupName>
+          <StyledGroupDetails>
+            <StyledGroupDetail>
+              Member Count:
+              {memberCount}
+            </StyledGroupDetail>
+            <StyledPaddingColumnGroupDetail />
+            <StyledGroupDetail>
+              Admin Count:
+              {adminCount}
+            </StyledGroupDetail>
+          </StyledGroupDetails>
+        </StyledHeaderContainer>
+        <StyledPaddingColumn />
+        <GroupPageNavigation group={data.groupByName} />
+      </StyledFixedHeaderContainer>
       {children}
     </StyledGroupPageContainer>
   )
