@@ -1,22 +1,11 @@
 import React from "react"
 import styled, { css } from "styled-components"
+import _ from "lodash/fp"
 import { useQuery } from "@apollo/react-hooks"
-import gql from "graphql-tag"
 
 import { Post } from "../typings/api"
 import { FeedBlock } from "./FeedBlock"
 import { FeedInput } from "./FeedInput"
-
-export const GET_POSTS = gql`
-  query getPosts {
-    posts {
-      location
-      title
-      postType
-      text
-    }
-  }
-`
 
 const StyledPaddingRowFeedTop = styled.div`
   height: 20px;
@@ -54,8 +43,20 @@ const StyledLoadingIcon = styled.div`
   font-size: ${({ theme }) => theme.mediumFontSize};
 `
 
-const FeedStack = () => {
-  const { data, loading, error } = useQuery<{ posts: Post[] }>(GET_POSTS)
+type FeedStackProps = {
+  query: any
+  variables?: any
+  postsPath?: string
+}
+
+const FeedStack: React.FC<FeedStackProps> = ({
+  query,
+  variables,
+  postsPath,
+}) => {
+  const { data, loading, error } = useQuery<{ posts: Post[] }>(query, {
+    variables,
+  })
 
   if (loading) {
     return <div>Loading...</div>
@@ -65,13 +66,17 @@ const FeedStack = () => {
     return <div>Error</div>
   }
 
+  const posts: [Post] = postsPath
+    ? _.get(postsPath, data)
+    : _.get("posts", data)
+
   return (
     <StyledFeedStackContainer>
       <StyledPaddingRowFeedTop />
       <FeedInput />
       <StyledPaddingRowFeedSeparator />
       <StyledFeedContainer>
-        {data?.posts.map((post) => (
+        {posts.map((post) => (
           <div key={post?.text}>
             <FeedBlock {...post} />
             <StyledPaddingRowFeedStack />
