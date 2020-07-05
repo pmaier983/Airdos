@@ -8,8 +8,20 @@ export const GET_GROUP_BY_NAME = gql`
       posts {
         location
         text
+        title
       }
       members
+    }
+  }
+`
+
+export const GET_GROUP_POSTS_BY_NAME = gql`
+  query getGroupByName($name: String!) {
+    groupByName(name: $name) {
+      posts {
+        location
+        text
+      }
     }
   }
 `

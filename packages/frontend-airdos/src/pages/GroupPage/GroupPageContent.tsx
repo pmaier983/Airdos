@@ -1,8 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { useQuery } from "@apollo/react-hooks"
 
-import { GET_GROUP_BY_NAME } from "./GroupPageQueries"
 import { Group } from "../../typings/api"
 import { GroupPageNavigation } from "./GroupPageNavigation"
 
@@ -51,30 +49,11 @@ const StyledPaddingColumn = styled.div`
 `
 
 interface IGroupPage {
+  group: Group
   pathGroupName?: string
 }
 
-const GroupPageContent: React.FC<IGroupPage> = ({
-  pathGroupName,
-  children,
-}) => {
-  const { data, loading, error } = useQuery<{ groupByName: Group }>(
-    GET_GROUP_BY_NAME,
-    {
-      variables: {
-        name: pathGroupName,
-      },
-    }
-  )
-
-  if (loading) {
-    return <div>Loading...</div>
-  }
-
-  if (error || !data) {
-    return <div>This group was not found</div>
-  }
-
+const GroupPageContent: React.FC<IGroupPage> = ({ group, children }) => {
   const memberCount = 13
   const adminCount = 2
   // query group
@@ -83,7 +62,7 @@ const GroupPageContent: React.FC<IGroupPage> = ({
     <StyledGroupPageContainer>
       <StyledFixedHeaderContainer>
         <StyledHeaderContainer>
-          <StyledGroupName>{data.groupByName.displayName}</StyledGroupName>
+          <StyledGroupName>{group.name}</StyledGroupName>
           <StyledGroupDetails>
             <StyledGroupDetail>
               Member Count:
@@ -97,7 +76,7 @@ const GroupPageContent: React.FC<IGroupPage> = ({
           </StyledGroupDetails>
         </StyledHeaderContainer>
         <StyledPaddingColumn />
-        <GroupPageNavigation group={data.groupByName} />
+        <GroupPageNavigation group={group} />
       </StyledFixedHeaderContainer>
       {children}
     </StyledGroupPageContainer>
