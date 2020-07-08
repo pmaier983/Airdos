@@ -5,11 +5,6 @@ export const GET_GROUP_BY_NAME = gql`
     groupByName(name: $name) {
       name
       displayName
-      posts {
-        location
-        text
-        title
-      }
       members
     }
   }
@@ -21,6 +16,7 @@ export const GET_GROUP_POSTS_BY_NAME = gql`
       posts {
         location
         text
+        title
       }
     }
   }
