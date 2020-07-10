@@ -1,8 +1,8 @@
 import React from "react"
 import { GET_GROUP_POSTS_BY_NAME } from "./GroupPageQueries"
-import { Group } from "../../typings/api"
+import { Group } from "../../../typings/api"
 
-import { FeedStack } from "../../components/FeedStack"
+import { FeedStack } from "../../../components/FeedStack"
 
 interface IGroupPageFeedProps {
   group: Group

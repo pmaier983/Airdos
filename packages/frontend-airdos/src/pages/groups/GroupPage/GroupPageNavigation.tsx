@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import styled, { css, ThemeContext } from "styled-components"
 import { NavLink } from "react-router-dom"
 
-import { Group } from "../../typings/api"
+import { Group } from "../../../typings/api"
 
 const StyledNavContainer = styled.div`
   display: flex;

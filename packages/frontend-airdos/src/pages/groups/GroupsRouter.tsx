@@ -2,8 +2,8 @@ import React from "react"
 import _ from "lodash/fp"
 import { useLocation, Route } from "react-router-dom"
 
-import { GroupPageContent } from "./GroupPageContent"
-import { GroupsPage } from "./GroupsPage"
+import { GroupsOverviewPage } from "./GroupsOverviewPage"
+import { GroupPage } from "./GroupPage"
 
 const getUrlGroupName = (path: string) => {
   const splitPath = path.split("/")
@@ -14,7 +14,7 @@ const getUrlGroupName = (path: string) => {
   return splitPath[profileIndex + 1]
 }
 
-const GroupPage: React.FC = () => {
+const GroupsRouter: React.FC = () => {
   const location = useLocation()
 
   // TODO: handle this so that it can handle paths that are not Groups after /groups
@@ -24,13 +24,13 @@ const GroupPage: React.FC = () => {
   return (
     <>
       <Route strict path="/groups/">
-        <GroupPageContent pathGroupName={pathGroupName} />
+        <div>Gello?</div>
       </Route>
-      <Route exact path="/groups">
-        <GroupsPage />
+      <Route exact strict path="/groups">
+        <GroupsOverviewPage />
       </Route>
     </>
   )
 }
 
-export { GroupPage }
+export { GroupsRouter }

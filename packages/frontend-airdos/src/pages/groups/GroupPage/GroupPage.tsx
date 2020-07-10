@@ -2,11 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import { useQuery } from "@apollo/react-hooks"
 
-import type { Group } from "../../typings/api"
+import type { Group } from "../../../typings/api"
 
 import { GET_GROUP_BY_NAME } from "./GroupPageQueries"
 import { GroupPageNavigation } from "./GroupPageNavigation"
-import { GroupPageContentRouter } from "./GroupPageContentRouter"
 
 const StyledFixedHeaderContainer = styled.div`
   position: sticky;
@@ -56,7 +55,7 @@ interface IGroupPage {
   pathGroupName: string
 }
 
-const GroupPageContent: React.FC<IGroupPage> = ({ pathGroupName }) => {
+const GroupPage: React.FC<IGroupPage> = ({ pathGroupName }) => {
   const { data, loading, error } = useQuery<{ groupByName: Group }>(
     GET_GROUP_BY_NAME,
     {
@@ -99,9 +98,9 @@ const GroupPageContent: React.FC<IGroupPage> = ({ pathGroupName }) => {
         <StyledPaddingColumn />
         <GroupPageNavigation group={group} />
       </StyledFixedHeaderContainer>
-      <GroupPageContentRouter group={group} />
+      {/* <GroupPageContentRouter group={group} /> */}
     </StyledGroupPageContainer>
   )
 }
 
-export { GroupPageContent }
+export { GroupPage }

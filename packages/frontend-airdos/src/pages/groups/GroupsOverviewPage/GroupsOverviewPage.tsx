@@ -1,8 +1,8 @@
 import React from "react"
 
-import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
+import { useCurrentUserContext } from "../../../contexts/CurrentUserProvider"
 
-const GroupsPage: React.FC = () => {
+const GroupsOverviewPage: React.FC = () => {
   const [{ currentUser, loading }] = useCurrentUserContext()
 
   if (loading) {
@@ -16,4 +16,4 @@ const GroupsPage: React.FC = () => {
   return <div>Anon User Goes to Group Page</div>
 }
 
-export { GroupsPage }
+export { GroupsOverviewPage }
