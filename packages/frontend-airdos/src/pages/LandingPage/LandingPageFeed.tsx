@@ -3,7 +3,7 @@ import { GET_POSTS } from "./LandingPageQueries"
 
 import { FeedStack } from "../../components/FeedStack"
 
-const LandingPageFeed = () => {
+const LandingPageFeed: React.FC = () => {
   return <FeedStack query={GET_POSTS} />
 }
 

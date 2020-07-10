@@ -44,7 +44,7 @@ const getUrlUsername = (path: string) => {
   return splitPath[profileIndex + 1]
 }
 
-const ProfilePage = () => {
+const ProfilePage: React.FC = () => {
   const location = useLocation()
   const [{ currentUser }] = useCurrentUserContext()
   const usernameFromPath = getUrlUsername(location.pathname)

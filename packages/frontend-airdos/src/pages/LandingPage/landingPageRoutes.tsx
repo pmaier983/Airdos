@@ -3,7 +3,7 @@ import { Route } from "react-router-dom"
 
 import { PrivateRoute } from "../../components/PrivateRoute"
 import { ProfilePage } from "../ProfilePage"
-import { GroupPage } from "../GroupPage"
+import { GroupsRouter } from "../groups/GroupsRouter"
 import { LandingPageFeed } from "./LandingPageFeed"
 
 // TODO: find out the true type of these components
@@ -11,11 +11,12 @@ export interface IPageRoutes {
   path: string
   Component: React.JSXElementConstructor<any>
   Router: React.JSXElementConstructor<any>
+  props?: any
 }
 
 export const renderRoutes = (routes: IPageRoutes[]) =>
-  routes.map(({ path, Component, Router }) => (
-    <Router key={path} path={path}>
+  routes.map(({ path, props, Component, Router }) => (
+    <Router key={path} path={path} {...props}>
       <Component />
     </Router>
   ))
@@ -30,7 +31,7 @@ const landingPageRoutes: IPageRoutes[] = [
   },
   {
     path: "/groups",
-    Component: GroupPage,
+    Component: GroupsRouter,
     Router: Route,
   },
   {
