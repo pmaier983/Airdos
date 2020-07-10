@@ -1,8 +1,12 @@
 import React from "react"
 import styled from "styled-components"
+import { useQuery } from "@apollo/react-hooks"
 
-import { Group } from "../../typings/api"
+import type { Group } from "../../typings/api"
+
+import { GET_GROUP_BY_NAME } from "./GroupPageQueries"
 import { GroupPageNavigation } from "./GroupPageNavigation"
+import { GroupPageContentRouter } from "./GroupPageContentRouter"
 
 const StyledFixedHeaderContainer = styled.div`
   position: sticky;
@@ -49,15 +53,32 @@ const StyledPaddingColumn = styled.div`
 `
 
 interface IGroupPage {
-  group: Group
-  pathGroupName?: string
+  pathGroupName: string
 }
 
-const GroupPageContent: React.FC<IGroupPage> = ({ group, children }) => {
+const GroupPageContent: React.FC<IGroupPage> = ({ pathGroupName }) => {
+  const { data, loading, error } = useQuery<{ groupByName: Group }>(
+    GET_GROUP_BY_NAME,
+    {
+      variables: {
+        name: pathGroupName,
+      },
+    }
+  )
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (error || !data) {
+    return <div>This group was not foundz</div>
+  }
+
+  const group = data.groupByName
+
   const memberCount = 13
   const adminCount = 2
-  // query group
-  // check if is private group with user in it.
+
   return (
     <StyledGroupPageContainer>
       <StyledFixedHeaderContainer>
@@ -78,7 +99,7 @@ const GroupPageContent: React.FC<IGroupPage> = ({ group, children }) => {
         <StyledPaddingColumn />
         <GroupPageNavigation group={group} />
       </StyledFixedHeaderContainer>
-      {children}
+      <GroupPageContentRouter group={group} />
     </StyledGroupPageContainer>
   )
 }

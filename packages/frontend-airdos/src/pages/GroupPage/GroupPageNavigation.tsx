@@ -54,14 +54,14 @@ const GroupPageNavigation: React.FC<{ group: Group }> = ({ group }) => {
         >
           Feed
         </StyledNavButton>
-        <StyledNavButton
+        {/* <StyledNavButton
           to={`/groups/${groupName}/files`}
           activeStyle={{
             color: theme.highlightedFontColor,
           }}
         >
           Files
-        </StyledNavButton>
+        </StyledNavButton> */}
         <StyledNavButton
           to={`/groups/${groupName}/members`}
           activeStyle={{
