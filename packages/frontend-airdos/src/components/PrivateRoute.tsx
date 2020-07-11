@@ -1,6 +1,6 @@
-import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
-import { useCurrentUserContext } from '../contexts/CurrentUserProvider'
+import React from "react"
+import { Route, Redirect } from "react-router-dom"
+import { useCurrentUserContext } from "../contexts/CurrentUserProvider"
 
 // TODO: get this from react router v6
 interface IPrivateRouteProps {
@@ -12,16 +12,18 @@ const PrivateRoute: React.FC<IPrivateRouteProps> = ({ children, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={({ location }) => (currentUser ? (
-        children
-      ) : (
-        <Redirect
-          to={{
-            pathname: '/login',
-            state: { from: location },
-          }}
-        />
-      ))}
+      render={({ location }) =>
+        currentUser ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location },
+            }}
+          />
+        )
+      }
     />
   )
 }

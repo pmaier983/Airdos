@@ -4,7 +4,7 @@ import _ from 'lodash/fp'
 import { resolvers, typeDefs } from './modules/schema'
 
 import { getUserFromToken } from './utils'
-import { getUserModels } from './modules/types/models'
+import { getUserModels, getGroupModels } from './modules/types/models'
 
 const schema = makeExecutableSchema({
   typeDefs,
@@ -27,6 +27,7 @@ const server = new ApolloServer({
       secret: process.env.TEST,
       models: {
         user: getUserModels({ user }),
+        group: getGroupModels({ user }),
       },
     }
   },

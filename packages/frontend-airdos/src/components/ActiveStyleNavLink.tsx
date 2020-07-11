@@ -1,31 +1,33 @@
-import React from 'react'
-import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
-
-import { theme as directTheme } from '../theme'
+import React, { useContext } from "react"
+import styled, { ThemeContext } from "styled-components"
+import { NavLink } from "react-router-dom"
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color: ${({ theme }) => (theme.globalFontColor)};
+  color: ${({ theme }) => theme.globalFontColor};
   font-size: ${({ theme }) => theme.largeFontSize};
 `
 
 interface IActiveStyleNavLinkProps {
-  to: string,
+  to: string
 }
 
-const ActiveStyleNavLink: React.FC<IActiveStyleNavLinkProps> = (
-  { to, children },
-) => (
-  <StyledNavLink
-    to={to}
-    strict={false}
-    activeStyle={{
-      color: directTheme.highlightedFontColor,
-    }}
-  >
-    {children}
-  </StyledNavLink>
-)
+const ActiveStyleNavLink: React.FC<IActiveStyleNavLinkProps> = ({
+  to,
+  children,
+}) => {
+  const theme = useContext(ThemeContext)
+  return (
+    <StyledNavLink
+      to={to}
+      strict={false}
+      activeStyle={{
+        color: theme.highlightedFontColor,
+      }}
+    >
+      {children}
+    </StyledNavLink>
+  )
+}
 
 export { ActiveStyleNavLink }

@@ -1,46 +1,54 @@
-import React from 'react'
-import styled from 'styled-components'
-import {
-  Link,
-} from 'react-router-dom'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 
-import { PaddingRowPage } from './landingPageStyles'
-import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
-import { ActiveStyleNavLink } from '../../components/ActiveStyleNavLink'
-import { MaterialIcon } from '../../components/MaterialIcon'
+import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
+import { ActiveStyleNavLink } from "../../components/ActiveStyleNavLink"
+import { MaterialIcon } from "../../components/MaterialIcon"
+import { LandingPageGroupNavigation } from "./LandingPageGroupNavigation"
 
-const Container = styled.div`
+const StyledPaddingRowPageTop = styled.div`
+  width: 100%;
+  height: 20px;
+`
+
+const StyledContainer = styled.div`
   display: flex;
   position: sticky;
   flex-direction: column;
   height: 100%;
+  max-width: 250px;
   top: 0px;
 `
 
-const RouteContainer = styled.div`
+const StyledRouteContainer = styled.div`
   display: flex;
   flex-direction: column;
   /* text-align: right; */
 `
 
-const LinkContainer = styled.div`
+const StyledLinkContainer = styled.div`
   display: flex;
   flex-direction: row;
 `
 
-const PaddingLinkColumn = styled.div`
+const StyledPaddingLinkColumn = styled.div`
   width: 10px;
   height: 100%;
 `
 
-const PaddingLinksRow = styled.div`
+const StyledPaddingLinksRow = styled.div`
   width: 100%;
   height: 5px;
 `
 
-const LinkWrapper = styled(Link)`
+const StyledLinkWrapper = styled(Link)`
   color: ${({ theme }) => theme.globalFontColor};
   text-decoration: none;
+`
+
+const StyledPaddingGroupRow = styled.div`
+  height: 25px;
 `
 
 const LandingPageNavigation = () => {
@@ -52,43 +60,49 @@ const LandingPageNavigation = () => {
   }
 
   return (
-    <Container>
-      <PaddingRowPage />
-      <RouteContainer>
-        <LinkContainer>
+    <StyledContainer>
+      <StyledPaddingRowPageTop />
+      <StyledRouteContainer>
+        <StyledLinkContainer>
           <MaterialIcon name="list" />
-          <PaddingLinkColumn />
+          <StyledPaddingLinkColumn />
           <ActiveStyleNavLink to="/feed">FEED</ActiveStyleNavLink>
-        </LinkContainer>
-        <PaddingLinksRow />
-        <LinkContainer>
+        </StyledLinkContainer>
+        <StyledPaddingLinksRow />
+        <StyledLinkContainer>
           <MaterialIcon name="group" />
-          <PaddingLinkColumn />
+          <StyledPaddingLinkColumn />
           <ActiveStyleNavLink to="/groups">GROUPS</ActiveStyleNavLink>
-        </LinkContainer>
-        <PaddingLinksRow />
-        <LinkContainer>
+        </StyledLinkContainer>
+        <StyledPaddingLinksRow />
+        <StyledLinkContainer>
           <MaterialIcon name="message" />
-          <PaddingLinkColumn />
+          <StyledPaddingLinkColumn />
           <ActiveStyleNavLink to="/messages">MESSAGES</ActiveStyleNavLink>
-        </LinkContainer>
-        <PaddingLinksRow />
-        <LinkContainer>
+        </StyledLinkContainer>
+        <StyledPaddingLinksRow />
+        <StyledLinkContainer>
           <MaterialIcon name="library_books" />
-          <PaddingLinkColumn />
+          <StyledPaddingLinkColumn />
           <ActiveStyleNavLink to="/library">LIBRARY</ActiveStyleNavLink>
-        </LinkContainer>
-        <PaddingLinksRow />
-        <LinkContainer>
+        </StyledLinkContainer>
+        <StyledPaddingLinksRow />
+        <StyledLinkContainer>
           <MaterialIcon name="person" />
-          <PaddingLinkColumn />
+          <StyledPaddingLinkColumn />
           <ActiveStyleNavLink to="/profile">PROFILE</ActiveStyleNavLink>
-        </LinkContainer>
-      </RouteContainer>
-      {currentUser
-        ? <LinkWrapper to="/" onClick={logoutUser}>Logout</LinkWrapper>
-        :<LinkWrapper to="/login">Login</LinkWrapper> }
-    </Container>
+        </StyledLinkContainer>
+      </StyledRouteContainer>
+      {currentUser ? (
+        <StyledLinkWrapper to="/" onClick={logoutUser}>
+          Logout
+        </StyledLinkWrapper>
+      ) : (
+        <StyledLinkWrapper to="/login">Login</StyledLinkWrapper>
+      )}
+      <StyledPaddingGroupRow />
+      <LandingPageGroupNavigation />
+    </StyledContainer>
   )
 }
 

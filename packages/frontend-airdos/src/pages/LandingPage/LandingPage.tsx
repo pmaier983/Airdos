@@ -1,12 +1,12 @@
-import React from 'react'
-import ReactGA from 'react-ga'
-import styled, { css } from 'styled-components'
+import React, { memo } from "react"
+import ReactGA from "react-ga"
+import styled, { css } from "styled-components"
 
-import { LandingPageNavigation } from './LandingPageNavigation'
-import { LandingPageExplorer } from './LandingPageExplorer'
-import { LandingPageContent } from './LandingPageContent'
+import { LandingPageNavigation } from "./LandingPageNavigation"
+import { LandingPageExplorer } from "./LandingPageExplorer"
+import { LandingPageContent } from "./LandingPageContent"
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -19,31 +19,29 @@ const Container = styled.div`
     font-weight: ${theme.normalFontWeight};
     background-color: ${theme.backgroundColor};
   `}
-
 `
 
-const ContentPaddingColumn = styled.div`
+const StyledContentPaddingColumn = styled.div`
   width: 20px;
   height: 100%;
 `
 
 const initializeAnalytics = () => {
-  ReactGA.initialize('UA-164973605-2')
-  ReactGA.pageview('LandingPage')
+  ReactGA.initialize("UA-164973605-2")
+  ReactGA.pageview("LandingPage")
 }
 
-
-const LandingPage = () => {
+const LandingPage = memo(() => {
   initializeAnalytics()
   return (
-    <Container>
+    <StyledContainer>
       <LandingPageNavigation />
-      <ContentPaddingColumn />
+      <StyledContentPaddingColumn />
       <LandingPageContent />
-      <ContentPaddingColumn />
+      <StyledContentPaddingColumn />
       <LandingPageExplorer />
-    </Container>
+    </StyledContainer>
   )
-}
+})
 
 export { LandingPage }

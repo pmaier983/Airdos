@@ -1,29 +1,14 @@
-import React from 'react'
-import {
-  Route,
-  Redirect,
-  useRouteMatch,
-} from 'react-router-dom'
+import React from "react"
+import { Route, Redirect, useRouteMatch } from "react-router-dom"
 
-import { LoginPage } from './pages/LoginPage'
-import { LandingPage } from './pages/LandingPage'
-import { landingPageRoutes } from './pages/LandingPage/landingPageRoutes'
-
-// TODO: find out the true type of these components
-export interface IPageRoutes {
-  path: string,
-  Component: React.JSXElementConstructor<any>,
-  Router: React.JSXElementConstructor<any>,
-}
-
-export const renderRoutes = (routes: IPageRoutes[]) => routes.map(({ path, Component, Router }) => (
-  <Router key={path} path={path}>
-    <Component />
-  </Router>
-))
+import { LoginPage } from "./pages/LoginPage"
+import { LandingPage } from "./pages/LandingPage"
+import { landingPageRoutes } from "./pages/LandingPage/landingPageRoutes"
 
 const Routes = () => {
-  const landingPageRoute = useRouteMatch(landingPageRoutes.map(({ path }) => path))
+  const landingPageRoute = useRouteMatch(
+    landingPageRoutes.map(({ path }) => path)
+  )
 
   return (
     <>
@@ -31,7 +16,9 @@ const Routes = () => {
       <Route exact path="/">
         <Redirect to="/feed" />
       </Route>
-      <Route path="/login"><LoginPage /></Route>
+      <Route path="/login">
+        <LoginPage />
+      </Route>
     </>
   )
 }

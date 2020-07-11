@@ -1,4 +1,3 @@
-
 export const passwords = {
   gilbirney22: 'preach',
   pmaier983: 'bucketHat',

@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useHistory } from 'react-router-dom'
+import React from "react"
+import styled from "styled-components"
+import { useHistory } from "react-router-dom"
 
-import { useCurrentUserContext } from '../../contexts/CurrentUserProvider'
+import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
 
-const ButtonStyle = styled.button`
+const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   border-radius: ${({ theme }) => theme.normalBorderRadius};
@@ -23,16 +23,24 @@ interface IMessageButtonProps {
 }
 
 // TODO: Possibly Consolidate Message and Follow Button
-const MessageButton: React.FC<IMessageButtonProps> = ({ usernameToMessage }) => {
+const MessageButton: React.FC<IMessageButtonProps> = ({
+  usernameToMessage,
+}) => {
   const history = useHistory()
   const [{ currentUser }] = useCurrentUserContext()
 
   if (!currentUser) {
-    return <ButtonStyle onClick={() => history.push('/login')}>LOGIN TO MESSAGE</ButtonStyle>
+    return (
+      <StyledButton onClick={() => history.push("/login")}>
+        LOGIN TO MESSAGE
+      </StyledButton>
+    )
   }
 
   return (
-    <ButtonStyle onClick={() => console.log(usernameToMessage)}>MESSAGE</ButtonStyle>
+    <StyledButton onClick={() => console.log(usernameToMessage)}>
+      MESSAGE
+    </StyledButton>
   )
 }
 

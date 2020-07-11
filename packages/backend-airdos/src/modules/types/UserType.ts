@@ -7,6 +7,7 @@ export interface IUserType {
   lastName: string
   username: string
   groups: [string]
+  chosenGroups: [string]
   collegeName: string
   followers: [string]
   following: [string]
@@ -20,6 +21,7 @@ export const typeDefs = gql`
     lastName: String
     username: String
     groups: [String] 
+    chosenGroups: [String]
     collegeName: String
     followers: [String]
     following: [String]

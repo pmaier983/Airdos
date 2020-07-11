@@ -8,7 +8,7 @@ module.exports = {
     es6: true,
   },
   extends: [
-    'airbnb-base',
+    'airbnb-typescript',
   ],
   globals: {
     Atomics: 'readonly',
@@ -16,7 +16,11 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2018,
+    project: './tsconfig.json',
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 2019,
     sourceType: 'module',
   },
   plugins: [
@@ -24,7 +28,7 @@ module.exports = {
   ],
   rules: {
     "import/prefer-default-export": 0,
-    semi: ["error", "never"],
+    "@typescript-eslint/semi": ['error', 'never'],
     "import/extensions": [
       "error",
       "ignorePackages",

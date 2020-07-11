@@ -2,6 +2,14 @@ import { gql } from 'apollo-server-lambda'
 
 import { posts } from '../../dud-data'
 
+export interface PostType {
+  id: string
+  location: string
+  title: string
+  postType: string
+  text: string
+}
+
 export const typeDefs = gql`
   type Post implements Node {
     id: ID!

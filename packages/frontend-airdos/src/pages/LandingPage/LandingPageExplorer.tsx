@@ -1,9 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import { PaddingRowPage } from './landingPageStyles'
+const StyledPaddingRowPageTop = styled.div`
+  width: 100%;
+  height: 20px;
+  z-index: 2;
+`
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   position: sticky;
   flex-direction: column;
@@ -11,8 +15,8 @@ const Container = styled.div`
   top: 0px;
 `
 
-const ExplorerSearch = styled.input`
-  border-radius: ${({ theme }) => theme.normalBorderRadius}; 
+const StyledExplorerSearch = styled.input`
+  border-radius: ${({ theme }) => theme.normalBorderRadius};
   height: ${({ theme }) => theme.largeFontSize};
   box-shadow: ${({ theme }) => theme.basicBoxShadow};
   border: none;
@@ -23,10 +27,10 @@ const ExplorerSearch = styled.input`
 `
 
 const LandingPageExplorer = () => (
-  <Container>
-    <PaddingRowPage />
-    <ExplorerSearch placeholder="Explore Airdos" />
-  </Container>
+  <StyledContainer>
+    <StyledPaddingRowPageTop />
+    <StyledExplorerSearch placeholder="Explore Airdos" />
+  </StyledContainer>
 )
 
 export { LandingPageExplorer }
