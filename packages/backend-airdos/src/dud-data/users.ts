@@ -1,42 +1,42 @@
 export const users = {
   gilbirney22: {
-    id: '983',
+    id: '982',
     name: 'Gil Birney',
     firstName: 'Gil',
     lastName: 'Birney',
     username: 'gilbirney22',
     groups: [],
     chosenGroups: [],
-    collegeName: 'BowdoinCollege',
+    collegeName: 'bowdoincollege',
     followers: [
     ],
     following: [
     ],
   },
   pmaier983: {
-    id: '984',
+    id: '983',
     name: 'Phillip Maier',
     firstName: 'Phillip',
     lastName: 'Maier',
     username: 'pmaier983',
-    groups: ['Airdos', 'BowdoinCollege'],
-    chosenGroups: ['Airdos', 'BowdoinCollege'],
+    groups: ['airdos', 'bowdoincollege'],
+    chosenGroups: ['airdos', 'bowdoincollege'],
     collegeName: 'Bowdoin College',
     followers: [
-      'rackraider', 'doctoroz101',
+      'brock202', 'doctoroz101',
     ],
     following: [
-      'rackraider',
+      'brock202',
     ],
   },
-  rackraider: {
-    id: '985',
+  brock202: {
+    id: '984',
     name: 'William Brockett',
     firstName: 'William',
     lastName: 'Brockett',
-    username: 'rackraider',
-    groups: ['Airdos', 'BowdoinCollege'],
-    chosenGroups: ['Airdos', 'BowdoinCollege'],
+    username: 'brock202',
+    groups: ['airdos', 'bowdoincollege'],
+    chosenGroups: ['airdos', 'bowdoincollege'],
     collegeName: 'Pewter City Battle College',
     followers: [
       'doctoroz101', 'pmaier983',
@@ -46,19 +46,19 @@ export const users = {
     ],
   },
   doctoroz101: {
-    id: '983',
+    id: '985',
     name: 'Andrew Thomson',
     firstName: 'Andrew',
     lastName: 'Andrew',
     username: 'doctoroz101',
-    groups: ['Airdos', 'BrownCollege'],
-    chosenGroups: ['Airdos', 'BrownCollege'],
+    groups: ['airdos', 'browncollege'],
+    chosenGroups: ['airdos', 'browncollege'],
     collegeName: 'Brown Academy for Wizards and Witches',
     followers: [
-      'rackraider',
+      'brock202',
     ],
     following: [
-      'rackraider', 'pmaier983',
+      'brock202', 'pmaier983',
     ],
   },
 }
