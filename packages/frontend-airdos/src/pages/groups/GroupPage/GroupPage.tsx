@@ -81,7 +81,7 @@ const GroupPage: React.FC = () => {
   }
 
   if (error || !data) {
-    return <div>This group was not foundz</div>
+    return <div>This group was not found</div>
   }
 
   const group = data.groupByName
