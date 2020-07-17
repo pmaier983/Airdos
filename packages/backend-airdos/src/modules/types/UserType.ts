@@ -6,22 +6,26 @@ export interface IUserType {
   firstName: string
   lastName: string
   username: string
-  groups: [string]
-  chosenGroups: [string]
+  groups: {label: string, value: string}[]
+  chosenGroups: {label: string, value: string}[]
   collegeName: string
   followers: [string]
   following: [string]
 }
 
 export const typeDefs = gql`
+  type ValueLabelNode {
+    value: String
+    label: String
+  }
   type User implements Node {
     id: ID!
     name: String
     firstName: String
     lastName: String
     username: String
-    groups: [String] 
-    chosenGroups: [String]
+    groups: [ValueLabelNode] 
+    chosenGroups: [ValueLabelNode]
     collegeName: String
     followers: [String]
     following: [String]

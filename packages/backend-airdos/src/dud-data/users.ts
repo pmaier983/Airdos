@@ -7,7 +7,7 @@ export const users = {
     username: 'gilbirney22',
     groups: [],
     chosenGroups: [],
-    collegeName: 'bowdoincollege',
+    collegeName: 'Bowdoin College',
     followers: [
     ],
     following: [
@@ -19,8 +19,8 @@ export const users = {
     firstName: 'Phillip',
     lastName: 'Maier',
     username: 'pmaier983',
-    groups: ['airdos', 'bowdoincollege'],
-    chosenGroups: ['airdos', 'bowdoincollege'],
+    groups: [{ value: 'airdos', label: 'Airdos' }, { value: 'bowdoincollege', label: 'Bowdoin College' }],
+    chosenGroups: [{ value: 'airdos', label: 'Airdos' }, { value: 'bowdoincollege', label: 'Bowdoin College' }],
     collegeName: 'Bowdoin College',
     followers: [
       'brock202', 'doctoroz101',
@@ -35,8 +35,8 @@ export const users = {
     firstName: 'William',
     lastName: 'Brockett',
     username: 'brock202',
-    groups: ['airdos', 'bowdoincollege'],
-    chosenGroups: ['airdos', 'bowdoincollege'],
+    groups: [{ value: 'airdos', label: 'Airdos' }, { value: 'bowdoincollege', label: 'Bowdoin College' }],
+    chosenGroups: [{ value: 'airdos', label: 'Airdos' }, { value: 'bowdoincollege', label: 'Bowdoin College' }],
     collegeName: 'Pewter City Battle College',
     followers: [
       'doctoroz101', 'pmaier983',
@@ -51,8 +51,8 @@ export const users = {
     firstName: 'Andrew',
     lastName: 'Andrew',
     username: 'doctoroz101',
-    groups: ['airdos', 'browncollege'],
-    chosenGroups: ['airdos', 'browncollege'],
+    groups: [{ value: 'airdos', label: 'Airdos' }, { value: 'browncollege', label: 'Brown College' }],
+    chosenGroups: [{ value: 'airdos', label: 'Airdos' }, { value: 'browncollege', label: 'Brown College' }],
     collegeName: 'Brown Academy for Wizards and Witches',
     followers: [
       'brock202',
