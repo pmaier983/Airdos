@@ -7,8 +7,14 @@ const UserFragment = gql`
     firstName
     lastName
     username
-    groups
-    chosenGroups
+    groups {
+      label
+      value
+    }
+    chosenGroups {
+      label
+      value
+    }
     collegeName
     followers
     following

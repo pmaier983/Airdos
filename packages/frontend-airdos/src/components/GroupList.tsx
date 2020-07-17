@@ -4,18 +4,15 @@ import { ResponsiveGridLayout } from "./grid"
 import { GroupButton } from "./buttons"
 
 interface IGroupListProps {
-  list: string[]
+  list: { label: string; value: string }[]
 }
 
 const GroupList: React.FC<IGroupListProps> = ({ list }) => {
   const children = useMemo(
     () =>
-      list.map((groupName) => (
-        <GroupButton
-          key={groupName}
-          path={`/groups/${groupName.replace(/ /g, "_")}`}
-        >
-          {groupName}
+      list.map(({ value, label }) => (
+        <GroupButton key={value} path={`/groups/${value}`}>
+          {label}
         </GroupButton>
       )),
     [list]

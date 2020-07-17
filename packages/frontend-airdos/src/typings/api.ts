@@ -12,8 +12,8 @@ export type User = {
   firstName: string
   lastName: string
   username: string
-  groups: [string]
-  chosenGroups: [string]
+  groups: { label: string; value: string }[]
+  chosenGroups: { label: string; value: string }[]
   collegeName: string
   followers: [string]
   following: [string]

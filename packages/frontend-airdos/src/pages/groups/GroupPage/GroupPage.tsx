@@ -93,7 +93,7 @@ const GroupPage: React.FC = () => {
     <StyledGroupPageContainer>
       <StyledFixedHeaderContainer>
         <StyledHeaderContainer>
-          <StyledGroupName>{group.name}</StyledGroupName>
+          <StyledGroupName>{group.displayName}</StyledGroupName>
           <StyledGroupDetails>
             <StyledGroupDetail>
               Member Count:
