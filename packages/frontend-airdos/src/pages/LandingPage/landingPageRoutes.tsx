@@ -1,54 +1,29 @@
 import React from "react"
-import { Route } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 
 import { PrivateRoute } from "../../components/PrivateRoute"
 import { ProfilePage } from "../ProfilePage"
 import { GroupsRouter } from "../groups/GroupsRouter"
 import { LandingPageFeed } from "./LandingPageFeed"
 
-// TODO: find out the true type of these components
-export interface IPageRoutes {
-  path: string
-  Component: React.JSXElementConstructor<any>
-  Router: React.JSXElementConstructor<any>
-  props?: any
-}
+const LandingPageRoutes = () => (
+  <Switch>
+    <Route path="/feed">
+      <LandingPageFeed />
+    </Route>
+    <Route path="/groups">
+      <GroupsRouter />
+    </Route>
+    <Route path="/profile">
+      <ProfilePage />
+    </Route>
+    <PrivateRoute path="/messages">
+      <div>This Route has not been built yet</div>
+    </PrivateRoute>
+    <PrivateRoute path="/library">
+      <div>This Route has not been built yet</div>
+    </PrivateRoute>
+  </Switch>
+)
 
-export const renderRoutes = (routes: IPageRoutes[]) =>
-  routes.map(({ path, props, Component, Router }) => (
-    <Router key={path} path={path} {...props}>
-      <Component />
-    </Router>
-  ))
-
-const DummyComponent = () => <div>This Route is not built yet</div>
-
-const landingPageRoutes: IPageRoutes[] = [
-  {
-    path: "/feed",
-    Component: LandingPageFeed,
-    Router: Route,
-  },
-  {
-    path: "/groups",
-    Component: GroupsRouter,
-    Router: Route,
-  },
-  {
-    path: "/profile",
-    Component: ProfilePage,
-    Router: Route,
-  },
-  {
-    path: "/messages",
-    Component: DummyComponent,
-    Router: PrivateRoute,
-  },
-  {
-    path: "/library",
-    Component: DummyComponent,
-    Router: PrivateRoute,
-  },
-]
-
-export { landingPageRoutes }
+export { LandingPageRoutes }
