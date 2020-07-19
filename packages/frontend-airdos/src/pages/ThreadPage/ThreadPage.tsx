@@ -11,10 +11,10 @@ const getUrlPostID = (path: string) => {
   return splitPath[profileIndex + 1]
 }
 
-const PostPage = () => {
+const ThreadPage = () => {
   const { pathname } = useLocation()
   const postID = getUrlPostID(pathname)
   return <div>{postID}</div>
 }
 
-export { PostPage }
+export { ThreadPage }
