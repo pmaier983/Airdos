@@ -21,5 +21,7 @@ export const typeDefs = gql`
 `
 
 export const resolvers = {
-  Query: { posts: () => posts },
+  Query: {
+    posts: () => posts,
+  },
 }

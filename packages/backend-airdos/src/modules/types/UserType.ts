@@ -14,10 +14,6 @@ export interface IUserType {
 }
 
 export const typeDefs = gql`
-  type ValueLabelNode {
-    value: String
-    label: String
-  }
   type User implements Node {
     id: ID!
     name: String
