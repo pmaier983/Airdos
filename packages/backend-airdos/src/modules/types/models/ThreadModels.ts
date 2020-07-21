@@ -7,8 +7,9 @@ import type { ThreadType } from '../ThreadType'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getThreadModels = ({ user }: {user: IUserType | undefined}) => ({
   getThreadById: (id: number) => {
-    if (_.find((thread: ThreadType) => thread.id === id)) {
-      return threads[id]
+    const possibleThread = _.find((thread: ThreadType) => thread.id === id, threads)
+    if (possibleThread) {
+      return possibleThread
     }
     throw Error('No such Thread Exists')
   },

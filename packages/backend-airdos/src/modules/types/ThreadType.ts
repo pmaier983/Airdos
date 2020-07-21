@@ -16,7 +16,7 @@ export const typeDefs = gql`
     user: String,
     text: String,
     timeCreated: Int,
-    replies: Thread,
+    replies: [Thread],
   }
 `
 
