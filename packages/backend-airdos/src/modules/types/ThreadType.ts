@@ -6,8 +6,8 @@ export interface ThreadType {
   user: string
   text: string
   timeCreated: number
-  parent: number
-  children: number[]
+  childrenIds: number[]
+  parentId: number
   replies: ThreadType[]
 }
 
@@ -18,8 +18,9 @@ export const typeDefs = gql`
     user: String,
     text: String,
     timeCreated: Int,
+    childrenIds: [Int]
+    parentId: Int
     replies: [Thread],
-    children: [Int]
   }
 `
 

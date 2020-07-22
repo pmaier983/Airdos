@@ -3,20 +3,31 @@ import { gql } from 'apollo-server-lambda'
 import { posts } from '../../dud-data'
 
 export interface PostType {
-  id: string
-  location: string
-  title: string
-  postType: string
-  text: string
+  id: number
+  group: {
+    label: string
+    value: string
+  },
+  user: string,
+  title: string,
+  text: string,
+  replies: boolean,
+  timeCreated: number,
+  attachmentLink: string,
+  likes: number,
 }
 
 export const typeDefs = gql`
   type Post implements Node {
     id: ID!
-    location: String,
+    group: ValueLabelNode,
+    user: String,
     title: String,
-    postType: PostTypeEnum,
     text: String,
+    replies: Boolean,
+    timeCreated: Int,
+    attachmentLink: String,
+    likes: Int,
   }
 `
 
