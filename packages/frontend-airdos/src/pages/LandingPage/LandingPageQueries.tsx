@@ -3,10 +3,18 @@ import gql from "graphql-tag"
 export const GET_POSTS = gql`
   query getPosts {
     posts {
-      location
+      id
+      group {
+        label
+        value
+      }
+      user
       title
-      postType
       text
+      replies
+      timeCreated
+      attachmentLink
+      likes
     }
   }
 `

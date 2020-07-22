@@ -3,7 +3,7 @@ import styled, { css } from "styled-components"
 import _ from "lodash/fp"
 import { useQuery } from "@apollo/react-hooks"
 
-import { Post } from "../typings/api"
+import type { Post } from "../typings/api"
 import { FeedBlock } from "./FeedBlock"
 import { FeedInput } from "./FeedInput"
 
@@ -66,7 +66,7 @@ const FeedStack: React.FC<FeedStackProps> = ({
     return <div>Error</div>
   }
 
-  const posts: [Post] = postsPath
+  const posts: Post[] = postsPath
     ? _.get(postsPath, data)
     : _.get("posts", data)
 

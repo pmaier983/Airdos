@@ -24,7 +24,7 @@ const LandingPageRoutes = () => (
     <PrivateRoute path="/library">
       <div>This Route has not been built yet</div>
     </PrivateRoute>
-    <Route path="/post">
+    <Route path="/thread">
       <ThreadPage />
     </Route>
   </Switch>

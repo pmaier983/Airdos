@@ -2,10 +2,10 @@ import React from "react"
 import _ from "lodash/fp"
 import { useLocation } from "react-router-dom"
 
-const getUrlPostID = (path: string) => {
+const getUrlThreadId = (path: string) => {
   const splitPath = path.split("/")
   const profileIndex = _.findIndex(
-    (pathSegment) => pathSegment === "post",
+    (pathSegment) => pathSegment === "thread",
     splitPath
   )
   return splitPath[profileIndex + 1]
@@ -13,8 +13,8 @@ const getUrlPostID = (path: string) => {
 
 const ThreadPage = () => {
   const { pathname } = useLocation()
-  const postID = getUrlPostID(pathname)
-  return <div>{postID}</div>
+  const threadId = getUrlThreadId(pathname)
+  return <div>{threadId}</div>
 }
 
 export { ThreadPage }

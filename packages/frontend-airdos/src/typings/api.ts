@@ -1,9 +1,16 @@
 export type Post = {
-  id: string
-  location: string
+  id: number
+  group: {
+    label: string
+    value: string
+  }
+  user: string
   title: string
-  postType: string
   text: string
+  replies: boolean
+  timeCreated: number
+  attachmentLink: string
+  likes: number
 }
 
 export type User = {

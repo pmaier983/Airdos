@@ -1,8 +1,10 @@
 import React, { useState } from "react"
 import _ from "lodash/fp"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 import { MaterialIcon } from "./MaterialIcon"
+import type { Post } from "../typings/api"
 
 const StyledFeedBlockContainer = styled.div`
   padding: 2px;
@@ -45,14 +47,11 @@ const StyledLikesCount = styled.div`
   cursor: pointer;
 `
 
-interface IFeedBlockProps {
-  text: string
-  location: string
-  postType: string
-  title: string
-}
+const StyledShowThreadsLink = styled(Link)`
+  cursor: pointer;
+`
 
-const FeedBlock: React.FC<IFeedBlockProps> = ({ text, title }) => {
+const FeedBlock: React.FC<Post> = ({ text, title, id, replies }) => {
   const [isLiked, setLike] = useState(false)
   const [likeCount, setLikeCount] = useState(_.random(0, 100))
 
@@ -66,6 +65,7 @@ const FeedBlock: React.FC<IFeedBlockProps> = ({ text, title }) => {
       return !isCurrentlyLiked
     })
   }
+
   return (
     <StyledFeedBlockContainer>
       <StyledHeaderContainer>
@@ -87,6 +87,11 @@ const FeedBlock: React.FC<IFeedBlockProps> = ({ text, title }) => {
           size="18px"
           onClick={() => console.log("repost")}
         />
+        {replies && (
+          <StyledShowThreadsLink to={`thread/${id}`}>
+            Show Thread
+          </StyledShowThreadsLink>
+        )}
         <StyledLikesContainer>
           <StyledLikesCount>{likeCount}</StyledLikesCount>
           <MaterialIcon
