@@ -1,7 +1,7 @@
 export const threads = [
   {
     id: 100,
-    group: 'airdos',
+    group: { value: 'airdos', label: 'Airdos' },
     children: [101, 102, 103, 104, 105],
     user: 'pmaier983',
     text: 'Unsupervised Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages in a fully unsupervised way',
@@ -10,7 +10,7 @@ export const threads = [
       {
         id: 101,
         parent: 100,
-        group: 'airdos',
+        group: { value: 'airdos', label: 'Airdos' },
         user: 'pmaier983',
         text: 'We leverage the same principles that we used to translate low-resource languages (https://arxiv.org/abs/1804.07755), i.e. pretraining, denoising auto-encoding, and back-translation. Although initially designed for natural languages, these methods perfectly apply to programming languages.',
         timeCreated: 1591608020,
@@ -18,7 +18,7 @@ export const threads = [
       {
         id: 102,
         parent: 100,
-        group: 'airdos',
+        group: { value: 'airdos', label: 'Airdos' },
         user: 'pmaier983',
         text: 'The model learns to align functions and objects across libraries (std::unordered_set -> HashSet, printf -> System.out.println, std::vector<int> -> List<Integer>, Files.createDirectories -> os.makedirs), but also language specific patterns (a > b ? a : b -> a if a > b else b)',
         timeCreated: 1591608030,
@@ -26,7 +26,7 @@ export const threads = [
       {
         id: 103,
         parent: 100,
-        group: 'airdos',
+        group: { value: 'airdos', label: 'Airdos' },
         user: 'pmaier983',
         text: 'We create a parallel test set of around 1000 parallel functions, along with associated unit tests. Unlike previous studies that typically evaluate translated functions with BLEU score, we compile and run translations to verify that they successfully pass the unit tests.',
         timeCreated: 1591608050,
@@ -34,7 +34,7 @@ export const threads = [
       {
         id: 104,
         parent: 100,
-        group: 'airdos',
+        group: { value: 'airdos', label: 'Airdos' },
         user: 'pmaier983',
         text: 'The model successfully translates more than 90% of C++ functions from @geeksforgeeks into Java, and around 57% of Python functions into C++. It outperforms commercial solutions at test time, although it requires no parallel data or expert knowledge.',
         timeCreated: 1591608060,
@@ -42,7 +42,7 @@ export const threads = [
       {
         id: 105,
         parent: 100,
-        group: 'airdos',
+        group: { value: 'airdos', label: 'Airdos' },
         user: 'pmaier983',
         text: 'We researchers love pre-training. Our new paper shows that pre-training is unhelpful when we have a lot of labeled data. In contrast, self-training works well even when we have a lot of labeled data. SOTA on PASCAL segmentation & COCO detection. Link: http://arxiv.org/abs/2006.06882 ',
         timeCreated: 1591608080,

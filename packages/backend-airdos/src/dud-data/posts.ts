@@ -35,7 +35,7 @@ export const posts = [
   },
   {
     id: 100,
-    group: 'airdos',
+    group: { value: 'airdos', label: 'Airdos' },
     user: 'pmaier983',
     text: 'Unsupervised Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages in a fully unsupervised way',
     replies: true,
