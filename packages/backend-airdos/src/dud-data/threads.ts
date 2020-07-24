@@ -4,7 +4,7 @@ export const threads = [
     group: { value: 'airdos', label: 'Airdos' },
     children: [101, 102, 103, 104, 105],
     user: 'pmaier983',
-    text: 'Unsupervised Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages in a fully unsupervised way',
+    text: 'Unsupervised Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages ',
     timeCreated: 1591607880,
     replies: [
       {
@@ -53,21 +53,21 @@ export const threads = [
     id: 110,
     children: [111, 112],
     user: 'brock202',
-    text: 'Erdős conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages in a fully unsupervised way',
+    text: 'Erdős conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages ',
     timeCreated: 1591609880,
     replies: [
       {
         id: 111,
         parent: 110,
         user: 'brock202',
-        text: 'If A is a large set of positive integers, meaning that the sum of reciprocals of the numbers in A diverges to ∞, the conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages in a fully unsupervised way',
+        text: 'If A is a large set of positive integers, meaning that the sum of reciprocals of the numbers in A diverges to ∞, the conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages ',
         timeCreated: 1591609900,
       },
       {
         id: 112,
         parent: 110,
         user: 'brock202',
-        text: 'The special case when A is the set of prime numbers was proved by Ben Green and Terence Tao in 2004 A is a large set of positive integers, meaning that the sum of reciprocals of the numbers in A diverges to ∞, the conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages in a fully unsupervised way',
+        text: 'The special case when A is the set of prime numbers was proved by Ben Green and Terence Tao in 2004 A is a large set of positive integers, meaning that the sum of reciprocals of the numbers in A diverges to ∞, the conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages ',
         timeCreated: 1591609920,
       },
     ],
@@ -76,7 +76,7 @@ export const threads = [
     id: 120,
     user: 'brock202',
     children: [121, 123],
-    text: 'Erdős conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages in a fully unsupervised way',
+    text: 'Erdős conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages ',
     timeCreated: 1591610,
     replies: [
       {
@@ -84,14 +84,14 @@ export const threads = [
         parent: 120,
         children: [122, 123],
         user: 'brock202',
-        text: 'If A is a large set of positive integers, meaning that the sum of reciprocals of the numbers in A diverges to ∞, the conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages in a fully unsupervised way',
+        text: 'If A is a large set of positive integers, meaning that the sum of reciprocals of the numbers in A diverges to ∞, the conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages ',
         timeCreated: 1591610050,
         replies: [
           {
             id: 122,
             parent: 121,
             user: 'brock202',
-            text: 'The special case when A is the set of prime numbers was proved by Ben Green and Terence Tao in 2004 A is a large set of positive integers, meaning that the sum of reciprocals of the numbers in A diverges to ∞, the conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages in a fully unsupervised way',
+            text: 'The special case when A is the set of prime numbers was proved by Ben Green and Terence Tao in 2004 A is a large set of positive integers, meaning that the sum of reciprocals of the numbers in A diverges to ∞, the conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages ',
             timeCreated: 1591610080,
           },
           {
