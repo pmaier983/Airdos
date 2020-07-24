@@ -16,8 +16,8 @@ const ThreadFragment = gql`
 `
 
 export const GET_THREAD_BY_ID = gql`
-  query getUserByUsername($id: number!) {
-    threadById(id: 100) {
+  query threadById($id: String!) {
+    threadById(id: $id) {
       text
       group {
         label

@@ -35,3 +35,14 @@ export type Group = {
   admins: [string]
   private: boolean
 }
+
+export type Thread = {
+  id: number
+  group: { label: string; value: string }
+  user: string
+  text: string
+  timeCreated: number
+  childrenIds: number[]
+  parentId: number
+  replies: Thread[]
+}
