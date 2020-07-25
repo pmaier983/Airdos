@@ -1,40 +1,33 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import _ from "lodash/fp"
-import styled from "styled-components"
+import styled, { css, ThemeContext } from "styled-components"
 import { Link } from "react-router-dom"
 
 import { MaterialIcon } from "./MaterialIcon"
-import type { Post } from "../typings/api"
+import type { Post, Thread } from "../typings/api"
 
 const StyledFeedBlockContainer = styled.div`
-  padding: 2px;
+  ${({ theme }) => css`
+    box-shadow: ${theme.basicBoxShadow};
+    border-radius: ${theme.normalBorderRadius};
+  `}
+  width: 100%;
+  padding: 5px 5px 0 5px;
+  overflow: hidden;
 `
 
-const StyledHeaderContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`
-
-const StyledTitleContainer = styled.div`
-  font-size: ${({ theme }) => theme.mediumFontSize};
-`
-
-const StyledTextContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-const StyledPaddingTextColumn = styled.div`
-  height: 100%;
-  width: 10px;
+const StyledStrongFirstWord = styled.strong`
+  ${({ theme }) => css`
+    font-size: ${theme.mediumLargeFontSize};
+    font-weight ${theme.normalFontWeight};
+  `}
 `
 
 const StyledFooterContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-end;
+  float: right;
 `
 
 const StyledLikesContainer = styled.div`
@@ -47,13 +40,22 @@ const StyledLikesCount = styled.div`
   cursor: pointer;
 `
 
-const StyledShowThreadsLink = styled(Link)`
-  cursor: pointer;
+const IconColumnPadding = styled.div`
+  width: 3px;
 `
 
-const FeedBlock: React.FC<Post> = ({ text, title, id, replies }) => {
+const ContinueColumnPadding = styled.div`
+  width: 6px;
+`
+
+const FeedBlock: React.FC<Post | Thread> = ({ text, replies, id }) => {
   const [isLiked, setLike] = useState(false)
   const [likeCount, setLikeCount] = useState(_.random(0, 100))
+  const theme = useContext(ThemeContext)
+
+  const textArray = text.split(" ")
+  const [firstWord, ...allButFirstWord] = textArray
+  const remainingText = allButFirstWord.join(" ")
 
   const handleLike = () => {
     setLike((isCurrentlyLiked) => {
@@ -68,38 +70,41 @@ const FeedBlock: React.FC<Post> = ({ text, title, id, replies }) => {
 
   return (
     <StyledFeedBlockContainer>
-      <StyledHeaderContainer>
-        <StyledTitleContainer>{title}</StyledTitleContainer>
-        <MaterialIcon
-          name="save"
-          size="18px"
-          onClick={() => console.log("save post")}
-        />
-      </StyledHeaderContainer>
-      <StyledTextContainer>
-        <StyledPaddingTextColumn />
-        {text}
-        <StyledPaddingTextColumn />
-      </StyledTextContainer>
+      <>
+        <StyledStrongFirstWord>{`${firstWord} `}</StyledStrongFirstWord>
+        {remainingText}
+      </>
       <StyledFooterContainer>
-        <MaterialIcon
-          name="record_voice_over"
-          size="18px"
-          onClick={() => console.log("repost")}
-        />
-        {replies && (
-          <StyledShowThreadsLink to={`thread/${id}`}>
-            Show Thread
-          </StyledShowThreadsLink>
-        )}
         <StyledLikesContainer>
           <StyledLikesCount>{likeCount}</StyledLikesCount>
           <MaterialIcon
             name={isLiked ? "emoji_objects" : "emoji_objects_outlined"}
             size="20px"
+            color={theme.iconColor}
             onClick={handleLike}
           />
         </StyledLikesContainer>
+        <MaterialIcon name="reply" size="20px" color={theme.iconColor} />
+        <IconColumnPadding />
+        <MaterialIcon
+          name="record_voice_over"
+          size="20px"
+          color={theme.iconColor}
+        />
+        <IconColumnPadding />
+        <MaterialIcon name="save" size="20px" color={theme.iconColor} />
+        {replies && (
+          <>
+            <ContinueColumnPadding />
+            <Link to={`thread/${id}`}>
+              <MaterialIcon
+                name="next_plan"
+                size="20px"
+                color={theme.iconColor}
+              />
+            </Link>
+          </>
+        )}
       </StyledFooterContainer>
     </StyledFeedBlockContainer>
   )

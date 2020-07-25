@@ -2,9 +2,25 @@ import React from "react"
 import _ from "lodash/fp"
 import { useLocation } from "react-router-dom"
 import { useQuery } from "@apollo/react-hooks"
+import styled from "styled-components"
 
 import { GET_THREAD_BY_ID } from "./ThreadPageQueries"
+import { ThreadHead } from "./ThreadHead"
+import { ThreadTree } from "./ThreadTree"
+
 import type { Thread } from "../../typings/api"
+
+const StyledPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 10px;
+`
+
+const StyledRowPaddingPage = styled.div`
+  height: 10px;
+  width: 100%;
+`
 
 const getUrlThreadId = (path: string) => {
   const splitPath = path.split("/")
@@ -36,7 +52,13 @@ const ThreadPage = () => {
 
   const { replies, ...threadHead } = data.threadById
 
-  return <div>{threadHead.text}</div>
+  return (
+    <StyledPageContainer>
+      <StyledRowPaddingPage />
+      <ThreadHead thread={threadHead} />
+      <ThreadTree threads={replies} />
+    </StyledPageContainer>
+  )
 }
 
 export { ThreadPage }

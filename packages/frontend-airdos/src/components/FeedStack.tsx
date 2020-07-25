@@ -1,5 +1,5 @@
 import React from "react"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import _ from "lodash/fp"
 import { useQuery } from "@apollo/react-hooks"
 
@@ -14,16 +14,13 @@ const StyledPaddingRowFeedTop = styled.div`
 const StyledFeedStackContainer = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 100%;
 `
 
 const StyledFeedContainer = styled.div`
   display: flex;
   flex-direction: column;
-  ${({ theme }) => css`
-    box-shadow: -${theme.normalBorderWidth} 0 0 0 ${theme.borderColor},
-      ${theme.normalBorderWidth} 0 0 0 ${theme.borderColor},
-      0 -${theme.normalBorderWidth} 0 0 ${theme.borderColor};
-  `}
 `
 
 const StyledPaddingRowFeedSeparator = styled.div`
@@ -33,8 +30,7 @@ const StyledPaddingRowFeedSeparator = styled.div`
 
 const StyledPaddingRowFeedStack = styled.div`
   width: 100%;
-  height: 2px;
-  background-color: ${({ theme }) => theme.spacingColor};
+  height: 15px;
 `
 
 const StyledLoadingIcon = styled.div`

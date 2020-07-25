@@ -27,16 +27,15 @@ const renderReplies = (threads: Thread[], offset: number) => {
   return (
     <StyledColumn>
       {threads.map((thread: Thread) => {
-        const { replies } = thread
         return (
-          <>
+          <div key={thread.id}>
             <StyledRowPadding />
-            <StyledRow key={thread.id}>
+            <StyledRow>
               <StyledColumnPadding padding={offset} />
               <FeedBlock {...thread} />
-              {replies && <>{renderReplies(replies, offset + 20)}</>}
             </StyledRow>
-          </>
+            {thread.replies && renderReplies(thread.replies, offset + 20)}
+          </div>
         )
       })}
     </StyledColumn>

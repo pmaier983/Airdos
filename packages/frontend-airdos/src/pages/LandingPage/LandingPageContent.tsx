@@ -14,14 +14,14 @@ const StyledContainer = styled.div`
 
 const StyledPaddingContainer = styled.div`
   display: flex;
+  height: 100%;
   box-shadow: -${({ theme }) => theme.normalBorderWidth} 0 0 0 ${({ theme }) => theme.borderColor},
     ${({ theme }) => theme.normalBorderWidth} 0 0 0
       ${({ theme }) => theme.borderColor};
 `
-
 const StyledPaddingColumnContent = styled.div`
   height: 100%;
-  width: 15px;
+  width: 20px;
 `
 
 const LandingPageContent = () => (
