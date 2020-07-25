@@ -8,6 +8,7 @@ export const basicTheme = {
   contrastFocusColor: `rgb(${colors.white.replace(/ /g, ",")})`,
   lightEmphasisColor: `rgba(${colors.grey.replace(/ /g, ",")}, 0.4)`,
   strongEmphasisColor: `rgba(${colors.grey.replace(/ /g, ",")}, 1)`,
+  iconColor: `rgba(${colors.darkGrey.replace(/ /g, ",")})`,
   acceptColor: `rgb(${colors.green.replace(/ /g, ",")})`,
   lightAcceptColor: `rgba(${colors.green.replace(/ /g, ",")}, 0.07)`,
 
