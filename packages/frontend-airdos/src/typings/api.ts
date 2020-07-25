@@ -1,18 +1,3 @@
-export type Post = {
-  id: number
-  group: {
-    label: string
-    value: string
-  }
-  user: string
-  title: string
-  text: string
-  replies: boolean
-  timeCreated: number
-  attachmentLink: string
-  likes: number
-}
-
 export type User = {
   id: string
   name: string
@@ -36,6 +21,21 @@ export type Group = {
   private: boolean
 }
 
+export type Post = {
+  id: number
+  group: {
+    label: string
+    value: string
+  }
+  user: string
+  title: string
+  text: string
+  replies: boolean
+  timeCreated: number
+  attachmentLink: string
+  likes: number
+}
+
 export type Thread = {
   id: number
   group: { label: string; value: string }
@@ -44,5 +44,5 @@ export type Thread = {
   timeCreated: number
   childrenIds: number[]
   parentId: number
-  replies: Thread[]
+  replies?: Thread[]
 }

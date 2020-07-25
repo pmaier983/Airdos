@@ -82,7 +82,7 @@ export const threads = [
       {
         id: 121,
         parent: 120,
-        children: [122, 123],
+        children: [122, 124],
         user: 'brock202',
         text: 'If A is a large set of positive integers, meaning that the sum of reciprocals of the numbers in A diverges to ∞, the conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages ',
         timeCreated: 1591610050,
@@ -95,7 +95,7 @@ export const threads = [
             timeCreated: 1591610080,
           },
           {
-            id: 123,
+            id: 124,
             parent: 121,
             user: 'pmaier983',
             text: 'Erdos is amazing!',
@@ -107,7 +107,7 @@ export const threads = [
         id: 123,
         parent: 120,
         user: 'pmaier983',
-        text: 'Very Cool!',
+        text: 'Very Cool!!',
         timeCreated: 1591610100,
       },
     ],
