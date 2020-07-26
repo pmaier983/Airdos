@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { FeedBlock } from "../../components/FeedBlock"
+import { ThreadBlock } from "./ThreadBlock"
 
 import type { Thread } from "../../typings/api"
 
@@ -32,7 +32,7 @@ const renderReplies = (threads: Thread[], offset: number) => {
             <StyledRowPadding />
             <StyledRow>
               <StyledColumnPadding padding={offset} />
-              <FeedBlock {...thread} />
+              <ThreadBlock {...thread} />
             </StyledRow>
             {thread.replies && renderReplies(thread.replies, offset + 20)}
           </div>
