@@ -8,12 +8,17 @@ const td = gql`
   interface Node {
     id: ID!
   } 
+  type ValueLabelNode {
+    value: String
+    label: String
+  }
   type Query {
     posts: [Post]
     userByUsername(username: String!): User
     userByLogin(username: String!, password: String!): User
     userByToken(token: String!): User
     groupByName(name: String!): Group
+    threadById(id: String!): Thread
   }
 `
 

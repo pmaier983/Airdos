@@ -1,8 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { Switch } from "react-router-dom"
 
-import { renderRoutes, landingPageRoutes } from "./landingPageRoutes"
+import { LandingPageRoutes } from "./LandingPageRoutes"
 
 const StyledContainer = styled.div`
   max-width: 500px;
@@ -15,21 +14,21 @@ const StyledContainer = styled.div`
 
 const StyledPaddingContainer = styled.div`
   display: flex;
+  height: 100%;
   box-shadow: -${({ theme }) => theme.normalBorderWidth} 0 0 0 ${({ theme }) => theme.borderColor},
     ${({ theme }) => theme.normalBorderWidth} 0 0 0
       ${({ theme }) => theme.borderColor};
 `
-
 const StyledPaddingColumnContent = styled.div`
   height: 100%;
-  width: 15px;
+  width: 20px;
 `
 
 const LandingPageContent = () => (
   <StyledContainer>
     <StyledPaddingContainer>
       <StyledPaddingColumnContent />
-      <Switch>{renderRoutes(landingPageRoutes)}</Switch>
+      <LandingPageRoutes />
       <StyledPaddingColumnContent />
     </StyledPaddingContainer>
   </StyledContainer>

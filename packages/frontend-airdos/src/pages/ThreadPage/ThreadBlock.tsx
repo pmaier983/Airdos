@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react"
 import _ from "lodash/fp"
 import styled, { css, ThemeContext } from "styled-components"
-import { Link } from "react-router-dom"
 
-import { MaterialIcon } from "./MaterialIcon"
-import type { Post, Thread } from "../typings/api"
+import { MaterialIcon } from "../../components/MaterialIcon"
+import type { Thread } from "../../typings/api"
 
-const StyledFeedBlockContainer = styled.div`
+const StyledThreadBlockContainer = styled.div`
   ${({ theme }) => css`
     box-shadow: ${theme.basicBoxShadow};
     border-radius: ${theme.normalBorderRadius};
@@ -44,11 +43,7 @@ const IconColumnPadding = styled.div`
   width: 3px;
 `
 
-const ContinueColumnPadding = styled.div`
-  width: 6px;
-`
-
-const FeedBlock: React.FC<Post | Thread> = ({ text, replies, id }) => {
+const ThreadBlock: React.FC<Thread> = ({ text }) => {
   const [isLiked, setLike] = useState(false)
   const [likeCount, setLikeCount] = useState(_.random(0, 100))
   const theme = useContext(ThemeContext)
@@ -69,7 +64,7 @@ const FeedBlock: React.FC<Post | Thread> = ({ text, replies, id }) => {
   }
 
   return (
-    <StyledFeedBlockContainer>
+    <StyledThreadBlockContainer>
       <>
         <StyledStrongFirstWord>{`${firstWord} `}</StyledStrongFirstWord>
         {remainingText}
@@ -93,21 +88,9 @@ const FeedBlock: React.FC<Post | Thread> = ({ text, replies, id }) => {
         />
         <IconColumnPadding />
         <MaterialIcon name="save" size="20px" color={theme.iconColor} />
-        {replies && (
-          <>
-            <ContinueColumnPadding />
-            <Link to={`thread/${id}`}>
-              <MaterialIcon
-                name="next_plan"
-                size="20px"
-                color={theme.iconColor}
-              />
-            </Link>
-          </>
-        )}
       </StyledFooterContainer>
-    </StyledFeedBlockContainer>
+    </StyledThreadBlockContainer>
   )
 }
 
-export { FeedBlock }
+export { ThreadBlock }

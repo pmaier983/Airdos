@@ -4,26 +4,16 @@ import { ApolloError } from "apollo-client"
 import React, { createContext, useContext, useState, useEffect } from "react"
 import { useLazyQuery } from "@apollo/react-hooks"
 import { useSession } from "../hooks"
+import type { User } from "../typings/api"
 
 import { GET_USER_BY_TOKEN, GET_USER_BY_LOGIN } from "./CurrentUserQueries"
-
-export interface IUser {
-  id: string
-  name: string
-  firstName: string
-  middleName?: string
-  lastName: string
-  username: string
-  collegeName?: string
-  groups: string[]
-}
 
 interface ICurrentUserState {
   loading: boolean
   error?: ApolloError
   called: boolean
   authError?: string
-  currentUser?: IUser
+  currentUser?: User
   rememberCurrentUser: boolean
 }
 

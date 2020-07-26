@@ -47,7 +47,7 @@ const LandingPageGroupNavigation: React.FC = () => {
     )
   }
 
-  const groupList: string[] = _.slice(
+  const groupList: { label: string; value: string }[] = _.slice(
     0,
     4,
     _.get("chosenGroups", currentUser) || _.get("groups", currentUser)

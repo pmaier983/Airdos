@@ -8,8 +8,14 @@ export const GET_USER_BY_USERNAME = gql`
       firstName
       lastName
       username
-      groups
-      chosenGroups
+      groups {
+        label
+        value
+      }
+      chosenGroups {
+        label
+        value
+      }
       collegeName
       followers
       following

@@ -23,7 +23,7 @@ const StyledLink = styled(Link)`
 
 interface IProfilePageRelationshipSummariesProps {
   followerList: string[]
-  groupList: string[]
+  groupList: { label: string; value: string }[]
 }
 
 const renderFollowerSummary = (followerList: string[]) => {
@@ -47,7 +47,7 @@ const renderFollowerSummary = (followerList: string[]) => {
   )
 }
 
-const renderGroupSummary = (groupList: string[]) => {
+const renderGroupSummary = (groupList: { label: string; value: string }[]) => {
   // TODO: Redo this logic
   if (!groupList) {
     return "This user has disabled their group list for you"
@@ -56,7 +56,7 @@ const renderGroupSummary = (groupList: string[]) => {
   if (numberOfGroups <= 0) {
     return "NOT A PART OF ANY GROUP YET"
   }
-  const keyGroup = groupList[0]
+  const keyGroup = groupList[0].label
   return (
     <span>
       {`MEMBER OF ${numberOfGroups}

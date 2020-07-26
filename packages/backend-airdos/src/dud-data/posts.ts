@@ -1,6 +1,6 @@
 export const posts = [
   {
-    id: 140,
+    id: 150,
     user: 'doctoroz101',
     text: 'Sharing my lab partner\'s initial findings for discussion, in advance of her submission to Nature',
     replies: false,
@@ -9,7 +9,7 @@ export const posts = [
     timeCreated: 1591620000,
   },
   {
-    id: 130,
+    id: 140,
     user: 'brock202',
     text: 'Please join Merck at their Overcoming Monoclonal Antibody Administration Challenges Workshop this afternoon',
     replies: false,
@@ -17,17 +17,17 @@ export const posts = [
     timeCreated: 1591620000,
   },
   {
-    id: 120,
+    id: 130,
     user: 'doctoroz101',
-    text: 'Moving away from negative pairs in self-supervised representation learning: our new SotA method, Bootstrap Your Own Latent (BYOL), narrows the gap between self-supervised & supervised methods simply by predicting previous versions of itself.  conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages in a fully unsupervised way',
+    text: 'Moving away from negative pairs in self-supervised representation learning: our new SotA method, Bootstrap Your Own Latent (BYOL), narrows the gap between self-supervised & supervised methods simply by predicting previous versions of itself.  conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages ',
     replies: true,
     likes: 31,
     timeCreated: 1591610000,
   },
   {
-    id: 110,
+    id: 120,
     user: 'pmaier983',
-    text: 'Erdős conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages in a fully unsupervised way',
+    text: 'Erdős conjecture on arithmetic progressions – Unsolved problem in mathematics Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages ',
     replies: true,
     likes: 51,
     timeCreated: 1591609880,
@@ -35,9 +35,9 @@ export const posts = [
   },
   {
     id: 100,
-    group: 'airdos',
+    group: { value: 'airdos', label: 'Airdos' },
     user: 'pmaier983',
-    text: 'Unsupervised Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages in a fully unsupervised way',
+    text: 'Unsupervised Translation of Programming Languages. Feed a model with Python, C++, and Java source code from GitHub, and it automatically learns to translate between the 3 languages ',
     replies: true,
     timeCreated: 1591607880,
     likes: 57,

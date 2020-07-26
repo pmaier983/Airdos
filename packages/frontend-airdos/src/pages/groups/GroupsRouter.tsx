@@ -6,7 +6,7 @@ import { GroupPage } from "./GroupPage"
 
 const GroupsRouter: React.FC = () => (
   <>
-    <Route strict path="/groups/">
+    <Route strict path="/groups/:name">
       <GroupPage />
     </Route>
     <Route exact strict path="/groups">
