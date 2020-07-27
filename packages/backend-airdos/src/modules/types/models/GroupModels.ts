@@ -2,11 +2,11 @@ import { AuthenticationError } from 'apollo-server-lambda'
 import _ from 'lodash/fp'
 
 // eslint-disable-next-line no-unused-vars
-import { IUserType } from '../UserType'
+import { User } from '../UserType'
 import { groups } from '../../../dud-data'
 
-export const getGroupModels = ({ user }: {user: IUserType | undefined}) => ({
-  getByName: (name: string) => {
+export const getGroupModels = ({ user }: {user: User | undefined}) => ({
+  getByName: ({ name }:{name: string}) => {
     const possibleGroup = _.get(name, groups)
     if (possibleGroup) {
       const group = possibleGroup

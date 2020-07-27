@@ -4,7 +4,7 @@ import _ from 'lodash/fp'
 import { resolvers, typeDefs } from './modules/schema'
 
 import { getUserFromToken } from './utils'
-import { getUserModels, getGroupModels, getThreadModels } from './modules/types/models'
+import { getUserModels, getGroupModels, getPostModels } from './modules/types/models'
 
 const schema = makeExecutableSchema({
   typeDefs,
@@ -28,7 +28,7 @@ const server = new ApolloServer({
       models: {
         user: getUserModels({ user }),
         group: getGroupModels({ user }),
-        thread: getThreadModels({ user }),
+        post: getPostModels({ user }),
       },
     }
   },

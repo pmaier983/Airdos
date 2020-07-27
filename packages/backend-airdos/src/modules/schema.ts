@@ -18,7 +18,7 @@ const td = gql`
     userByLogin(username: String!, password: String!): User
     userByToken(token: String!): User
     groupByName(name: String!): Group
-    threadById(id: String!): Thread
+    postById(id: String!): Post
   }
 `
 
