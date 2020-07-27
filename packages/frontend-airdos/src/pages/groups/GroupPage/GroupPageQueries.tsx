@@ -15,7 +15,6 @@ export const GET_GROUP_POSTS_BY_NAME = gql`
     groupByName(name: $name) {
       posts {
         text
-        title
       }
     }
   }
