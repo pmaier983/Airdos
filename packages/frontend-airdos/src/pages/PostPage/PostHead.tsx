@@ -1,21 +1,20 @@
-import React, { useContext, useState } from "react"
+import React, { useState } from "react"
 import _ from "lodash/fp"
-import styled, { css, ThemeContext } from "styled-components"
+import styled, { css } from "styled-components"
 
 import { MaterialIcon } from "../../components/MaterialIcon"
-import type { Thread } from "../../typings/api"
 
-const StyledThreadBlockContainer = styled.div`
+import type { Post } from "../../typings/api"
+
+const StyledPostHeadContainer = styled.div`
   ${({ theme }) => css`
-    box-shadow: ${theme.basicBoxShadow};
+    box-shadow: ${theme.darkBoxShadow};
     border-radius: ${theme.normalBorderRadius};
   `}
-  width: 100%;
   padding: 5px 5px 0 5px;
-  overflow: hidden;
 `
 
-const StyledStrongFirstWord = styled.strong`
+const StyledEmphasisedFirstWord = styled.strong`
   ${({ theme }) => css`
     font-size: ${theme.mediumLargeFontSize};
     font-weight ${theme.normalFontWeight};
@@ -25,7 +24,6 @@ const StyledStrongFirstWord = styled.strong`
 const StyledFooterContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   float: right;
 `
 
@@ -39,15 +37,13 @@ const StyledLikesCount = styled.div`
   cursor: pointer;
 `
 
-const IconColumnPadding = styled.div`
+const IconPadding = styled.div`
   width: 3px;
 `
 
-const ThreadBlock: React.FC<Thread> = ({ text }) => {
+const PostHead: React.FC<{ post: Post }> = ({ post: { text } }) => {
   const [isLiked, setLike] = useState(false)
   const [likeCount, setLikeCount] = useState(_.random(0, 100))
-  const theme = useContext(ThemeContext)
-
   const textArray = text.split(" ")
   const [firstWord, ...allButFirstWord] = textArray
   const remainingText = allButFirstWord.join(" ")
@@ -64,9 +60,9 @@ const ThreadBlock: React.FC<Thread> = ({ text }) => {
   }
 
   return (
-    <StyledThreadBlockContainer>
+    <StyledPostHeadContainer>
       <>
-        <StyledStrongFirstWord>{`${firstWord} `}</StyledStrongFirstWord>
+        <StyledEmphasisedFirstWord>{`${firstWord} `}</StyledEmphasisedFirstWord>
         {remainingText}
       </>
       <StyledFooterContainer>
@@ -75,22 +71,17 @@ const ThreadBlock: React.FC<Thread> = ({ text }) => {
           <MaterialIcon
             name={isLiked ? "emoji_objects" : "emoji_objects_outlined"}
             size="20px"
-            color={theme.iconColor}
             onClick={handleLike}
           />
         </StyledLikesContainer>
-        <MaterialIcon name="reply" size="20px" color={theme.iconColor} />
-        <IconColumnPadding />
-        <MaterialIcon
-          name="record_voice_over"
-          size="20px"
-          color={theme.iconColor}
-        />
-        <IconColumnPadding />
-        <MaterialIcon name="save" size="20px" color={theme.iconColor} />
+        <MaterialIcon name="reply" size="20px" />
+        <IconPadding />
+        <MaterialIcon name="record_voice_over" size="20px" />
+        <IconPadding />
+        <MaterialIcon name="save" size="20px" />
       </StyledFooterContainer>
-    </StyledThreadBlockContainer>
+    </StyledPostHeadContainer>
   )
 }
 
-export { ThreadBlock }
+export { PostHead }

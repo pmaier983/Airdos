@@ -4,11 +4,11 @@ import { useLocation } from "react-router-dom"
 import { useQuery } from "@apollo/react-hooks"
 import styled from "styled-components"
 
-import { GET_THREAD_BY_ID } from "./ThreadPageQueries"
-import { ThreadHead } from "./ThreadHead"
-import { ThreadTree } from "./ThreadTree"
+import { GET_POST_BY_ID } from "./PostPageQueries"
+import { PostHead } from "./PostHead"
+import { PostTree } from "./PostTree"
 
-import type { Thread } from "../../typings/api"
+import type { Post } from "../../typings/api"
 
 const StyledPageContainer = styled.div`
   display: flex;
@@ -22,23 +22,23 @@ const StyledRowPaddingPage = styled.div`
   width: 100%;
 `
 
-const getUrlThreadId = (path: string) => {
+const getUrlPostId = (path: string) => {
   const splitPath = path.split("/")
   const profileIndex = _.findIndex(
-    (pathSegment) => pathSegment === "thread",
+    (pathSegment) => pathSegment === "post",
     splitPath
   )
   return splitPath[profileIndex + 1]
 }
 
-const ThreadPage = () => {
+const PostPage = () => {
   const { pathname } = useLocation()
-  const threadId = getUrlThreadId(pathname)
+  const postId = getUrlPostId(pathname)
 
-  const { data, loading, error } = useQuery<{ threadById: Thread }>(
-    GET_THREAD_BY_ID,
+  const { data, loading, error } = useQuery<{ postById: Post }>(
+    GET_POST_BY_ID,
     {
-      variables: { id: threadId },
+      variables: { id: postId },
     }
   )
 
@@ -50,15 +50,15 @@ const ThreadPage = () => {
     return <div>Error</div>
   }
 
-  const { replies, ...threadHead } = data.threadById
+  const { replies, ...postHead } = data.postById
 
   return (
     <StyledPageContainer>
       <StyledRowPaddingPage />
-      <ThreadHead thread={threadHead} />
-      <ThreadTree threads={replies} />
+      <PostHead post={postHead} />
+      <PostTree posts={replies} />
     </StyledPageContainer>
   )
 }
 
-export { ThreadPage }
+export { PostPage }

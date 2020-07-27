@@ -1,7 +1,7 @@
 import gql from "graphql-tag"
 
-const ThreadFragment = gql`
-  fragment ThreadFragment on Thread {
+const PostFragment = gql`
+  fragment PostFragment on Post {
     id
     group {
       value
@@ -15,9 +15,9 @@ const ThreadFragment = gql`
   }
 `
 
-export const GET_THREAD_BY_ID = gql`
-  query threadById($id: String!) {
-    threadById(id: $id) {
+export const GET_POST_BY_ID = gql`
+  query getPostById($id: String!) {
+    postById(id: $id) {
       text
       group {
         label
@@ -26,15 +26,15 @@ export const GET_THREAD_BY_ID = gql`
       user
       timeCreated
       replies {
-        ...ThreadFragment
+        ...PostFragment
         replies {
-          ...ThreadFragment
+          ...PostFragment
           replies {
-            ...ThreadFragment
+            ...PostFragment
             replies {
-              ...ThreadFragment
+              ...PostFragment
               replies {
-                ...ThreadFragment
+                ...PostFragment
               }
             }
           }
@@ -42,5 +42,5 @@ export const GET_THREAD_BY_ID = gql`
       }
     }
   }
-  ${ThreadFragment}
+  ${PostFragment}
 `
