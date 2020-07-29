@@ -2,7 +2,7 @@ import { AuthenticationError } from 'apollo-server-lambda'
 import _ from 'lodash/fp'
 
 // eslint-disable-next-line no-unused-vars
-import { IUserType } from '../UserType'
+import { User } from '../UserType'
 import { users, passwords } from '../../../dud-data'
 import { getUserFromToken } from '../../../utils'
 
@@ -10,8 +10,8 @@ const userPaths = ['id', 'name', 'firstName', 'lastName', 'username', 'groups', 
 
 const publicPaths = ['id', 'name', 'firstName', 'lastName', 'username', 'collegeName']
 
-export const getUserModels = ({ user }: {user: IUserType | undefined}) => ({
-  getByUsername: (username: string) => {
+export const getUserModels = ({ user }: {user: User | undefined}) => ({
+  getByUsername: ({ username }: {username: string}) => {
     if (_.get('username', user) === username) {
       // TODO: have a list of public vs private paths
       return _.pick(userPaths, users[_.get('username', user)])

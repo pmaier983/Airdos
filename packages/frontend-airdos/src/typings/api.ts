@@ -23,26 +23,13 @@ export type Group = {
 
 export type Post = {
   id: number
-  group: {
-    label: string
-    value: string
-  }
-  user: string
-  title: string
-  text: string
-  replies: boolean
-  timeCreated: number
-  attachmentLink: string
-  likes: number
-}
-
-export type Thread = {
-  id: number
+  childrenIds: number[]
+  parentId: number
   group: { label: string; value: string }
   user: string
   text: string
+  attachmentLink: string
+  likes: number
   timeCreated: number
-  childrenIds: number[]
-  parentId: number
-  replies?: Thread[]
+  replies?: Post[]
 }

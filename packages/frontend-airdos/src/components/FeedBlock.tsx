@@ -4,7 +4,7 @@ import styled, { css, ThemeContext } from "styled-components"
 import { Link } from "react-router-dom"
 
 import { MaterialIcon } from "./MaterialIcon"
-import type { Post, Thread } from "../typings/api"
+import type { Post } from "../typings/api"
 
 const StyledFeedBlockContainer = styled.div`
   ${({ theme }) => css`
@@ -48,7 +48,7 @@ const ContinueColumnPadding = styled.div`
   width: 6px;
 `
 
-const FeedBlock: React.FC<Post | Thread> = ({ text, replies, id }) => {
+const FeedBlock: React.FC<Post> = ({ text, replies, id }) => {
   const [isLiked, setLike] = useState(false)
   const [likeCount, setLikeCount] = useState(_.random(0, 100))
   const theme = useContext(ThemeContext)
@@ -96,7 +96,7 @@ const FeedBlock: React.FC<Post | Thread> = ({ text, replies, id }) => {
         {replies && (
           <>
             <ContinueColumnPadding />
-            <Link to={`thread/${id}`}>
+            <Link to={`post/${id}`}>
               <MaterialIcon
                 name="next_plan"
                 size="20px"

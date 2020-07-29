@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 
-import { ThreadBlock } from "./ThreadBlock"
+import { PostBlock } from "./PostBlock"
 
-import type { Thread } from "../../typings/api"
+import type { Post } from "../../typings/api"
 
 const StyledColumnPadding = styled.div`
   width: ${({ padding }: { padding: number }) => `${padding}px`};
@@ -23,18 +23,18 @@ const StyledRow = styled.div`
   flex-direction: row;
 `
 
-const renderReplies = (threads: Thread[], offset: number) => {
+const renderReplies = (posts: Post[], offset: number) => {
   return (
     <StyledColumn>
-      {threads.map((thread: Thread) => {
+      {posts.map((post: Post) => {
         return (
-          <div key={thread.id}>
+          <div key={post.id}>
             <StyledRowPadding />
             <StyledRow>
               <StyledColumnPadding padding={offset} />
-              <ThreadBlock {...thread} />
+              <PostBlock {...post} />
             </StyledRow>
-            {thread.replies && renderReplies(thread.replies, offset + 20)}
+            {post.replies && renderReplies(post.replies, offset + 20)}
           </div>
         )
       })}
@@ -42,13 +42,13 @@ const renderReplies = (threads: Thread[], offset: number) => {
   )
 }
 
-const ThreadTree: React.FC<{ threads?: Thread[] }> = ({ threads }) => {
-  // TODO: create a no threads state
-  if (!threads) {
+const PostTree: React.FC<{ posts?: Post[] }> = ({ posts }) => {
+  // TODO: create a no posts state
+  if (!posts) {
     return <div />
   }
 
-  return <StyledColumn>{renderReplies(threads, 0)}</StyledColumn>
+  return <StyledColumn>{renderReplies(posts, 0)}</StyledColumn>
 }
 
-export { ThreadTree }
+export { PostTree }

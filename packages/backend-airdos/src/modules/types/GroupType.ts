@@ -1,5 +1,17 @@
 import { gql } from 'apollo-server-lambda'
 
+import type { Post } from './PostType'
+
+export type Group = {
+  id: string
+  name: string
+  displayName: string
+  posts: [Post]
+  members: [string]
+  admins: [string]
+  private: boolean
+}
+
 export const typeDefs = gql`
   type Group implements Node {
     id: ID!
@@ -14,6 +26,6 @@ export const typeDefs = gql`
 
 export const resolvers = {
   Query: {
-    groupByName: (parent, { name }, context) => context.models.group.getByName(name),
+    groupByName: (parent, props, context) => context.models.group.getByName(props),
   },
 }

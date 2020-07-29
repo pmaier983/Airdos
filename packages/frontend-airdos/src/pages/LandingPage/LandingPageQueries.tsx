@@ -9,10 +9,11 @@ export const GET_POSTS = gql`
         value
       }
       user
-      title
       text
-      replies
       timeCreated
+      replies {
+        id
+      }
       attachmentLink
       likes
     }

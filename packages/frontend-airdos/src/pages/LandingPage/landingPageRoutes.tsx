@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom"
 import { PrivateRoute } from "../../components/PrivateRoute"
 import { ProfilePage } from "../ProfilePage"
 import { GroupsRouter } from "../groups/GroupsRouter"
-import { ThreadPage } from "../ThreadPage"
+import { PostPage } from "../PostPage"
 import { LandingPageFeed } from "./LandingPageFeed"
 
 const LandingPageRoutes = () => (
@@ -24,8 +24,8 @@ const LandingPageRoutes = () => (
     <PrivateRoute path="/library">
       <div>This Route has not been built yet</div>
     </PrivateRoute>
-    <Route path="/thread">
-      <ThreadPage />
+    <Route path="/post">
+      <PostPage />
     </Route>
   </Switch>
 )
