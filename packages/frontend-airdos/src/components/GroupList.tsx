@@ -3,11 +3,9 @@ import React, { useMemo } from "react"
 import { ResponsiveGridLayout } from "./grid"
 import { GroupButton } from "./buttons"
 
-interface IGroupListProps {
-  list: { label: string; value: string }[]
-}
+import type { ValueLabelNode } from "../typings/api"
 
-const GroupList: React.FC<IGroupListProps> = ({ list }) => {
+const GroupList: React.FC<{ list: ValueLabelNode[] }> = ({ list }) => {
   const children = useMemo(
     () =>
       list.map(({ value, label }) => (
