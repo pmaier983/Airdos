@@ -120,7 +120,13 @@ const StyledCloseContainer = styled.div`
 // TODO: Split this page up. Too clunky
 const LoginPage = () => {
   const history = useHistory()
-  const { register, handleSubmit, getValues } = useForm()
+  const { register, handleSubmit, getValues } = useForm({
+    defaultValues: {
+      username: "pmaier983",
+      password: "bucketHat",
+    },
+  })
+
   const [
     { loading, currentUser, rememberCurrentUser, authError },
     { setRememberCurrentUser, getUserByLogin },
