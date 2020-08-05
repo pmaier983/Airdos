@@ -56,7 +56,7 @@ export const useCurrentUserContext = () => useContext(CurrentUserContext)
 // This file is a bit messy, refactor (use reducer mb?)
 const CurrentUserProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(undefined)
-  const [rememberCurrentUser, setRememberCurrentUser] = useState(false)
+  const [rememberCurrentUser, setRememberCurrentUser] = useState(true)
   const [authError, setAuthError] = useState("")
   const [session, establishSession, removeSession] = useSession()
 
