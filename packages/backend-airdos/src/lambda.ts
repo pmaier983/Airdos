@@ -1,10 +1,13 @@
 import { ApolloServer, makeExecutableSchema } from 'apollo-server-lambda'
 import _ from 'lodash/fp'
+import AWS from 'aws-sdk'
 
 import { resolvers, typeDefs } from './modules/schema'
 
 import { getUserFromToken } from './utils'
 import { getUserModels, getGroupModels, getPostModels } from './modules/types/models'
+
+const docClient = new AWS.DynamoDB.DocumentClient({ region: 'us-east-2' })
 
 const schema = makeExecutableSchema({
   typeDefs,
@@ -25,6 +28,7 @@ const server = new ApolloServer({
     return {
       user,
       secret: process.env.TEST,
+      docClient,
       models: {
         user: getUserModels({ user }),
         group: getGroupModels({ user }),
