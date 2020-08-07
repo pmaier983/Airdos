@@ -1,5 +1,5 @@
 import _ from 'lodash/fp'
-import { gql } from 'apollo-server-lambda'
+import { gql, UserInputError, ApolloError } from 'apollo-server-lambda'
 
 import { typeDefs as enumTds, resolvers as enumRzs } from './enums'
 import { typeDefs as tds, resolvers as rzs } from './types'
@@ -20,9 +20,38 @@ const td = gql`
     groupByName(name: String!): Group
     postById(id: String!): Post
   }
+  type Mutation {
+    test: Name
+  }
+  type Name {
+    value: String
+    label: String
+  }
 `
 
-const rz = {}
+const rz = {
+  Query: {
+  },
+  Mutation: {
+    test: (parent, props, context) => context.docClient.put({
+      Item: {
+        ID: 1,
+        timeCreated: 1591609881,
+        text: 'did it work?',
+      },
+      TableName: 'Test',
+    }, (err) => {
+      if (err) {
+        console.error(err)
+        return new ApolloError(err)
+      }
+      return {
+        value: 'win',
+        label: 'win',
+      }
+    }),
+  },
+}
 
 export const typeDefs = [...enumTds, ...tds, td]
 // TODO how to get merge all to work here?
