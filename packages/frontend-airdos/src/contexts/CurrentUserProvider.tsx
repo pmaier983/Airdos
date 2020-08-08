@@ -73,7 +73,7 @@ const CurrentUserProvider: React.FC = ({ children }) => {
       token: session,
     },
     onCompleted: (data) => {
-      const user = _.get("userByToken", data)
+      const user = _.get("getUserByToken", data)
       if (rememberCurrentUser) {
         establishSession(user.username)
       }
@@ -95,7 +95,7 @@ const CurrentUserProvider: React.FC = ({ children }) => {
       password: undefined,
     },
     onCompleted: (data) => {
-      const user = _.get("userByLogin", data)
+      const user = _.get("getUserByLogin", data)
       if (rememberCurrentUser) {
         establishSession(user.username)
       }

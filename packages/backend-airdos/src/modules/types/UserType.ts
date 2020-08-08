@@ -30,8 +30,8 @@ export const typeDefs = gql`
 
 export const resolvers = {
   Query: {
-    userByUsername: (parent, props, context) => context.models.user.getByUsername(props),
-    userByLogin: (parent, props, context) => context.models.user.verifyAndReturnUser(props),
-    userByToken: (parent, props, context) => context.models.user.getByToken(props),
+    getUserByUsername: (parent, props, context) => context.models.user.getByUsername(props),
+    getUserByLogin: (parent, props, context) => context.models.user.verifyAndReturnUser(props),
+    getUserByToken: (parent, props, context) => context.models.user.getByToken(props),
   },
 }

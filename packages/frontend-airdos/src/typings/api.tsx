@@ -12,11 +12,11 @@ export type Scalars = {
 export type Query = {
   __typename?: "Query"
   posts?: Maybe<Array<Maybe<Post>>>
-  userByUsername?: Maybe<User>
-  userByLogin?: Maybe<User>
-  userByToken?: Maybe<User>
-  groupByName?: Maybe<Group>
-  postById?: Maybe<Post>
+  getUserByUsername?: Maybe<User>
+  getUserByLogin?: Maybe<User>
+  getUserByToken?: Maybe<User>
+  getGroupByName?: Maybe<Group>
+  getPostById?: Maybe<Post>
 }
 
 export type QueryUserByUsernameArgs = {

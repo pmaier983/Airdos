@@ -13,7 +13,7 @@ const GroupPageFeed: React.FC<IGroupPageFeedProps> = ({ group }) => {
     <FeedStack
       query={GET_GROUP_POSTS_BY_NAME}
       variables={{ name: group.name }}
-      postsPath="groupByName.posts"
+      postsPath="getGroupByName.posts"
     />
   )
 }

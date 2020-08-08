@@ -17,7 +17,7 @@ const PostFragment = gql`
 
 export const GET_POST_BY_ID = gql`
   query getPostById($id: String!) {
-    postById(id: $id) {
+    getPostById(id: $id) {
       text
       group {
         label

@@ -35,7 +35,7 @@ const PostPage = () => {
   const { pathname } = useLocation()
   const postId = getUrlPostId(pathname)
 
-  const { data, loading, error } = useQuery<{ postById: Post }>(
+  const { data, loading, error } = useQuery<{ getPostById: Post }>(
     GET_POST_BY_ID,
     {
       variables: { id: postId },
@@ -50,7 +50,7 @@ const PostPage = () => {
     return <div>Error</div>
   }
 
-  const { replies, ...postHead } = data.postById
+  const { replies, ...postHead } = data.getPostById
 
   return (
     <StyledPageContainer>

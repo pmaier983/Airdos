@@ -33,6 +33,6 @@ export const typeDefs = gql`
 export const resolvers = {
   Query: {
     posts: () => posts,
-    postById: (parent, props, context) => context.models.post.getPostById(props),
+    getPostById: (parent, props, context) => context.models.post.getPostById(props),
   },
 }

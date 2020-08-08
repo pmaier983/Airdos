@@ -83,7 +83,7 @@ const ProfilePage: React.FC = () => {
   // if current user, show in url, if not show queried user.
   const user =
     usernameFromPath && usernameFromPath !== currentUser?.username
-      ? _.get("userByUsername", data)
+      ? _.get("getUserByUsername", data)
       : currentUser
 
   if (!user) {
