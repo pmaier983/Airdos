@@ -33,6 +33,7 @@ const rz = {
   Query: {
   },
   Mutation: {
+    // TODO: Make users table in dynamoDB
     test: (parent, props, context) => context.docClient.put({
       Item: {
         ID: 1,
