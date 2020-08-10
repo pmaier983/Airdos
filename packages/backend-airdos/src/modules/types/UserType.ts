@@ -34,4 +34,6 @@ export const resolvers = {
     getUserByLogin: (parent, props, context) => context.models.user.verifyAndReturnUser(props),
     getUserByToken: (parent, props, context) => context.models.user.getByToken(props),
   },
+  Mutation: {
+  },
 }
