@@ -1,28 +1,6 @@
-import { getUserFromToken } from '../../../utils'
+import _ from 'lodash/fp'
 
-const userPaths = [
-  'id',
-  'name',
-  'firstName',
-  'lastName',
-  'username',
-  'groups',
-  'collegeName',
-  'followers',
-  'following',
-  'chosenGroups',
-].join(', ')
-
-const publicPaths = [
-  'id',
-  'name',
-  'firstName',
-  'lastName',
-  'username',
-  'collegeName',
-].join(', ')
-
-export const getUserModels = ({ user, docClient }) => ({
+export const getUserModels = ({ docClient }) => ({
   getByUsername: async ({ username }: {username: string}) => {
     try {
       const data = await docClient.get({
@@ -30,7 +8,6 @@ export const getUserModels = ({ user, docClient }) => ({
         Key: {
           username,
         },
-        ProjectionExpression: user ? userPaths : publicPaths,
       }).promise()
       return data.Item
     } catch (e) {
@@ -38,24 +15,37 @@ export const getUserModels = ({ user, docClient }) => ({
     }
   },
 
-  getByToken: ({ token }: {token: string}) => {
-    if (user) {
-      return user
+  getByToken: async ({ token }: {token: string}) => {
+    try {
+      const data = await docClient.query({
+        TableName: 'airdos-users',
+        IndexName: 'token-index',
+        KeyConditionExpression: '#token = :token',
+        ExpressionAttributeValues: {
+          ':token': token,
+        },
+        ExpressionAttributeNames: {
+          '#token': 'token',
+        },
+      }).promise()
+      if (data.Items.length === 1) {
+        return data.Items[0]
+      }
+      throw Error('Token Authentication Failed')
+    } catch (e) {
+      return Error(e)
     }
-    return getUserFromToken(token)
   },
 
   verifyAndReturnUser: async ({ username, password }) => {
     try {
-      const data = await docClient.query({
+      const data = await docClient.get({
         TableName: 'airdos-users',
         Key: {
           username,
         },
-        ProjectionExpression: user ? userPaths : publicPaths,
       }).promise()
-      // TODO: should not return password at all
-      if (data.Item.password === password) {
+      if (_.get('Item.password', data) === password) {
         return data.Item
       }
       throw Error('Authentication Failed')
