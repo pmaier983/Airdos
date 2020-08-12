@@ -21,7 +21,7 @@ const td = gql`
     getPostById(id: String!): Post
   }
   type Mutation {
-    test: String
+    addUser: User
   }
 `
 

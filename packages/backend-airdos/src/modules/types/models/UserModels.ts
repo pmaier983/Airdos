@@ -53,4 +53,16 @@ export const getUserModels = ({ docClient }) => ({
       return Error(e)
     }
   },
+
+  addUser: async (userInfo) => {
+    try {
+      const data = await docClient.put({
+        TableName: 'airdos-users',
+        Key: userInfo,
+      }).promise()
+      return data.Item
+    } catch (e) {
+      return Error(e)
+    }
+  },
 })
