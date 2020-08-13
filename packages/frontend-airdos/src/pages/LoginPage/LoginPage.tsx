@@ -207,7 +207,7 @@ const LoginPage = () => {
             <StyledLinkWrapper to="/">
               Forgot Password/Username?
             </StyledLinkWrapper>
-            <StyledLinkWrapper to="/">Sign Up</StyledLinkWrapper>
+            <StyledLinkWrapper to="/createUser">Sign Up</StyledLinkWrapper>
           </StyledFooterContainer>
         </StyledSegmentContainer>
       </StyledLoginContainer>
