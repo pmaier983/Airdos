@@ -19,24 +19,24 @@ export type Query = {
   getPostById?: Maybe<Post>
 }
 
-export type QueryUserByUsernameArgs = {
+export type QueryGetUserByUsernameArgs = {
   username: Scalars["String"]
 }
 
-export type QueryUserByLoginArgs = {
+export type QueryGetUserByLoginArgs = {
   username: Scalars["String"]
   password: Scalars["String"]
 }
 
-export type QueryUserByTokenArgs = {
+export type QueryGetUserByTokenArgs = {
   token: Scalars["String"]
 }
 
-export type QueryGroupByNameArgs = {
+export type QueryGetGroupByNameArgs = {
   name: Scalars["String"]
 }
 
-export type QueryPostByIdArgs = {
+export type QueryGetPostByIdArgs = {
   id: Scalars["String"]
 }
 
@@ -87,6 +87,25 @@ export type Group = Node & {
   members?: Maybe<Array<Maybe<Scalars["String"]>>>
   admins?: Maybe<Array<Maybe<Scalars["String"]>>>
   private?: Maybe<Scalars["Boolean"]>
+}
+
+export type Mutation = {
+  __typename?: "Mutation"
+  addUser?: Maybe<User>
+  updateToken?: Maybe<Scalars["String"]>
+}
+
+export type MutationAddUserArgs = {
+  user?: Maybe<AddUserInput>
+}
+
+export type AddUserInput = {
+  id: Scalars["ID"]
+  firstName: Scalars["String"]
+  lastName: Scalars["String"]
+  username: Scalars["String"]
+  password: Scalars["String"]
+  collegeName?: Maybe<Scalars["String"]>
 }
 
 export enum PostTypeEnum {
