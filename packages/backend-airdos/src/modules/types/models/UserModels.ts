@@ -56,9 +56,32 @@ export const getUserModels = ({ docClient }) => ({
 
   addUser: async (userInfo) => {
     try {
+      const possibleNewUser = _.merge(userInfo.user, {
+        followers: [],
+        following: [],
+        groups: [],
+        name: `${userInfo.user.firstName} ${userInfo.user.lastName}`,
+        chosenGroups: [],
+      })
       const data = await docClient.put({
         TableName: 'airdos-users',
-        Key: userInfo,
+        ConditionExpression: 'attribute_not_exists(username)',
+        Item: possibleNewUser,
+      }).promise()
+      if (data) {
+        return possibleNewUser
+      }
+      throw Error('Add User Failed')
+    } catch (e) {
+      return Error(e)
+    }
+  },
+
+  updateToken: async (userInfo) => {
+    try {
+      const data = await docClient.put({
+        TableName: 'airdos-users',
+        Item: userInfo,
       }).promise()
       return data.Item
     } catch (e) {

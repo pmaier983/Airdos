@@ -30,7 +30,7 @@ const server = new ApolloServer({
       secret: process.env.TEST,
       docClient,
       models: {
-        user: getUserModels({ user, docClient }),
+        user: getUserModels({ docClient }),
         group: getGroupModels({ user }),
         post: getPostModels({ user }),
       },

@@ -26,6 +26,14 @@ export const typeDefs = gql`
     followers: [String]
     following: [String]
   }
+  input AddUserInput {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    username: String!
+    password: String!
+    collegeName: String
+  }
 `
 
 export const resolvers = {
@@ -36,5 +44,6 @@ export const resolvers = {
   },
   Mutation: {
     addUser: (parent, props, context) => context.models.user.addUser(props),
+    updateToken: (parent, props, context) => context.models.user.updateToken(props),
   },
 }
