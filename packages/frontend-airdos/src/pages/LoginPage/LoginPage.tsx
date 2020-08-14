@@ -87,7 +87,7 @@ const StyledSubmitButtonWrapper = styled(SubmitButton)`
   background-color: ${({ theme }) => theme.lightFocusColor};
   min-width: 200px;
   width: 15%;
-  height: 3%;
+  height: 30px;
 `
 
 const StyledErrorContainer = styled.div`
@@ -117,10 +117,15 @@ const StyledCloseContainer = styled.div`
   position: absolute;
 `
 
+interface FormValues {
+  username: string
+  password: string
+}
+
 // TODO: Split this page up. Too clunky
 const LoginPage = () => {
   const history = useHistory()
-  const { register, handleSubmit, getValues } = useForm({
+  const { register, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       username: "pmaier983",
       password: "bucketHat",
@@ -136,13 +141,9 @@ const LoginPage = () => {
     history.goBack()
   }
 
-  // TODO: specify data type
-  const onSubmit = () => {
+  const onSubmit = (formValues: FormValues) => {
     getUserByLogin({
-      variables: {
-        username: getValues("username"),
-        password: getValues("password"),
-      },
+      variables: formValues,
     })
   }
 
