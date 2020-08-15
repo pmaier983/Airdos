@@ -53,7 +53,7 @@ CurrentUserContext.displayName = "CurrentUserContext"
 
 export const useCurrentUserContext = () => useContext(CurrentUserContext)
 
-// This file is a bit messy, refactor (use reducer mb?)
+// This awful. Should have this all in cache.
 const CurrentUserProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(undefined)
   const [rememberCurrentUser, setRememberCurrentUser] = useState(true)

@@ -4,10 +4,14 @@ import React from "react"
 import _ from "lodash/fp"
 import styled, { css } from "styled-components"
 import { useForm } from "react-hook-form"
+import { useMutation } from "@apollo/react-hooks"
+import { darken, readableColor } from "polished"
 import { useHistory } from "react-router-dom"
 
 import { MaterialIcon } from "../../components/MaterialIcon"
 import { SubmitButton } from "../../components/buttons/SubmitButton"
+import { ADD_USER } from "./CreateUserPageQueries"
+import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
 
 const StyledContainer = styled.form`
   position: absolute;
@@ -23,7 +27,7 @@ const StyledContainer = styled.form`
   background-color: ${({ theme }) => theme.backgroundColor};
 `
 
-const StyledLoginContainer = styled.div`
+const StyledAddUserContainer = styled.div`
   ${({ theme }) => css`
     box-shadow: ${theme.mediumHighlightedBoxShadow};
     border-radius: ${theme.largeBorderRadius};
@@ -68,6 +72,22 @@ const StyledLabelColumn = styled.label`
   align-items: center;
 `
 
+const StyledLoadingOverlay = styled.div`
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 40%;
+  min-width: 300px;
+  height: 50%;
+  ${({ theme }) => css`
+    border-radius: ${theme.largeBorderRadius};
+    background-color: ${darken(0.9, theme.lightEmphasisColor)};
+    font-size: ${theme.extraLargeFontSize};
+    color: ${readableColor(darken(0.9, theme.lightEmphasisColor))};
+  `};
+`
+
 const StyledInput = styled.input`
   margin-left: 10px;
   display: flex;
@@ -101,6 +121,7 @@ interface FormValues {
 }
 
 const CreateUserPage: React.FC = () => {
+  const [, { setCurrentUser }] = useCurrentUserContext()
   const history = useHistory()
   const { handleSubmit, register, errors } = useForm<FormValues>({
     defaultValues: {
@@ -112,13 +133,25 @@ const CreateUserPage: React.FC = () => {
     },
   })
 
+  const [addUser, { loading, error, called }] = useMutation(ADD_USER)
+
   const onSubmit = (formValues: FormValues) => {
-    console.log(formValues)
+    addUser({
+      variables: {
+        user: formValues,
+      },
+    }).then((user) => {
+      setCurrentUser(user.data.addUser)
+      history.push("/")
+    })
   }
 
   return (
     <StyledContainer onSubmit={handleSubmit(onSubmit)}>
-      <StyledLoginContainer>
+      <StyledAddUserContainer>
+        {loading && called && (
+          <StyledLoadingOverlay>Loading...</StyledLoadingOverlay>
+        )}
         <StyledCloseContainer>
           <MaterialIcon
             name="close"
@@ -187,8 +220,11 @@ const CreateUserPage: React.FC = () => {
             {!_.isEmpty(errors) &&
               "Username, First Name and Last Name are required to Sign Up"}
           </StyledErrorContainer>
+          <StyledErrorContainer>
+            {error && "This Username is already taken"}
+          </StyledErrorContainer>
         </StyledFormContent>
-      </StyledLoginContainer>
+      </StyledAddUserContainer>
     </StyledContainer>
   )
 }
