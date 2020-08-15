@@ -103,12 +103,6 @@ const StyledFooterContainer = styled.div`
   height: 100%;
 `
 
-const StyledSaveSessionContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`
-
 const StyledLinkWrapper = styled(Link)`
   text-decoration: none;
 `
@@ -133,8 +127,8 @@ const LoginPage = () => {
   })
 
   const [
-    { loading, currentUser, rememberCurrentUser, authError },
-    { setRememberCurrentUser, getUserByLogin },
+    { loading, currentUser, authError },
+    { getUserByLogin },
   ] = useCurrentUserContext()
 
   if (currentUser) {
@@ -145,10 +139,6 @@ const LoginPage = () => {
     getUserByLogin({
       variables: formValues,
     })
-  }
-
-  const toggleSaveSession = () => {
-    setRememberCurrentUser(!rememberCurrentUser)
   }
 
   // TODO Material Icon Loading should use polish and theme for its color
@@ -191,16 +181,6 @@ const LoginPage = () => {
               />
             </label>
           </StyledInputContainer>
-          <StyledSaveSessionContainer>
-            <MaterialIcon
-              size="16px"
-              name={
-                rememberCurrentUser ? "check_box" : "check_box_outline_blank"
-              }
-              onClick={toggleSaveSession}
-            />
-            Remember Me
-          </StyledSaveSessionContainer>
         </StyledSegmentContainer>
         <StyledSegmentContainer>
           <StyledErrorContainer>{authError}</StyledErrorContainer>
