@@ -43,6 +43,5 @@ export const resolvers = {
   },
   Mutation: {
     addUser: (parent, props, context) => context.models.user.addUser(props),
-    updateToken: (parent, props, context) => context.models.user.updateToken(props),
   },
 }

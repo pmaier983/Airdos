@@ -92,7 +92,6 @@ export type Group = Node & {
 export type Mutation = {
   __typename?: "Mutation"
   addUser?: Maybe<User>
-  updateToken?: Maybe<Scalars["String"]>
 }
 
 export type MutationAddUserArgs = {
