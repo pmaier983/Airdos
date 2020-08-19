@@ -57,7 +57,7 @@ export const getUserModels = ({ docClient }) => ({
   addUser: async (userInfo) => {
     try {
       const possibleNewUser = _.merge(userInfo.user, {
-        id: _.round(Math.random() * 10000000), // TODO: fix all this...
+        id: _.round(Math.random() * 1000000), // TODO: fix all this...
         followers: [],
         following: [],
         groups: [],
