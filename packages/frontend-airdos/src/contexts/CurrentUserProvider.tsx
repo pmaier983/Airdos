@@ -53,7 +53,7 @@ CurrentUserContext.displayName = "CurrentUserContext"
 
 export const useCurrentUserContext = () => useContext(CurrentUserContext)
 
-// TODO: Have a cache do this. Or incognito
+// TODO: Have a cache do this. Or incognito. Use AWS-incognito!
 // This awful. Should have this all in cache.
 const CurrentUserProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(undefined)
