@@ -47,7 +47,7 @@ const PostHead: React.FC<{ post: Post }> = ({ post: { text } }) => {
 
   const textArray = text
     ? text.split(" ")
-    : ["There", "was", "no", "text", "in", "this", "post"]
+    : ["There", "was", "no", "text", "in", "this", "post", "whoops!"]
   const [firstWord, ...allButFirstWord] = textArray
   const remainingText = allButFirstWord.join(" ")
 
