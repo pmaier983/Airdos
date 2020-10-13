@@ -44,7 +44,10 @@ const IconPadding = styled.div`
 const PostHead: React.FC<{ post: Post }> = ({ post: { text } }) => {
   const [isLiked, setLike] = useState(false)
   const [likeCount, setLikeCount] = useState(_.random(0, 100))
-  const textArray = text.split(" ")
+
+  const textArray = text
+    ? text.split(" ")
+    : ["There", "was", "no", "text", "in", "this", "post", "whoops!"]
   const [firstWord, ...allButFirstWord] = textArray
   const remainingText = allButFirstWord.join(" ")
 

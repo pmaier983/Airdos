@@ -48,7 +48,9 @@ const PostBlock: React.FC<Post> = ({ text }) => {
   const [likeCount, setLikeCount] = useState(_.random(0, 100))
   const theme = useContext(ThemeContext)
 
-  const textArray = text.split(" ")
+  const textArray = text
+    ? text.split(" ")
+    : ["There", "was", "no", "text", "in", "this", "post"]
   const [firstWord, ...allButFirstWord] = textArray
   const remainingText = allButFirstWord.join(" ")
 

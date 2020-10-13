@@ -53,7 +53,10 @@ const FeedBlock: React.FC<Post> = ({ text, replies, id }) => {
   const [likeCount, setLikeCount] = useState(_.random(0, 100))
   const theme = useContext(ThemeContext)
 
-  const textArray = text.split(" ")
+  // TODO: handle this better
+  const textArray = text
+    ? text.split(" ")
+    : ["There", "was", "no", "text", "in", "this", "post"]
   const [firstWord, ...allButFirstWord] = textArray
   const remainingText = allButFirstWord.join(" ")
 

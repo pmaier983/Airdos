@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { LandingPageRoutes } from "./LandingPageRoutes"
+import { LandingPageRoutes } from "./landingPageRoutes"
 
 const StyledContainer = styled.div`
   max-width: 500px;

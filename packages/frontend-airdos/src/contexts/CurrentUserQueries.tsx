@@ -1,6 +1,6 @@
 import gql from "graphql-tag"
 
-const UserFragment = gql`
+export const UserFragment = gql`
   fragment UserFragment on User {
     id
     name
@@ -23,7 +23,7 @@ const UserFragment = gql`
 
 export const GET_USER_BY_TOKEN = gql`
   query getUserByToken($token: String!) {
-    userByToken(token: $token) {
+    getUserByToken(token: $token) {
       ...UserFragment
     }
   }
@@ -32,7 +32,7 @@ export const GET_USER_BY_TOKEN = gql`
 
 export const GET_USER_BY_LOGIN = gql`
   query getUserByLogin($username: String!, $password: String!) {
-    userByLogin(username: $username, password: $password) {
+    getUserByLogin(username: $username, password: $password) {
       ...UserFragment
     }
   }

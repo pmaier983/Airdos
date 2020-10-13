@@ -53,10 +53,11 @@ CurrentUserContext.displayName = "CurrentUserContext"
 
 export const useCurrentUserContext = () => useContext(CurrentUserContext)
 
-// This file is a bit messy, refactor (use reducer mb?)
+// TODO: Have a cache do this. Or incognito. Use AWS-incognito!
+// This awful. Should have this all in cache.
 const CurrentUserProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(undefined)
-  const [rememberCurrentUser, setRememberCurrentUser] = useState(false)
+  const [rememberCurrentUser, setRememberCurrentUser] = useState(true)
   const [authError, setAuthError] = useState("")
   const [session, establishSession, removeSession] = useSession()
 
@@ -73,7 +74,7 @@ const CurrentUserProvider: React.FC = ({ children }) => {
       token: session,
     },
     onCompleted: (data) => {
-      const user = _.get("userByToken", data)
+      const user = _.get("getUserByToken", data)
       if (rememberCurrentUser) {
         establishSession(user.username)
       }
@@ -95,7 +96,7 @@ const CurrentUserProvider: React.FC = ({ children }) => {
       password: undefined,
     },
     onCompleted: (data) => {
-      const user = _.get("userByLogin", data)
+      const user = _.get("getUserByLogin", data)
       if (rememberCurrentUser) {
         establishSession(user.username)
       }

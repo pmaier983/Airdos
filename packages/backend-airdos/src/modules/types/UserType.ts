@@ -26,12 +26,22 @@ export const typeDefs = gql`
     followers: [String]
     following: [String]
   }
+  input AddUserInput {
+    firstName: String!
+    lastName: String!
+    username: String!
+    password: String!
+    collegeName: String
+  }
 `
 
 export const resolvers = {
   Query: {
-    userByUsername: (parent, props, context) => context.models.user.getByUsername(props),
-    userByLogin: (parent, props, context) => context.models.user.verifyAndReturnUser(props),
-    userByToken: (parent, props, context) => context.models.user.getByToken(props),
+    getUserByUsername: (parent, props, context) => context.models.user.getByUsername(props),
+    getUserByLogin: (parent, props, context) => context.models.user.verifyAndReturnUser(props),
+    getUserByToken: (parent, props, context) => context.models.user.getByToken(props),
+  },
+  Mutation: {
+    addUser: (parent, props, context) => context.models.user.addUser(props),
   },
 }

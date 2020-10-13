@@ -67,7 +67,7 @@ const GroupPage: React.FC = () => {
   // TODO: handle this so that it can handle paths that are not Groups after /groups
   // TODO: make context?
   const { pathname } = useLocation()
-  const { data, loading, error } = useQuery<{ groupByName: Group }>(
+  const { data, loading, error } = useQuery<{ getGroupByName: Group }>(
     GET_GROUP_BY_NAME,
     {
       variables: {
@@ -84,7 +84,7 @@ const GroupPage: React.FC = () => {
     return <div>This group was not found</div>
   }
 
-  const group = data.groupByName
+  const group = data.getGroupByName
 
   const memberCount = 13
   const adminCount = 2

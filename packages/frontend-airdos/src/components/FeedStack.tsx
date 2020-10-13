@@ -73,7 +73,7 @@ const FeedStack: React.FC<FeedStackProps> = ({
       <StyledPaddingRowFeedSeparator />
       <StyledFeedContainer>
         {posts.map((post) => (
-          <div key={post?.text}>
+          <div key={post.id}>
             <FeedBlock {...post} />
             <StyledPaddingRowFeedStack />
           </div>

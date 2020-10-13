@@ -1,40 +1,92 @@
-import { AuthenticationError } from 'apollo-server-lambda'
 import _ from 'lodash/fp'
 
-// eslint-disable-next-line no-unused-vars
-import { User } from '../UserType'
-import { users, passwords } from '../../../dud-data'
-import { getUserFromToken } from '../../../utils'
-
-const userPaths = ['id', 'name', 'firstName', 'lastName', 'username', 'groups', 'collegeName', 'followers', 'following', 'chosenGroups']
-
-const publicPaths = ['id', 'name', 'firstName', 'lastName', 'username', 'collegeName']
-
-export const getUserModels = ({ user }: {user: User | undefined}) => ({
-  getByUsername: ({ username }: {username: string}) => {
-    if (_.get('username', user) === username) {
-      // TODO: have a list of public vs private paths
-      return _.pick(userPaths, users[_.get('username', user)])
+export const getUserModels = ({ docClient }) => ({
+  getByUsername: async ({ username }: {username: string}) => {
+    try {
+      const data = await docClient.get({
+        TableName: 'airdos-users',
+        Key: {
+          username,
+        },
+      }).promise()
+      return data.Item
+    } catch (e) {
+      return Error(e)
     }
-    if (_.has(username, users)) {
-      const foundUser = users[username]
-      if (user) {
-        return _.pick(userPaths, foundUser)
+  },
+
+  getByToken: async ({ token }: {token: string}) => {
+    try {
+      const data = await docClient.query({
+        TableName: 'airdos-users',
+        IndexName: 'token-index',
+        KeyConditionExpression: '#token = :token',
+        ExpressionAttributeValues: {
+          ':token': token,
+        },
+        ExpressionAttributeNames: {
+          '#token': 'token',
+        },
+      }).promise()
+      if (data.Items.length === 1) {
+        return data.Items[0]
       }
-      return _.pick(publicPaths, foundUser)
+      throw Error('Token Authentication Failed')
+    } catch (e) {
+      return Error(e)
     }
-    throw Error('No such User in directory')
   },
-  getByToken: ({ token }: {token: string}) => {
-    if (user) {
-      return user
+
+  verifyAndReturnUser: async ({ username, password }) => {
+    try {
+      const data = await docClient.get({
+        TableName: 'airdos-users',
+        Key: {
+          username,
+        },
+      }).promise()
+      if (_.get('Item.password', data) === password) {
+        return data.Item
+      }
+      throw Error('Authentication Failed')
+    } catch (e) {
+      return Error(e)
     }
-    return getUserFromToken(token)
   },
-  verifyAndReturnUser: ({ username, password }) => {
-    if (_.get(username, passwords) === password) {
-      return users[username]
+
+  addUser: async (userInfo) => {
+    try {
+      const possibleNewUser = _.merge(userInfo.user, {
+        id: _.round(Math.random() * 1000000), // TODO: fix all this...
+        followers: [],
+        following: [],
+        groups: [],
+        name: `${userInfo.user.firstName} ${userInfo.user.lastName}`,
+        chosenGroups: [],
+      })
+      const data = await docClient.put({
+        TableName: 'airdos-users',
+        ConditionExpression: 'attribute_not_exists(username)',
+        Item: possibleNewUser,
+      }).promise()
+      if (data) {
+        return possibleNewUser
+      }
+      throw Error('Add User Failed')
+    } catch (e) {
+      return Error(e)
     }
-    throw new AuthenticationError('Wrong username or password')
+  },
+
+  updateToken: async (userInfo) => {
+    try {
+      const data = await docClient.put({
+        TableName: 'airdos-users',
+        Item: userInfo,
+      }).promise()
+      return data.Item
+    } catch (e) {
+      return Error(e)
+    }
   },
 })

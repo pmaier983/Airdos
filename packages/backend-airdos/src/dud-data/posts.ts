@@ -1,3 +1,4 @@
+// converting this to MySQL more mysql work
 export const posts = [
   {
     id: 500,

@@ -14,16 +14,23 @@ const td = gql`
   }
   type Query {
     posts: [Post]
-    userByUsername(username: String!): User
-    userByLogin(username: String!, password: String!): User
-    userByToken(token: String!): User
-    groupByName(name: String!): Group
-    postById(id: String!): Post
+    getUserByUsername(username: String!): User
+    getUserByLogin(username: String!, password: String!): User
+    getUserByToken(token: String!): User
+    getGroupByName(name: String!): Group
+    getPostById(id: String!): Post
+  }
+  type Mutation {
+    addUser(user: AddUserInput): User
   }
 `
 
-const rz = {}
+const rz = {
+  Query: {
+  },
+  Mutation: {
+  },
+}
 
 export const typeDefs = [...enumTds, ...tds, td]
-// TODO how to get merge all to work here?
 export const resolvers = _.merge(_.merge(enumRzs, rzs), rz)

@@ -42,6 +42,11 @@ const StyledPaddingLinksRow = styled.div`
   height: 5px;
 `
 
+const StyledLoginLinksRow = styled.div`
+  width: 100%;
+  height: 3px;
+`
+
 const StyledLinkWrapper = styled(Link)`
   color: ${({ theme }) => theme.globalFontColor};
   text-decoration: none;
@@ -98,7 +103,12 @@ const LandingPageNavigation = () => {
           Logout
         </StyledLinkWrapper>
       ) : (
-        <StyledLinkWrapper to="/login">Login</StyledLinkWrapper>
+        <>
+          <StyledLoginLinksRow />
+          <StyledLinkWrapper to="/login">Login</StyledLinkWrapper>
+          <StyledLoginLinksRow />
+          <StyledLinkWrapper to="/createUser">Sign Up</StyledLinkWrapper>
+        </>
       )}
       <StyledPaddingGroupRow />
       <LandingPageGroupNavigation />

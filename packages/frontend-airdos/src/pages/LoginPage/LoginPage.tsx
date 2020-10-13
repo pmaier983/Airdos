@@ -87,7 +87,7 @@ const StyledSubmitButtonWrapper = styled(SubmitButton)`
   background-color: ${({ theme }) => theme.lightFocusColor};
   min-width: 200px;
   width: 15%;
-  height: 3%;
+  height: 30px;
 `
 
 const StyledErrorContainer = styled.div`
@@ -103,12 +103,6 @@ const StyledFooterContainer = styled.div`
   height: 100%;
 `
 
-const StyledSaveSessionContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`
-
 const StyledLinkWrapper = styled(Link)`
   text-decoration: none;
 `
@@ -117,31 +111,34 @@ const StyledCloseContainer = styled.div`
   position: absolute;
 `
 
+interface FormValues {
+  username: string
+  password: string
+}
+
 // TODO: Split this page up. Too clunky
 const LoginPage = () => {
   const history = useHistory()
-  const { register, handleSubmit, getValues } = useForm()
+  const { register, handleSubmit } = useForm<FormValues>({
+    defaultValues: {
+      username: "pmaier983",
+      password: "bucketHat",
+    },
+  })
+
   const [
-    { loading, currentUser, rememberCurrentUser, authError },
-    { setRememberCurrentUser, getUserByLogin },
+    { loading, currentUser, authError },
+    { getUserByLogin },
   ] = useCurrentUserContext()
 
   if (currentUser) {
     history.goBack()
   }
 
-  // TODO: specify data type
-  const onSubmit = () => {
+  const onSubmit = (formValues: FormValues) => {
     getUserByLogin({
-      variables: {
-        username: getValues("username"),
-        password: getValues("password"),
-      },
+      variables: formValues,
     })
-  }
-
-  const toggleSaveSession = () => {
-    setRememberCurrentUser(!rememberCurrentUser)
   }
 
   // TODO Material Icon Loading should use polish and theme for its color
@@ -184,16 +181,6 @@ const LoginPage = () => {
               />
             </label>
           </StyledInputContainer>
-          <StyledSaveSessionContainer>
-            <MaterialIcon
-              size="16px"
-              name={
-                rememberCurrentUser ? "check_box" : "check_box_outline_blank"
-              }
-              onClick={toggleSaveSession}
-            />
-            Remember Me
-          </StyledSaveSessionContainer>
         </StyledSegmentContainer>
         <StyledSegmentContainer>
           <StyledErrorContainer>{authError}</StyledErrorContainer>
@@ -201,7 +188,7 @@ const LoginPage = () => {
             <StyledLinkWrapper to="/">
               Forgot Password/Username?
             </StyledLinkWrapper>
-            <StyledLinkWrapper to="/">Sign Up</StyledLinkWrapper>
+            <StyledLinkWrapper to="/createUser">Sign Up</StyledLinkWrapper>
           </StyledFooterContainer>
         </StyledSegmentContainer>
       </StyledLoginContainer>

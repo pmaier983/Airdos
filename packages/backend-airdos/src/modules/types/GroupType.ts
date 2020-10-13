@@ -26,6 +26,6 @@ export const typeDefs = gql`
 
 export const resolvers = {
   Query: {
-    groupByName: (parent, props, context) => context.models.group.getByName(props),
+    getGroupByName: (parent, props, context) => context.models.group.getByName(props),
   },
 }

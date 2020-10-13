@@ -6,6 +6,8 @@ import { useCurrentUserContext } from "../../contexts/CurrentUserProvider"
 import { AcceptButton } from "../../components/buttons"
 import { GroupList } from "../../components/GroupList"
 
+import type { ValueLabelNode } from "../../typings/api"
+
 const StyledNoGroupsMessage = styled.div`
   text-align: center;
   font-size: ${({ theme }) => theme.mediumFontSize};
@@ -47,7 +49,7 @@ const LandingPageGroupNavigation: React.FC = () => {
     )
   }
 
-  const groupList: { label: string; value: string }[] = _.slice(
+  const groupList: ValueLabelNode[] = _.slice(
     0,
     4,
     _.get("chosenGroups", currentUser) || _.get("groups", currentUser)
